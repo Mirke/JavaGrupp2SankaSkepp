@@ -1,4 +1,4 @@
-package src;
+package src.Check;
 
 public class Check {
     //En textsträng med den andra spelarens val skickas in
