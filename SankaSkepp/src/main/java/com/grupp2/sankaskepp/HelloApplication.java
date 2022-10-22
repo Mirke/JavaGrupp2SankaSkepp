@@ -16,6 +16,10 @@ import javafx.stage.Stage;
 import java.util.Random;
 import java.io.IOException;
 
+/**
+ * För att köra , höger-klicka på pom.xml filen och välja "add as Maven project"  så ska allt rött försvinna.
+ */
+
 public class HelloApplication extends Application {
 
     private boolean gameIsOn = false;
