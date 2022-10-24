@@ -59,5 +59,6 @@ public class HelloApplication extends Application {
         root.setCenter(vBox);
 
         return root;
+        // hej
     }
 }
