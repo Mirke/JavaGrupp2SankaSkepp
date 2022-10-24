@@ -55,7 +55,6 @@ public class HelloApplication extends Application {
 
         VBox vBox = new VBox(50, attackerBoard, defenderBoard);
         vBox.setAlignment(Pos.TOP_CENTER);
-
         root.setCenter(vBox);
 
         return root;
