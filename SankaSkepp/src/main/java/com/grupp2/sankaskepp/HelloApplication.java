@@ -29,7 +29,6 @@ public class HelloApplication extends Application {
     private boolean defenderTurn = false;
     private Random random = new Random();
 
-
     @Override
     public void start(Stage primaryStage) throws IOException {
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
