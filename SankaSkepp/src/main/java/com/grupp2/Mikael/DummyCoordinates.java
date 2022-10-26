@@ -1,5 +1,6 @@
 package com.grupp2.Mikael;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DummyCoordinates {
@@ -17,6 +18,14 @@ public class DummyCoordinates {
     };
 
     public DummyCoordinates() {
+
+    }
+
+    public String isCoordinate(String value){
+        List list = Arrays.asList(matrix);
+        if(list.contains(value))
+            return value;
+        else
 
     }
 
