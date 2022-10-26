@@ -2,7 +2,7 @@ import CreateAndSetBoats.Boat;
 import CreateAndSetBoats.CreateAndSetBoats;
 
 public class TestStart {
-    public static void main(String[] args) {
+    public static void testStart(String[] args) {
 
         Boat boat = new Boat();
         CreateAndSetBoats createAndSetBoats = new CreateAndSetBoats();
