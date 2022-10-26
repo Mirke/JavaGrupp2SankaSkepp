@@ -29,7 +29,6 @@ public class ProtocolSankaSkepp implements Protocol{
         return serverShotDownAllPlayerShips;
     }
 
-
     public String beginGame(int x, int y) {
         String clientFirstShot = "i";
         return String.format("%s shot %s",clientFirstShot , new DummyCoordinates().matrix[x][y]);
@@ -45,6 +44,7 @@ public class ProtocolSankaSkepp implements Protocol{
         return String.format("%s shot %s",serverShotWasMiss , new DummyCoordinates().matrix[x][y]);
 
     }
+
 
     public String shipHasSunk(int x, int y) {
         String serverShotWasHitAndSunkenShip = "s";
