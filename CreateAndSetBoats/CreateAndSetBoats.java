@@ -24,7 +24,7 @@ public class CreateAndSetBoats {
                 y = random.nextInt(10) + 1;
                 x = random.nextInt(10) + 1;
                 horisontal = random.nextBoolean();
-                List boatPlaces = new ArrayList<>();
+                //List boatPlaces = new ArrayList<>();
 
                 //Minus 1 på i för att få med kordinaten som ligger innan båtens början och +1 för ett efter slutet
                 try {
@@ -198,9 +198,5 @@ public class CreateAndSetBoats {
             return temporaryControl;
         }
 
-        //For loop med dess loopvärden som x och y för båten och omgivningen
-        //Göra en try catch för allt inuti (för out of bounds)
-        //If(ingen av de värdena equals(0) så gör det som står nedan
-        //Efter det sätta båtens positioner till 0 och lägga in de värdena i båtens positionsobjekt
-    }
 }
+
