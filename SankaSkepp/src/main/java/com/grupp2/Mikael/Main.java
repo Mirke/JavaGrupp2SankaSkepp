@@ -5,7 +5,7 @@ public class Main {
         DummyCoordinates dummyCoordinates = new DummyCoordinates();
         ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
         try {
-            System.out.println(dummyCoordinates.matrix[4][4]);
+            dummyCoordinates.getCoordinates(1, Letter.b);
 
         } catch (Exception e){
 
