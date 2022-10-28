@@ -27,10 +27,11 @@ public class PlaceBoats {
             //Minus 1 på i för att få med kordinaten som ligger innan båtens början och +1 för ett efter slutet
             try {
                 for (int i = 0; i < boats[a].getSize();) {
-                    if(horisontal){
-                        if (!field[y][x + i].equals("!!") && (x + i) < 10/*&& !field[y-1][x + i].equals("0") && !field[y+1][x+i].equals("0")*/) {
 
-                            System.out.println("inne i kontrolloopen");
+                    if(horisontal){
+                        if (!field[y][x + i].equals("!!") && (x + i) < 11/*&& !field[y-1][x + i].equals("0") && !field[y+1][x+i].equals("0")*/) {
+
+                            System.out.println("inne i kontrolloopen horisontell");
                             if (i == boats[a].getSize() -1 ) {
                                 System.out.println("inne i utplaneringsloopen för båt " + a);
                                 //try {
@@ -62,23 +63,26 @@ public class PlaceBoats {
 
                                 }
 
-                                a++;
+
                                 System.out.println("Nästa båt");
+                                a++;
+                                i++;
 
                             }
                             i++;
                         } else {
                             y = random.nextInt(10) + 1;
                             x = random.nextInt(10) + 1;
+                            horisontal = random.nextBoolean();
                             i = 0;
                         }
 
 
                     }
                     if (!horisontal) {
-                        if (!field[y + i][x].equals("!!") && (y + i) < 10/*&& !field[y-1][x + i].equals("0") && !field[y+1][x+i].equals("0")*/) {
+                        if (!field[y + i][x].equals("!!") && (y + i) < 11/*&& !field[y-1][x + i].equals("0") && !field[y+1][x+i].equals("0")*/) {
 
-                            System.out.println("inne i kontrolloopen");
+                            System.out.println("inne i kontrolloopen vertikal");
                             if (i == boats[a].getSize() -1) {
                                 System.out.println("inne i utplaveringsloopen för båt " + a);
                                 //try {
@@ -110,11 +114,13 @@ public class PlaceBoats {
 
                                 System.out.println("Nästa båt");
                                 a++;
+                                i++;
                             }
                             i++;
                         } else {
                             y = random.nextInt(10) + 1;
                             x = random.nextInt(10) + 1;
+                            horisontal = random.nextBoolean();
                             i = 0;
                         }
                     }
@@ -144,6 +150,7 @@ public class PlaceBoats {
         String letter = "";
         switch(j){
             case 0:
+            case 11:
                 letter = "!";
                 break;
             case 1:
@@ -175,9 +182,6 @@ public class PlaceBoats {
                 break;
             case 10:
                 letter = "j";
-                break;
-            case 11:
-                letter = "!";
                 break;
 
         }
