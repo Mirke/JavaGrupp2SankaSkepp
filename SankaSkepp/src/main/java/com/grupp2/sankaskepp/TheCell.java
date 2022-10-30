@@ -6,6 +6,7 @@ public class TheCell extends Rectangle {
 
     public int x, y;
     // public boolean wasShot = false;
+    public boolean aBoat = false;
     private GameBoard board;
 
     public TheCell(int x, int y, GameBoard board) {
