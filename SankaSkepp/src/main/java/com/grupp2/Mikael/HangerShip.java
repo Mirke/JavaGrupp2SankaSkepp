@@ -1,13 +1,16 @@
 package com.grupp2.Mikael;
 
-public class HangerShip extends Ship {
-    public HangerShip(int size, int lifePoints, boolean isAlive, Cell[] cells) {
-        super(size, lifePoints, isAlive, cells);
-    }
+import java.util.List;
 
-    public HangerShip(Cell[] cells) {
+public class HangerShip extends Ship {
+    public HangerShip(List<Cell> listOfFiveCells) {
+        super();
         this.size = 5;
-        this.lifePoints = 5;
-        this.cells = cells;
+        if(listOfFiveCells.size() == 5){
+            this.cells = listOfFiveCells;
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
+
     }
 }
