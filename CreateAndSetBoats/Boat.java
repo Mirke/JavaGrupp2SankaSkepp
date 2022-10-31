@@ -5,15 +5,8 @@ import java.util.Random;
 
 public class Boat {
 
-
-
-    //Alternativ 1: Skapa en klass för position
     private ArrayList<String> position = new ArrayList();
-    //private String[] position;
 
-
-    //Alternativ 2: Lagra positionen som en textsträng
-    //private String position;
     private int size;
     private String name;
     private Boat[] boats;
@@ -47,18 +40,6 @@ public class Boat {
         boats = new Boat[]{boat1, boat2, boat3, boat4, boat5, boat6, boat7, boat8, boat9, boat10};
 
     }
-
-    //En metod för att placera ut båtarna, behövs byggas på
-
-    //Kalla på fler metoder för att avsluta denna del
-
-        /*Ifall att man gör ett objekt för position
-        setPosition();
-        Ifall att man lagrar positionen som en sträng i Boat-Klassen
-        setPosition1();*/
-
-
-
 
     //Getters och Setters
     public int getSize() {

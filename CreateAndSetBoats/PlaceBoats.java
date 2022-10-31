@@ -1,6 +1,6 @@
 package CreateAndSetBoats;
-import java.util.ArrayList;
 import java.util.Random;
+
 
 public class PlaceBoats {
     private String[][] field = new String[12][12];
@@ -11,35 +11,42 @@ public class PlaceBoats {
     int y;
     int x;
     boolean horisontal;
+    boolean works = true;
 
+    int controlLoop = 0;
 
-    public void newTest(Boat []boats) {
+    public void placeBoats(Boat []boats){
+        boolean works2 = false;
+        while(!works2) {
+            works2 = setTheBoats(boats);
+        }
+    }
 
+    public boolean setTheBoats(Boat []boats) {
 
+        initializeGridArray();
         for (int a = 0; a < boats.length;) {
-
 
             y = random.nextInt(10) + 1;
             x = random.nextInt(10) + 1;
             horisontal = random.nextBoolean();
 
 
-            //Minus 1 på i för att få med kordinaten som ligger innan båtens början och +1 för ett efter slutet
             try {
                 for (int i = 0; i < boats[a].getSize();) {
 
                     if(horisontal){
-                        if (!field[y][x + i].equals("!!") && (x + i) < 11/*&& !field[y-1][x + i].equals("0") && !field[y+1][x+i].equals("0")*/) {
+                        if (!field[y][x + i].equals("!!") && (x + i) < 11) {
 
-                            System.out.println("inne i kontrolloopen horisontell");
-                            if (i == boats[a].getSize() -1 ) {
-                                System.out.println("inne i utplaneringsloopen för båt " + a);
-                                //try {
+                            controlLoop++;
+                            if(controlLoop == 200){
+                                a = 10;
+                                i = 10;
+                            }
+
+                            if (i == (boats[a].getSize() -1)) {
+
                                 for (int j = 0; j < boats[a].getSize(); j++) {
-
-                                    //Temporary control
-                                    temporaryControl = temporaryControl.concat(field[y][x +j]);
-                                    System.out.println("Lägger till båten");
 
                                     //Lägger till koordinaten som ett objekt i båten
                                     boats[a].getPosition().add(field[y][x + j]);
@@ -49,7 +56,7 @@ public class PlaceBoats {
                                     field[y + 1][x + j] = "!!";
 
                                     if (j == 0) {
-                                        field[y][x + j] = "!!";
+                                        field[y][x - 1] = "!!";
                                         field[y - 1][x - 1] = "!!";
                                         field[y + 1][x - 1] = "!!";
                                     }
@@ -62,14 +69,13 @@ public class PlaceBoats {
 
 
                                 }
-
-
-                                System.out.println("Nästa båt");
                                 a++;
-                                i++;
 
+                            }if(i >= boats[a].getSize() && a < 9){
+                                i = 0;
                             }
                             i++;
+
                         } else {
                             y = random.nextInt(10) + 1;
                             x = random.nextInt(10) + 1;
@@ -80,23 +86,25 @@ public class PlaceBoats {
 
                     }
                     if (!horisontal) {
-                        if (!field[y + i][x].equals("!!") && (y + i) < 11/*&& !field[y-1][x + i].equals("0") && !field[y+1][x+i].equals("0")*/) {
+                        if (!field[y + i][x].equals("!!") && (y + i) < 11) {
 
-                            System.out.println("inne i kontrolloopen vertikal");
-                            if (i == boats[a].getSize() -1) {
-                                System.out.println("inne i utplaveringsloopen för båt " + a);
-                                //try {
+                            controlLoop++;
+                            if(controlLoop == 200){
+                                a = 10;
+                                i = 10;
+                            }
+
+                            if (i == (boats[a].getSize() -1)) {
+
                                 for (int j = 0; j < boats[a].getSize(); j++) {
-                                    System.out.println("Lägger till båten vertikalt");
-
-                                    temporaryControl = temporaryControl.concat(field[y + j][x]);
 
                                     //Lägger till koordinaten som ett objekt i båten
                                     boats[a].getPosition().add(field[y + j][x]);
 
                                     field[y + j][x] = "!!";
-                                    field[y + j + 1][x - 1] = "!!";
-                                    field[y + j + 1][x + 1] = "!!";
+                                    field[y + j][x - 1] = "!!";
+                                    field[y + j][x + 1] = "!!";
+
                                     if (j == 0) {
                                         field[y - 1][x] = "!!";
                                         field[y - 1][x - 1] = "!!";
@@ -111,12 +119,14 @@ public class PlaceBoats {
 
 
                                 }
-
-                                System.out.println("Nästa båt");
                                 a++;
-                                i++;
+
+                            }
+                            if(i >= boats[a].getSize() && a < 9){
+                                i = 0;
                             }
                             i++;
+
                         } else {
                             y = random.nextInt(10) + 1;
                             x = random.nextInt(10) + 1;
@@ -127,32 +137,34 @@ public class PlaceBoats {
 
                 }
 
-            }catch (ArrayIndexOutOfBoundsException e) {
+            }catch (ArrayIndexOutOfBoundsException  e) {
 
             }
         }
+
+        if(controlLoop >= 200){
+            works = false;
+        }
+        return works;
     }
     public void initializeGridArray(){
         for(int i = 0; i < 12; i++){
             for(int j = 0; j < 12; j++){
-                if(i == 0){
-                    field[i][j] = "!".concat(getXField(j));
+
+                if(i == 0 || i == 11 || j == 0 || j == 11){
+                    field[j][i] = "!!";
+                }else {
+                    field[j][i] = Integer.toString(i - 1).concat(getYField(j));
                 }
-                else {
-                    field[i][j] = Integer.toString(i - 1).concat(getXField(j));
-                }
+
             }
         }
     }
 
 
-    public String getXField(int j){
+    public String getYField(int j){
         String letter = "";
         switch(j){
-            case 0:
-            case 11:
-                letter = "!";
-                break;
             case 1:
                 letter = "a";
                 break;
