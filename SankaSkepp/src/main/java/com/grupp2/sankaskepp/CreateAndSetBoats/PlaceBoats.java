@@ -1,4 +1,4 @@
-package CreateAndSetBoats;
+package com.grupp2.sankaskepp.CreateAndSetBoats;
 import java.util.Random;
 
 

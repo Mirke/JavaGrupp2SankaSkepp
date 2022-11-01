@@ -1,5 +1,6 @@
 package com.grupp2.sankaskepp;
 
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
@@ -33,6 +34,7 @@ public class GameBoard extends Parent {
 
         parceStringCoordinates(boat);
     }
+
 
     public void parceStringCoordinates(Boat boat) {
 

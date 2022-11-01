@@ -1,7 +1,8 @@
-package TestStart;
+package com.grupp2.sankaskepp.TestStart;
 
-import CreateAndSetBoats.Boat;
-import CreateAndSetBoats.PlaceBoats;
+
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
 public class TestStart {
     public static void main(String[] args) {
@@ -15,7 +16,6 @@ public class TestStart {
         placeBoats.placeBoats(boat.getBoats());
 
 
-        /*
         for(int i = 1; i < 11; i++){
             System.out.println();
             for (int j = 1; j < 11; j++){
@@ -53,7 +53,6 @@ public class TestStart {
                 }
             }
         }
-        */
 
 
 
