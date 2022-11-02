@@ -1,6 +1,12 @@
-package com.grupp2.Mikael;
+package com.grupp2.sankaskepp.protokoll;
 
-public class ProtocolSankaSkepp implements Protocol{
+
+
+
+import java.util.Random;
+
+public class ProtocolSankaSkepp implements Protocol {
+
 
     public String beginGame(int x, int y) {
         String clientFirstShot = "i";
@@ -21,6 +27,18 @@ public class ProtocolSankaSkepp implements Protocol{
     public String shipHasSunk(int x, int y) {
         String serverShotWasHitAndSunkenShip = "s";
         return String.format("%s shot %s",serverShotWasHitAndSunkenShip , new DummyCoordinates().matrix[x][y]);
+    }
+
+    public String sendRandomProtocolMethod(int x, int y){
+        int randomNumber = new Random().nextInt(4);
+
+        return switch (randomNumber) {
+            case 0 -> beginGame(x,y);
+            case 1 -> shipGotHit(x,y);
+            case 2 -> missedShot(x,y);
+            case 3 -> shipHasSunk(x,y);
+            default -> "Error";
+        };
     }
 
     @Override

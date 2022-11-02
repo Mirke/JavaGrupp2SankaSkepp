@@ -1,4 +1,4 @@
-package com.grupp2.Mikael;
+package com.grupp2.sankaskepp.protokoll;
 
 public enum Letter {
     a,

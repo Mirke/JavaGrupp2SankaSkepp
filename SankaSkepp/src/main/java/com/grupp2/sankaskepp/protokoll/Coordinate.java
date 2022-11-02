@@ -1,4 +1,6 @@
-package com.grupp2.Mikael;
+package com.grupp2.sankaskepp.protokoll;
+
+
 
 public interface Coordinate {
     int getX(int number);
