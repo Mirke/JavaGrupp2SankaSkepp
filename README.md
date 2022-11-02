@@ -11,11 +11,11 @@ Jira - https://mikaelmirke.atlassian.net/jira/software/projects/JG2SS/boards/1/r
 Draw.io - https://app.diagrams.net/
 
 
-# ToDo
+# ToDo 
 
 - [ ]  **Spelplan** 🖥️
 - [x]  **Fartyg Classer** 🚢
-- [x]  **GUI** 🎨
+- [ ]  **GUI** 🎨
 - [ ]  **Protokoll** 📜
 - [ ]  **Klient** 🦸
 - [ ]  **Server** 👾
