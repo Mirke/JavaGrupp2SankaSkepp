@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.AnnaGUI;
 
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;

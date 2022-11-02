@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.AnnaGUI;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
