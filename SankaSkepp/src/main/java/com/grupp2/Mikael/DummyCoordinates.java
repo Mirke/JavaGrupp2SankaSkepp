@@ -41,7 +41,6 @@ public class DummyCoordinates implements Coordinate {
         return letter.ordinal();
     }
 
-        /*
     public String[][] matrix = {
             {"0a", "a1", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a"},
             {"0b", "1b", "2b", "3b", "4b", "5b", "6b", "7b", "8b", "9b"},
@@ -54,6 +53,5 @@ public class DummyCoordinates implements Coordinate {
             {"0i", "1i", "2i", "3i", "4i", "5i", "6i", "7i", "8i", "9i"},
             {"0j", "1j", "2j", "3j", "4j", "5j", "6j", "7j", "8j", "9j"}
     };
-    */
 
 }
