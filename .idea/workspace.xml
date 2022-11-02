@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="had to commit">
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/module-info.class" afterDir="false" />
-    </list>
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="had to commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,7 +74,13 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1667400990925</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Tror jag löste merge problemet.">
+      <created>1667428651336</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1667428651336</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +99,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gjorde layout/design." />
-    <option name="LAST_COMMIT_MESSAGE" value="Gjorde layout/design." />
+    <MESSAGE value="Tror jag löste merge problemet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tror jag löste merge problemet." />
   </component>
 </project>
