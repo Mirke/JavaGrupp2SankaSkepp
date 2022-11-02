@@ -15,6 +15,6 @@ public class TheCell extends Rectangle {
         this.y = y;
         this.board = board;
         setFill(Color.AQUA);
-        setStroke(Color.WHITE);
+        setStroke(Color.BLACK);
     }
 }
