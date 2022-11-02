@@ -15,7 +15,7 @@ Draw.io - https://app.diagrams.net/
 
 - [ ]  **Spelplan** 🖥️
 - [x]  **Fartyg Classer** 🚢
-- [ ]  **GUI** 🎨
+- [x]  **GUI** 🎨
 - [ ]  **Protokoll** 📜
 - [ ]  **Klient** 🦸
 - [ ]  **Server** 👾

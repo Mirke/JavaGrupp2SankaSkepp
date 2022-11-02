@@ -1,4 +1,6 @@
-package com.grupp2.sankaskepp;
+
+package com.grupp2.sankaskepp.AnnaGUI;
+
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -15,6 +17,6 @@ public class TheCell extends Rectangle {
         this.y = y;
         this.board = board;
         setFill(Color.AQUA);
-        setStroke(Color.BLACK);
+        setStroke(Color.WHITE);
     }
 }
