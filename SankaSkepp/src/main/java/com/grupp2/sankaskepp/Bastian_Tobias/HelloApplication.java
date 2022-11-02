@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.Bastian_Tobias;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import javafx.application.Application;
