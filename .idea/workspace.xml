@@ -4,18 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Starting to write history feature.">
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/CRUD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/test/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/SankaSkepp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/SankaSkepp.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Anna_Branch_main_merge" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,17 +49,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.grupp2.sankaskepp.HistoryFeature" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.HistoryOverMovesTest">
+    <configuration name="HistoryOverMovesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.HistoryFeature.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupp2.sankaskepp.HistoryFeature" />
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.HistoryFeature.HistoryOverMovesTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HistoryOverMovesTest.removeSavedTextLine" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.HistoryFeature.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.grupp2.sankaskepp.HistoryFeature" />
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.HistoryFeature.HistoryOverMovesTest" />
+      <option name="METHOD_NAME" value="removeSavedTextLine" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.HistoryOverMovesTest" />
+        <item itemvalue="JUnit.HistoryOverMovesTest.removeSavedTextLine" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL−00001" summary="Gjorde layout/design.">
@@ -82,7 +145,13 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1667428651336</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="Starting to write history feature.">
+      <created>1667500836765</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1667500836765</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +171,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gjorde layout/design." />
     <MESSAGE value="Tror jag löste merge problemet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tror jag löste merge problemet." />
+    <MESSAGE value="Starting to write history feature." />
+    <option name="LAST_COMMIT_MESSAGE" value="Starting to write history feature." />
   </component>
 </project>
