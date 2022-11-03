@@ -1,5 +1,8 @@
 package com.grupp2.sankaskepp.Remaining;
 
+import java.util.List;
+import java.util.Set;
+
 public class MainRemain {
     public static void main(String[] args) throws InterruptedException{
 
@@ -16,7 +19,9 @@ public class MainRemain {
         EnemyGameBoard enemyGameBoard = new EnemyGameBoard();
 
 
-        //Make 2D-array of all positions in EnemyGameBoard - doesn't work
+        //Make 2D-array of all positions in EnemyGameBoard
+
+        Set<String> remainingXYspots = enemyGameBoard.getRemainingXYspots();
 
         XYposition[][] remainingEnemyPositions = enemyGameBoard.getRemainingEnemyPositions();
 
@@ -25,10 +30,13 @@ public class MainRemain {
                 remainingEnemyPositions[i][j] =
                         new XYposition(enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j]);
 
+                remainingXYspots.add(remainingEnemyPositions[i][j].getXyValue());
 
-                System.out.println(remainingEnemyPositions[i][j].getXyValue());
+                //System.out.println(remainingEnemyPositions[i][j].getXyValue());
             }
 
         }
+
+        System.out.println(remainingXYspots);
     }
-    }
+}

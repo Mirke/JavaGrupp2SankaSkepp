@@ -18,6 +18,10 @@ public class XYposition {
         this.xyValue  = xValue.concat(yValue);
     }
 
+    public XYposition(String xyValue) {
+        this.xyValue = xyValue;
+    }
+
     public String getxValue() {
         return xValue;
     }
