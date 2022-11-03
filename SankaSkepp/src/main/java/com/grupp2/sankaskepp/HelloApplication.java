@@ -1,6 +1,9 @@
 package com.grupp2.sankaskepp;
+
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
+import com.grupp2.sankaskepp.TestStart.ComputerAI;
+import com.grupp2.sankaskepp.TestStart.TheBattle;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -13,7 +16,7 @@ import java.util.Random;
 
 public class HelloApplication extends Application {
     private boolean gameIsOn = false;
-    private GameBoard attackerBoard, defenderBoard;
+    private GameBoard enemyBoard, serverBoard;
 
     private Random random = new Random();
 
@@ -37,26 +40,31 @@ public class HelloApplication extends Application {
         BorderPane root = new BorderPane();
         root.setPrefSize(600, 700);
 
-
-        Boat boat = new Boat();
-        PlaceBoats placeBoats = new PlaceBoats();
-        boat.createBoats();
-        placeBoats.initializeGridArray();
-        placeBoats.placeBoats(boat.getBoats());
-
-        attackerBoard = new GameBoard(boat);
+        // Enemy
+        Boat enemyBoat = new Boat();
+        PlaceBoats enemyPlaceBoats = new PlaceBoats();
+        enemyBoat.createBoats();
+        enemyPlaceBoats.initializeGridArray();
+        enemyPlaceBoats.placeBoats(enemyBoat.getBoats());
+        enemyBoard = new GameBoard(enemyBoat);
+        ComputerAI enemyAI = new ComputerAI(enemyBoat);
 
         // ***************************************
+        System.out.println("---------- server  ------------");
 
-        Boat boat2 = new Boat();
-        PlaceBoats placeBoats2 = new PlaceBoats();
-        boat2.createBoats();
-        placeBoats2.initializeGridArray();
-        placeBoats2.placeBoats(boat2.getBoats());
+        // Server
+        Boat serverBoat = new Boat();
+        PlaceBoats serverPlaceBoats = new PlaceBoats();
+        serverBoat.createBoats();
+        serverPlaceBoats.initializeGridArray();
+        serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        serverBoard = new GameBoard(serverBoat);
+        ComputerAI serverAI = new ComputerAI(serverBoat);
 
-        defenderBoard = new GameBoard(boat2);
+        // klass där AI spelar mot varann
+        TheBattle theBattle = new TheBattle(enemyBoard,serverBoard,enemyAI,serverAI);
 
-        VBox vBox = new VBox(10, attackerBoard, defenderBoard);
+        VBox vBox = new VBox(10, enemyBoard, serverBoard);
         vBox.setAlignment(Pos.TOP_LEFT);
 
         root.setCenter(vBox);
