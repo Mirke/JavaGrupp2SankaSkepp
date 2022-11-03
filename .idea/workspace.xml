@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="had to commit" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="had to commit">
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/battleshipbackground.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/hello-view.fxml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +19,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Anna_Branch_main_merge" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
