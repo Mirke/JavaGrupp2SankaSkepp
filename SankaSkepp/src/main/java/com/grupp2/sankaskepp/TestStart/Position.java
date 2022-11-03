@@ -10,7 +10,6 @@ import java.util.List;
 public class Position {
     // Attributes
     private String[][] string2DArray;
-
     private List<String> allCoordinates;
     private List<String> allShipCoordinates;
     private Boat boat;
@@ -38,7 +37,6 @@ public class Position {
 
         // copy down all ship coordinates
         listOfAllShipCoordinates();
-
     }
 
     // Methods
@@ -58,16 +56,6 @@ public class Position {
                 allShipCoordinates.add(this.boat.getBoats()[i].getPosition().get(j));
             }
         }
-    }
-
-    public void printArray() {
-        for (int i = 0; i < X_HORISONTAL; i++) {
-            for (int j = 0; j < Y_VERTICAL; j++) {
-                System.out.print(string2DArray[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     public void printList(List<String> theList) {
@@ -154,10 +142,6 @@ public class Position {
     }
 
     // getter and setters
-
-    public String[][] getString2DArray() {
-        return string2DArray;
-    }
 
     public List<String> getAllCoordinates() {
         return allCoordinates;

@@ -50,7 +50,6 @@ public class HelloApplication extends Application {
         ComputerAI enemyAI = new ComputerAI(enemyBoat);
 
         // ***************************************
-        System.out.println("---------- server  ------------");
 
         // Server
         Boat serverBoat = new Boat();

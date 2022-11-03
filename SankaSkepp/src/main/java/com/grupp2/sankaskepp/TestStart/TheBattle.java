@@ -2,8 +2,6 @@ package com.grupp2.sankaskepp.TestStart;
 
 import com.grupp2.sankaskepp.GameBoard;
 
-import java.util.Iterator;
-
 public class TheBattle {
     // attributes
     private GameBoard enemyBoard, serverBoard;
@@ -27,21 +25,13 @@ public class TheBattle {
         this.enemyAI = enemyAI;
         this.serverAI = serverAI;
 
-
-        Iterator iteratorAttacker = enemyAI.getAllCoordinates().listIterator();
-        Iterator iteratorDefender = serverAI.getAllCoordinates().listIterator();
-
-        // före remove
-        // serverAI.getAllShipCoordinates();
-
+        // **********************************************
         // enemyAI skjuter första skottet
         firstShot(enemyAI, serverAI);
         this.serverBoard.parceStringShotCoordinates(defenderIsHit, attackerShot);
+        System.out.println("Enemy: " + defenderIsHit + " || " + attackerShot);
 
-        // behöver hjälp med spel logiken
-
-        /*
-        while (iteratorDefender.hasNext()) {
+        while (true) {
             // Server skjuter
             shotsFired(serverAI, enemyAI);
             this.enemyBoard.parceStringShotCoordinates(defenderIsHit, attackerShot);
@@ -51,22 +41,15 @@ public class TheBattle {
                 System.out.println("Server won");
                 return;
             }
-            while (iteratorAttacker.hasNext()) {
-                // nu skjuter enemyAI
-                shotsFired(enemyAI,serverAI);
-                this.serverBoard.parceStringShotCoordinates(defenderIsHit, attackerShot);
-                if(serverAI.isAnyShipLeft()){
-                    System.out.println("Enemy won");
-                    return;
-                }
-
-                // efter remove
-                // serverAI.getAllShipCoordinates();
-                System.out.println("Enemy: " + defenderIsHit + " || " + attackerShot);
+            // enemy skjuter
+            shotsFired(enemyAI, serverAI);
+            this.serverBoard.parceStringShotCoordinates(defenderIsHit, attackerShot);
+            System.out.println("Enemy: " + defenderIsHit + " || " + attackerShot);
+            if (serverAI.isAnyShipLeft()) {
+                System.out.println("Enemy won");
+                return;
             }
         }
-
-         */
     }
 
     // methods

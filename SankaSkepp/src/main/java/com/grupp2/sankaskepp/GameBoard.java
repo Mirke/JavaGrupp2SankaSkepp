@@ -18,9 +18,8 @@ public class GameBoard extends Parent {
     private VBox vRow = new VBox();
     private TheCell cell;
     private Boat boat;
-    List<String> position = new ArrayList<>();
 
-    // lista som håller skeppen kordinater som string
+    // lista som håller skeppen koordinater som string
     List<String> allShipCoordinates = new ArrayList<>();
 
     // Constructor
@@ -40,7 +39,6 @@ public class GameBoard extends Parent {
 
         parceStringCoordinates(boat);
     }
-
 
     // Methods
     public void parceStringShotCoordinates(boolean hit, String shot) {
@@ -176,15 +174,4 @@ public class GameBoard extends Parent {
     private TheCell getTheCell(int x, int y) {
         return (TheCell) ((HBox) vRow.getChildren().get(y)).getChildren().get(x);
     }
-
-    // Metod för att visa alla använda koordinater
-    private void iteratorForCoordinates(List<String> coordinates) {
-        int index = 1;
-        Iterator<String> iterator = coordinates.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next() + ", index: " + index);
-            index++;
-        }
-    }
-
 }

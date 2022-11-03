@@ -36,12 +36,8 @@ public class ComputerAI {
         }
     }
     public boolean isAnyShipLeft(){
-        boolean destroyed = false;
-        if(position.getAllShipCoordinates().isEmpty()){
-            destroyed = true;
-        }
 
-        return destroyed;
+        return position.getAllShipCoordinates().isEmpty();
     }
 
     public String shot() {
@@ -57,11 +53,13 @@ public class ComputerAI {
     }
 
     public boolean isHit(String isAHit) {
-        // returnerar sant om listan med skepp koordinater innehåller samma värde som "shot"
+        // returnerar sant om listan med skepp koordinater innehåller samma värde som "isAHit"
+        boolean hit = false;
         if(position.getAllShipCoordinates().contains(isAHit)){
-            remove();
+            position.remove(position.getAllShipCoordinates(),isAHit);
+            hit = true;
         }
-        return position.getAllShipCoordinates().contains(isAHit);
+        return hit;
 
     }
     public void remove(){
