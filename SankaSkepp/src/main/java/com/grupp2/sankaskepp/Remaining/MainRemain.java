@@ -3,11 +3,14 @@ package com.grupp2.sankaskepp.Remaining;
 public class MainRemain {
     public static void main(String[] args) throws InterruptedException{
 
-        //random values between 1-5, representing random time delay
-        for (int i = 0; i < 10; i++) {
+        //KL random time delay 2-5 s, don't forget "throws InterruptedException" see above
+
             int t = (int) (Math.random() * 5 + 1);
+            if (t == 1) {
+                t++;
+            }
             Thread.sleep(t*1000);
-            System.out.println(t);
+
 
 
         EnemyGameBoard enemyGameBoard = new EnemyGameBoard();
