@@ -1,6 +1,5 @@
 package com.grupp2.sankaskepp.Remaining;
 
-import java.util.List;
 import java.util.Set;
 
 public class MainRemain {
@@ -27,8 +26,7 @@ public class MainRemain {
 
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                remainingEnemyPositions[i][j] =
-                        new XYposition(enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j]);
+                remainingEnemyPositions[i][j] = new XYposition(enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j]);
 
                 remainingXYspots.add(remainingEnemyPositions[i][j].getXyValue());
 
