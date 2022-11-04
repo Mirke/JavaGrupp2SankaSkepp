@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp.TestStart;
+package com.grupp2.sankaskepp.Bastian_Tobias;
 
 
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;

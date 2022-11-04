@@ -1,9 +1,7 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.Bastian_Tobias;
 
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-import com.grupp2.sankaskepp.TestStart.ComputerAI;
-import com.grupp2.sankaskepp.TestStart.TheBattle;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -16,7 +14,7 @@ import java.util.Random;
 
 public class HelloApplication extends Application {
     private boolean gameIsOn = false;
-    private GameBoard enemyBoard, serverBoard;
+    private com.grupp2.sankaskepp.GameBoard enemyBoard, serverBoard;
 
     private Random random = new Random();
 
@@ -46,7 +44,7 @@ public class HelloApplication extends Application {
         enemyBoat.createBoats();
         enemyPlaceBoats.initializeGridArray();
         enemyPlaceBoats.placeBoats(enemyBoat.getBoats());
-        enemyBoard = new GameBoard(enemyBoat);
+        enemyBoard = new com.grupp2.sankaskepp.GameBoard(enemyBoat);
         ComputerAI enemyAI = new ComputerAI(enemyBoat);
 
         // ***************************************
@@ -57,7 +55,7 @@ public class HelloApplication extends Application {
         serverBoat.createBoats();
         serverPlaceBoats.initializeGridArray();
         serverPlaceBoats.placeBoats(serverBoat.getBoats());
-        serverBoard = new GameBoard(serverBoat);
+        serverBoard = new com.grupp2.sankaskepp.GameBoard(serverBoat);
         ComputerAI serverAI = new ComputerAI(serverBoat);
 
         // klass där AI spelar mot varann

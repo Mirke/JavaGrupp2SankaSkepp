@@ -1,18 +1,13 @@
 package com.grupp2.sankaskepp;
 
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
-import com.grupp2.sankaskepp.TestStart.ComputerAI;
-import com.grupp2.sankaskepp.TestStart.Position;
-import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
 
 public class GameBoard extends Parent {
     private VBox vRow = new VBox();

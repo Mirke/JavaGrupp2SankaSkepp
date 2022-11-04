@@ -1,5 +1,6 @@
-package com.grupp2.sankaskepp.TestStart;
+package com.grupp2.sankaskepp.Bastian_Tobias;
 
+import com.grupp2.sankaskepp.Bastian_Tobias.ComputerAI;
 import com.grupp2.sankaskepp.GameBoard;
 
 public class TheBattle {
