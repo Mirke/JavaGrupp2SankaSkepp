@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="had to commit">
-      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/battleshipbackground.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/hello-view.fxml" beforeDir="false" />
@@ -16,6 +16,13 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -23,6 +30,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -86,7 +94,13 @@
       <option name="presentableId" value="LOCAL−00004" />
       <updated>1667428651336</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL−00005" summary="En klass som kontrollerar det den andra spelaren skickar och returnerar ett svar på det">
+      <created>1667473474282</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1667473474282</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gjorde layout/design." />
     <MESSAGE value="Tror jag löste merge problemet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tror jag löste merge problemet." />
+    <MESSAGE value="En klass som kontrollerar det den andra spelaren skickar och returnerar ett svar på det" />
+    <option name="LAST_COMMIT_MESSAGE" value="En klass som kontrollerar det den andra spelaren skickar och returnerar ett svar på det" />
   </component>
 </project>

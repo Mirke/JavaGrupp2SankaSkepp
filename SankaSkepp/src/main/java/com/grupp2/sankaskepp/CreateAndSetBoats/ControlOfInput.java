@@ -40,7 +40,7 @@ public class ControlOfInput {
                 if(boat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
                         boat.getBoats()[i].getPosition().size() == 1 && !skipCheck.contains(i)) {
 
-                    //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice);
+                    //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
 
                     boat.getBoats()[i].getPosition().remove(j);
                     hit = "s";
@@ -55,7 +55,7 @@ public class ControlOfInput {
                     //Metoden nedan kan vara exakt likadan kod som när man lägger till båtarna men att man
                     //ändrar färgen på den rutan för att kunna se någon skillnad på skärmen
 
-                    //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice);
+                    //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
 
                     //för att avsluta loopen när vi redan har ett svar
                     j = boat.getBoats()[i].getPosition().size() - 1;
@@ -84,6 +84,8 @@ public class ControlOfInput {
         }
         if(hit.equals("")){
             hit = "m";
+
+            //Här ska rutan bli blå på position "playerChoice" i userInterface
         }
         return hit;
     }
