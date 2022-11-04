@@ -1,6 +1,6 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.Bastian_Tobias;
 
-import javafx.geometry.Point2D;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -8,7 +8,6 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class GameBoard extends Parent {
     private VBox vRow = new VBox();
@@ -33,6 +32,7 @@ public class GameBoard extends Parent {
 
         parceStringCoordinates(boat);
     }
+
 
     public void parceStringCoordinates(Boat boat) {
 

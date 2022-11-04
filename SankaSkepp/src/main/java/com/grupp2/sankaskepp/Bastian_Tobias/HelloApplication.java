@@ -1,4 +1,6 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.Bastian_Tobias;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -40,7 +42,7 @@ public class HelloApplication extends Application {
         PlaceBoats placeBoats = new PlaceBoats();
         boat.createBoats();
         placeBoats.initializeGridArray();
-        placeBoats.newTest(boat.getBoats());
+        placeBoats.placeBoats(boat.getBoats());
 
         attackerBoard = new GameBoard(boat);
 
@@ -50,7 +52,7 @@ public class HelloApplication extends Application {
         PlaceBoats placeBoats2 = new PlaceBoats();
         boat2.createBoats();
         placeBoats2.initializeGridArray();
-        placeBoats2.newTest(boat2.getBoats());
+        placeBoats2.placeBoats(boat2.getBoats());
 
         defenderBoard = new GameBoard(boat2);
 

@@ -1,4 +1,5 @@
-package com.grupp2.sankaskepp;
+
+package com.grupp2.sankaskepp.Bastian_Tobias;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
