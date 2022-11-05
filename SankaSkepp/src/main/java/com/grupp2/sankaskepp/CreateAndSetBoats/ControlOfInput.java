@@ -124,10 +124,13 @@ public class ControlOfInput {
         try {
             if ("h".equals(answer.get(answerArrayControl)) || "s".equals(answer.get(answerArrayControl))) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
+                // vet inte om gameBoard här måste vara under sentArrayControl???
+                gameBoard.parceStringShotCoordinates(true,sentPosition.get(sentArrayControl));
                 sentArrayControl++;
                 answerArrayControl++;
             } else {
                 //metod till tobias kod, färg blir blå för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
+                gameBoard.parceStringShotCoordinates(false,sentPosition.get(sentArrayControl));
                 sentArrayControl++;
                 answerArrayControl++;
             }
