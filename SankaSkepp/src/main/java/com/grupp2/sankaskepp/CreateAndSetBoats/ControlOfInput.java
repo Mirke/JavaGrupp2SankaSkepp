@@ -5,7 +5,8 @@ import com.grupp2.sankaskepp.Bastian_Tobias.GameBoard;
 import java.util.ArrayList;
 
 public class ControlOfInput {
-    ArrayList<Integer> skipCheck = new ArrayList<Integer>(0);
+    ArrayList<Integer> skipCheck = new ArrayList<>(0);
+    ArrayList<String> answer = new ArrayList<>();
     int boats = 10;
 
     private GameBoard gameBoard;
@@ -18,8 +19,7 @@ public class ControlOfInput {
 
     }
 
-
-    public String controlIfHit(String choice, Boat boat) {
+    public String controlOtherPlayerString(String choice, Boat myBoat){
         String hit = "";
 
         /*Metod för att initiera all kod ska i teorin skulle befinna sig i main. Vi kan antingen starta den koden i main
@@ -27,6 +27,8 @@ public class ControlOfInput {
         /* ifall att första Char är "i" likt exemplet nedan. Detta kan även lösas på andra sätt.
          */
 
+        answer.add(Character.toString(choice.charAt(0)));
+        checkAnswerFromOtherPlayer();
 
         if (Character.toString(choice.charAt(0)).equals("i")) {
             //Metod där starten av programmet sker
@@ -41,29 +43,29 @@ public class ControlOfInput {
         String x = Character.toString(choice.charAt(8));
         String playerChoice = y + x;
 
-        for (int i = 0; i < boat.getBoats().length; i++) {
-            for (int j = 0; j < boat.getBoats()[i].getPosition().size(); j++) {
+        for(int i = 0; i < myBoat.getBoats().length; i++){
+            for(int j = 0; j < myBoat.getBoats()[i].getPosition().size(); j++){
 
-                if (boat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
-                        boat.getBoats()[i].getPosition().size() == 1 && !skipCheck.contains(i)) {
+                if(myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
+                        myBoat.getBoats()[i].getPosition().size() == 1 && !skipCheck.contains(i)) {
 
                     // Tobias { *********
                     //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
                     gameBoard.parceStringShotCoordinates(true,playerChoice);
                     // *********** } Tobias
 
-                    boat.getBoats()[i].getPosition().remove(j);
+                    myBoat.getBoats()[i].getPosition().remove(j);
                     hit = "s";
-                    j = boat.getBoats()[i].getPosition().size() - 1;
-                    i = boat.getBoats().length - 1;
+                    j = myBoat.getBoats()[i].getPosition().size() - 1;
+                    i = myBoat.getBoats().length - 1;
 
-                } else if (boat.getBoats()[i].getPosition().get(j).equals(playerChoice) && !skipCheck.contains(i)) {
+                } else if(myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) && !skipCheck.contains(i)){
                     hit = "h";
                     //För att ta bort värdet i arraylisten
-                    boat.getBoats()[i].getPosition().remove(j);
+                    myBoat.getBoats()[i].getPosition().remove(j);
 
-                    //Metoden nedan kan vara exakt likadan kod som när man lägger till båtarna men att man
-                    //ändrar färgen på den rutan för att kunna se någon skillnad på skärmen
+                    /*Metoden nedan kan vara exakt likadan kod som när man lägger till båtarna men att man
+                    *ändrar färgen på den rutan för att kunna se någon skillnad på skärmen*/
 
                     //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
                     // Tobias { *********
@@ -72,8 +74,8 @@ public class ControlOfInput {
                     // *********** } Tobias
 
                     //för att avsluta loopen när vi redan har ett svar
-                    j = boat.getBoats()[i].getPosition().size() - 1;
-                    i = boat.getBoats().length - 1;
+                    j = myBoat.getBoats()[i].getPosition().size() - 1;
+                    i = myBoat.getBoats().length - 1;
 
 
                 }
@@ -81,8 +83,9 @@ public class ControlOfInput {
         }
 
 
-        for (int i = 0; i < boat.getBoats().length; i++) {
-            if (boat.getBoats()[i].getPosition().size() == 0 && !skipCheck.contains(i)) {
+
+        for(int i = 0; i < myBoat.getBoats().length; i++){
+            if(myBoat.getBoats()[i].getPosition().size() == 0 && !skipCheck.contains(i)){
                 boats -= 1;
                 skipCheck.add(i);
 
@@ -106,4 +109,31 @@ public class ControlOfInput {
         }
         return hit;
     }
+
+    ArrayList<String> sentPosition = new ArrayList<>();
+    int sentArrayControl = 0;
+    int answerArrayControl = 0;
+
+
+    public void sentString(String sentString) {
+        sentPosition.add(Character.toString(sentString.charAt(7)).concat(Character.toString(sentString.charAt(8))));
+    }
+
+
+    public void checkAnswerFromOtherPlayer() {
+        try {
+            if ("h".equals(answer.get(answerArrayControl)) || "s".equals(answer.get(answerArrayControl))) {
+                //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
+                sentArrayControl++;
+                answerArrayControl++;
+            } else {
+                //metod till tobias kod, färg blir blå för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
+                sentArrayControl++;
+                answerArrayControl++;
+            }
+        } catch (IndexOutOfBoundsException e) {
+            //Hoppar över, detta kommer ske den första omgången
+        }
+    }
+
 }
