@@ -3,7 +3,7 @@ package com.grupp2.sankaskepp.CreateAndSetBoats;
 import java.util.ArrayList;
 
 public class ControlOfInput {
-    ArrayList<Integer> skipCheck = new ArrayList<Integer>(0);
+    ArrayList<Integer> skipCheck = new ArrayList<>(0);
     ArrayList<String> answer = new ArrayList<>();
     int boats = 10;
 
@@ -104,7 +104,7 @@ public class ControlOfInput {
 
     public void checkAnswerFromOtherPlayer() {
         try {
-            if (sentPosition.get(sentArrayControl).equals(answer.get(answerArrayControl))) {
+            if ("h".equals(answer.get(answerArrayControl)) || "s".equals(answer.get(answerArrayControl))) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 sentArrayControl++;
                 answerArrayControl++;
@@ -113,7 +113,7 @@ public class ControlOfInput {
                 sentArrayControl++;
                 answerArrayControl++;
             }
-        } catch (NullPointerException e) {
+        } catch (IndexOutOfBoundsException e) {
             //Hoppar över, detta kommer ske den första omgången
         }
     }

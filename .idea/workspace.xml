@@ -103,7 +103,13 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1667558316768</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="Lagt till metoder som sparar värden av utskickade textsträngar, kontrollerar svaret och kallar på metoder för färgbyte av celler.">
+      <created>1667640429530</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1667640429531</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -125,6 +131,7 @@
     <MESSAGE value="Tror jag löste merge problemet." />
     <MESSAGE value="En klass som kontrollerar det den andra spelaren skickar och returnerar ett svar på det" />
     <MESSAGE value="Förtydligande av vilka metoder som behövs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Förtydligande av vilka metoder som behövs" />
+    <MESSAGE value="Lagt till metoder som sparar värden av utskickade textsträngar, kontrollerar svaret och kallar på metoder för färgbyte av celler." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lagt till metoder som sparar värden av utskickade textsträngar, kontrollerar svaret och kallar på metoder för färgbyte av celler." />
   </component>
 </project>
