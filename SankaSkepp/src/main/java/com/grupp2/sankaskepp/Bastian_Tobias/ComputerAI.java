@@ -1,7 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias;
 
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
-import com.grupp2.sankaskepp.GameBoard;
+
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,6 +15,7 @@ public class ComputerAI {
    // private String shot;
 
     // Constructors
+    public ComputerAI(){}
     public ComputerAI(Boat boat) {
         this.boat = boat;
         position = new Position(boat);

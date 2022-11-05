@@ -1,5 +1,6 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.Bastian_Tobias;
 
+import com.grupp2.sankaskepp.Bastian_Tobias.TheCell;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
@@ -18,6 +19,20 @@ public class GameBoard extends Parent {
     List<String> allShipCoordinates = new ArrayList<>();
 
     // Constructor
+    public GameBoard() {
+        // create board
+        for (int y = 0; y < 10; y++) {
+            HBox hRow = new HBox();
+            for (int x = 0; x < 10; x++) {
+                TheCell cell = new TheCell(x, y, this);
+                hRow.getChildren().add(cell);
+            }
+            vRow.getChildren().add(hRow);
+        }
+        getChildren().add(vRow);
+
+    }
+
     public GameBoard(Boat boat) {
 
         this.boat = boat;
@@ -77,7 +92,11 @@ public class GameBoard extends Parent {
                 break;
         }
         // skicka vidare bool och koordinater för att målas upp på brädet.
-        boatIsHit(hit,x,y);
+        if(hit) {
+            boatIsHit(x, y);
+        }else{
+            boatIsMiss(x,y);
+        }
     }
 
     private void parceStringCoordinates(Boat boat) {
@@ -151,19 +170,21 @@ public class GameBoard extends Parent {
     }
 
     // om cell är träffad blir den målad röd, annars mörkblå.
-    private void boatIsHit(boolean hit, int x, int y) {
-        if (hit) {
-            this.cell = getTheCell(x, y);
-            cell.aBoat = true;
-            cell.setFill(Color.RED);
-            cell.setStroke(Color.BLACK);
-        } else {
-            // miss
-            this.cell = getTheCell(x, y);
-            cell.aBoat = true;
-            cell.setFill(Color.DARKBLUE);
-            cell.setStroke(Color.BLACK);
-        }
+    private void boatIsHit(int x, int y) {
+        // hit
+        this.cell = getTheCell(x, y);
+        cell.aBoat = true;
+        cell.setFill(Color.RED);
+        cell.setStroke(Color.BLACK);
+
+    }
+
+    private void boatIsMiss(int x, int y) {
+        // miss
+        this.cell = getTheCell(x, y);
+        cell.aBoat = true;
+        cell.setFill(Color.DARKBLUE);
+        cell.setStroke(Color.BLACK);
     }
 
     private TheCell getTheCell(int x, int y) {
