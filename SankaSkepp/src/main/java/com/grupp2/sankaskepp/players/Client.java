@@ -1,4 +1,5 @@
 package com.grupp2.sankaskepp.players;
+import com.grupp2.sankaskepp.Bastian_Tobias.HelloApplication;
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 
 import java.io.*;
@@ -29,6 +30,7 @@ public class Client {
     //Methods
     public void start() throws IOException {
         try {
+
             //clients socket connected to server
             Socket clientSocket = new Socket("localhost",1619);
 

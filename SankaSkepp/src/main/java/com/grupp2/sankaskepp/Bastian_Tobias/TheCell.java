@@ -2,6 +2,9 @@ package com.grupp2.sankaskepp.Bastian_Tobias;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+/*
+    Author: Tobias
+ */
 
 public class TheCell extends Rectangle {
 

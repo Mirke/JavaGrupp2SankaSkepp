@@ -6,6 +6,10 @@ import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import java.util.Iterator;
 import java.util.List;
 
+/*
+    Author: Tobias
+ */
+
 public class ComputerAI {
     // Attributes
     private String shot;
