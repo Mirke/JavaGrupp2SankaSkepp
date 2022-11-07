@@ -1,5 +1,7 @@
 package com.grupp2.sankaskepp.HistoryFeature;
 
+import com.grupp2.sankaskepp.protokoll.Letter;
+
 import java.lang.StringBuilder;
 /**
  * Author: Mikael
@@ -34,4 +36,5 @@ public class HistoryOverMoves {
         stringBuilder.replace(stringBuilder.length() - latestSavedText.length(), stringBuilder.length(), updateOfText);
         latestSavedText = updateOfText;
     }
+
 }
