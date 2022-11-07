@@ -85,23 +85,23 @@ public class HelloApplication extends Application {
         //history.appendText("Test");
 
         VBox you = new VBox();
-        you.getStyleClass().add("serverAndYou");
+        you.getStyleClass().add("enemyAndYou");
         you.setAlignment(Pos.BOTTOM_LEFT);
 
         //Pane filler = new Pane();
         //HBox.setHgrow(filler, Priority.ALWAYS);
 
-        VBox server = new VBox();
-        server.getStyleClass().add("serverAndYou");
-        server.setAlignment(Pos.BOTTOM_RIGHT);
+        VBox enemy = new VBox();
+        enemy.getStyleClass().add("enemyAndYou");
+        enemy.setAlignment(Pos.BOTTOM_RIGHT);
 
 
         Text youLabel = new Text("You");
         youLabel.setFill(Color.web( "#b938e2"));
         youLabel.setEffect(dropShadow);
-        Text serverLabel = new Text("Server");
-        serverLabel.setFill(Color.web("#b938e2"));
-        serverLabel.setEffect(dropShadow);
+        Text enemyLabel = new Text("Enemy");
+        enemyLabel.setFill(Color.web("#b938e2"));
+        enemyLabel.setEffect(dropShadow);
 
 
         attackerBoard = new GameBoard(true, false);
@@ -110,7 +110,7 @@ public class HelloApplication extends Application {
         defenderBoard.setEffect(dropShadow);
 
         you.getChildren().addAll(youLabel, attackerBoard);
-        server.getChildren().addAll(serverLabel, defenderBoard);
+        enemy.getChildren().addAll(enemyLabel, defenderBoard);
 
 
         Button startButton = new Button("Start");
@@ -133,7 +133,7 @@ public class HelloApplication extends Application {
         HBox bottomBox = new HBox(40,startButtonBox,stopButtonBox);
 
 
-        HBox boards = new HBox(50, you, server);
+        HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
         root.getChildren().addAll(title,history,boards,bottomBox);
         history.setAlignment(Pos.BASELINE_CENTER);
