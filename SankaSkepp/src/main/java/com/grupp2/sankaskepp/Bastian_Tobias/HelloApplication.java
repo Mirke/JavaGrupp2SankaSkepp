@@ -21,10 +21,6 @@ import javafx.scene.Parent;
 import java.util.Random;
 import java.io.IOException;
 
-/**
- * För att köra , höger-klicka på pom.xml filen och välja "add as Maven project"  så ska allt rött försvinna.
- */
-
 public class HelloApplication extends Application {
 
 
@@ -97,12 +93,6 @@ public class HelloApplication extends Application {
         serverLabel.setFill(Color.web("#b938e2"));
         serverLabel.setEffect(dropShadow);
 
-        /************************************************************************
-         * TODO: svar från motståndaren: har vi träffat eller missat?
-         * den informationen ska målas upp på motståndarens bräde (server)
-         * behöver veta var den inforamtionen kommer ifrån
-         * BYT NAMN: server ska bli enemy.
-         **********************************************************************/
         // Tobias { ***********
 
         // you = DU
@@ -125,8 +115,7 @@ public class HelloApplication extends Application {
         serverPlaceBoats.placeBoats(enemyBoat.getBoats());
         enemyBoard = new GameBoard();
       //  ComputerAI serverAI = new ComputerAI();
-        ControlOfInput serverControlOfInput = new ControlOfInput(enemyBoard,enemyBoard);
-
+        ControlOfInput serverControlOfInput = new ControlOfInput(youBoard,enemyBoard);
 
         // klass där AI spelar mot varann
         // TheBattle theBattle = new TheBattle(enemyBoard,serverBoard,enemyAI,serverAI);
@@ -165,17 +154,10 @@ public class HelloApplication extends Application {
 
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 
-
         //Vbox ships = new VBox(new Text("Boats"));
         //ships.setAlignment(Pos.CENTER_RIGHT);
         //root.setRight(ships);
 
-
         return root;
-        // hej
-
-        // KONTROLLPANEL?
-        //root.setRight(new TextArea("Kanske en kontrollpanel här som håller koll vilka kordinater " +
-        //     "                   som lades och om träff eller miss"));
     }
 }

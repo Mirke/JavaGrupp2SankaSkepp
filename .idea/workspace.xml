@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="i ControlOfInput så tar konstruktorn in två parametrar av GameBoard, youBoard och enemyBoard. detta så rätt cell på rätt bräde blir markerad.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ändrade felet i main, nu borde det vara ok. &#10;ControlOfInput tar nu in två parametrar när den instansieras i HelloApplication, Din bricka med våra båtar placerade och motståndaren bricka som är tom men kommer då att få färger beroende på koordinaterna som vårt AI kommer att skicka :)">
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +117,7 @@
       <workItem from="1667574565050" duration="1408000" />
       <workItem from="1667655121703" duration="348000" />
       <workItem from="1667762661316" duration="816000" />
-      <workItem from="1667808214670" duration="783000" />
+      <workItem from="1667808214670" duration="1466000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -152,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667763017740</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ändrade felet i main, nu borde det vara ok. &#10;ControlOfInput tar nu in två parametrar när den instansieras i HelloApplication, Din bricka med våra båtar placerade och motståndaren bricka som är tom men kommer då att få färger beroende på koordinaterna som vårt AI kommer att skicka :)">
+      <created>1667823492494</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667823492494</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +180,7 @@
     <MESSAGE value="Tror jag löste merge problemet." />
     <MESSAGE value="ändrade namn i main från enemy till you.&#10;vi kommer nog inte behöva &quot;theBattle&quot;,&quot;Position&quot; och kanske ComputerAI klassen i fortsättningen.&#10;ändrade så att ControlOfInput tar in GameBoard i en konstruktor.&#10;GameBoard omvandlar string tll int koordinater och byer färg på cell efter input från ControlOfInput.&#10;metoder för att se var vi placerar våra skott på motspelaren" />
     <MESSAGE value="i ControlOfInput så tar konstruktorn in två parametrar av GameBoard, youBoard och enemyBoard. detta så rätt cell på rätt bräde blir markerad." />
-    <option name="LAST_COMMIT_MESSAGE" value="i ControlOfInput så tar konstruktorn in två parametrar av GameBoard, youBoard och enemyBoard. detta så rätt cell på rätt bräde blir markerad." />
+    <MESSAGE value="ändrade felet i main, nu borde det vara ok. &#10;ControlOfInput tar nu in två parametrar när den instansieras i HelloApplication, Din bricka med våra båtar placerade och motståndaren bricka som är tom men kommer då att få färger beroende på koordinaterna som vårt AI kommer att skicka :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ändrade felet i main, nu borde det vara ok. &#10;ControlOfInput tar nu in två parametrar när den instansieras i HelloApplication, Din bricka med våra båtar placerade och motståndaren bricka som är tom men kommer då att få färger beroende på koordinaterna som vårt AI kommer att skicka :)" />
   </component>
 </project>
