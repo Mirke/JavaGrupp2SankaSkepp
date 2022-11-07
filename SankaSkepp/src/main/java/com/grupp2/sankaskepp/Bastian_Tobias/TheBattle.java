@@ -1,9 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias;
 
 import com.grupp2.sankaskepp.Bastian_Tobias.ComputerAI;
-/*
-    Author: Tobias
- */
+
 public class TheBattle {
     // attributes
     private GameBoard enemyBoard, serverBoard;
