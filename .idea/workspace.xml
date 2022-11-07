@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Gjorde layout/design.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" afterDir="false" />
-    </list>
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +13,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Anna_Branch" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +61,7 @@
       <updated>1667400002403</updated>
       <workItem from="1667400003795" duration="722000" />
       <workItem from="1667400734158" duration="326000" />
-      <workItem from="1667479818693" duration="3564000" />
+      <workItem from="1667479818693" duration="4120000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -79,7 +75,19 @@
       <option name="presentableId" value="LOCAL−00003" />
       <updated>1667400990925</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL−00004" summary="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;.">
+      <created>1667815478081</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1667815478081</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;.">
+      <created>1667815567221</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1667815567221</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,6 +106,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gjorde layout/design." />
-    <option name="LAST_COMMIT_MESSAGE" value="Gjorde layout/design." />
+    <MESSAGE value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
   </component>
 </project>
