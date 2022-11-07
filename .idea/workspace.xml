@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Starting to write history feature.">
-      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Tog bort delar och skapade en gitignore som inte tar med .idea filen.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/test/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/test/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +74,20 @@
       <recent name="com.grupp2.sankaskepp.HistoryFeature" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HistoryOverMovesTest">
+  <component name="RunManager" selected="Application.HelloApplication">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias.HelloApplication" />
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.Bastian_Tobias.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HistoryOverMovesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SankaSkepp" />
       <extension name="coverage">
@@ -111,6 +122,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.HistoryOverMovesTest" />
+        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="JUnit.HistoryOverMovesTest.removeSavedTextLine" />
       </list>
     </recent_temporary>
@@ -158,7 +170,13 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1667500836765</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="Tog bort delar och skapade en gitignore som inte tar med .idea filen.">
+      <created>1667813047032</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1667813047032</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +197,7 @@
     <MESSAGE value="Gjorde layout/design." />
     <MESSAGE value="Tror jag löste merge problemet." />
     <MESSAGE value="Starting to write history feature." />
-    <option name="LAST_COMMIT_MESSAGE" value="Starting to write history feature." />
+    <MESSAGE value="Tog bort delar och skapade en gitignore som inte tar med .idea filen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tog bort delar och skapade en gitignore som inte tar med .idea filen." />
   </component>
 </project>

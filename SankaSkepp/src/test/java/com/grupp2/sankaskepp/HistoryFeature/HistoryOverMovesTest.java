@@ -40,6 +40,26 @@ class HistoryOverMovesTest {
         Assertions.assertEquals("updated of text",historyOverMoves.latestSavedText);
         Assertions.assertEquals("updated of text",historyOverMoves.latestSavedText);
     }
+    @Test
+    void removeAllText(){
+        HistoryOverMoves historyOverMoves = new HistoryOverMoves();
+        historyOverMoves.addTextLine("Add line 1");
+        historyOverMoves.addTextLine("Add line 2");
+        historyOverMoves.addTextLine("Add line 3");
+        historyOverMoves.addTextLine("Add line 4");
+        historyOverMoves.removeAllTextLines();
+        assertTrue(historyOverMoves.isEmpty());
+    }
+    @Test
+    void removeLatestTextLineButNotAllTextLines(){
+        HistoryOverMoves historyOverMoves = new HistoryOverMoves();
+        historyOverMoves.addTextLine("Add line 1");
+        historyOverMoves.addTextLine("Add line 2");
+        historyOverMoves.addTextLine("Add line 3");
+        historyOverMoves.addTextLine("Add line 4");
+        historyOverMoves.removeAllTextLines();
+        assertTrue(!historyOverMoves.isEmpty());
+    }
 
 
 
