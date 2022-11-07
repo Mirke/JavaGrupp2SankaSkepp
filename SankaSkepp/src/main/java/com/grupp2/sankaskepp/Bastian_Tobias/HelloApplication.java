@@ -1,4 +1,11 @@
-package com.grupp2.sankaskepp;
+package com.grupp2.sankaskepp.Bastian_Tobias;
+
+import com.grupp2.sankaskepp.Bastian_Tobias.ComputerAI;
+
+import com.grupp2.sankaskepp.Bastian_Tobias.TheBattle;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,12 +36,8 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-    private boolean gameIsOn = false;
-    private GameBoard attackerBoard, defenderBoard;
 
-    private boolean attackerTurn = false;
-    private boolean defenderTurn = false;
-    private Random random = new Random();
+    private GameBoard youBoard, serverBoard;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -97,20 +100,51 @@ public class HelloApplication extends Application {
 
 
         Text youLabel = new Text("You");
-        youLabel.setFill(Color.web( "#b938e2"));
+        youLabel.setFill(Color.web("#b938e2"));
         youLabel.setEffect(dropShadow);
         Text enemyLabel = new Text("Enemy");
         enemyLabel.setFill(Color.web("#b938e2"));
         enemyLabel.setEffect(dropShadow);
 
+        /************************************************************************
+         * TODO: svar från motståndaren: har vi träffat eller missat?
+         * den informationen ska målas upp på motståndarens bräde (server)
+         * behöver veta var den inforamtionen kommer ifrån
+         * BYT NAMN: server ska bli enemy.
+         **********************************************************************/
+        // Tobias { ***********
 
-        attackerBoard = new GameBoard(true, false);
-        attackerBoard.setEffect(dropShadow);
-        defenderBoard = new GameBoard(false, true);
-        defenderBoard.setEffect(dropShadow);
+        // you
+        Boat youBoat = new Boat();
+        PlaceBoats youPlaceBoats = new PlaceBoats();
+        youBoat.createBoats();
+        youPlaceBoats.initializeGridArray();
+        youPlaceBoats.placeBoats(youBoat.getBoats());
+        youBoard = new GameBoard(youBoat);
+        ComputerAI youAI = new ComputerAI(youBoat);
+        ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
 
-        you.getChildren().addAll(youLabel, attackerBoard);
-        enemy.getChildren().addAll(enemyLabel, defenderBoard);
+        // -------------------------------------------
+
+        // Server
+        Boat serverBoat = new Boat();
+        PlaceBoats serverPlaceBoats = new PlaceBoats();
+        serverBoat.createBoats();
+        serverPlaceBoats.initializeGridArray();
+        serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        serverBoard = new GameBoard();
+        ComputerAI serverAI = new ComputerAI();
+        ControlOfInput serverControlOfInput = new ControlOfInput(serverBoard);
+
+
+        // klass där AI spelar mot varann
+        // TheBattle theBattle = new TheBattle(enemyBoard,serverBoard,enemyAI,serverAI);
+
+        // ********  } Tobias
+
+
+        you.getChildren().addAll(youLabel, youBoard);
+        enemy.getChildren().addAll(enemyLabel, serverBoard);
 
 
         Button startButton = new Button("Start");
@@ -130,12 +164,12 @@ public class HelloApplication extends Application {
         startButton.setAlignment(Pos.CENTER);
         stopButton.setAlignment(Pos.CENTER);
 
-        HBox bottomBox = new HBox(40,startButtonBox,stopButtonBox);
+        HBox bottomBox = new HBox(40, startButtonBox, stopButtonBox);
 
 
         HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(title,history,boards,bottomBox);
+        root.getChildren().addAll(title, history, boards, bottomBox);
         history.setAlignment(Pos.BASELINE_CENTER);
 
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
