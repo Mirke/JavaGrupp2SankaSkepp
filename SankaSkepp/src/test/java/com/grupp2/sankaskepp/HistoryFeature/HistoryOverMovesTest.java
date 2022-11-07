@@ -57,8 +57,9 @@ class HistoryOverMovesTest {
         historyOverMoves.addTextLine("Add line 2");
         historyOverMoves.addTextLine("Add line 3");
         historyOverMoves.addTextLine("Add line 4");
-        historyOverMoves.removeAllTextLines();
-        assertTrue(!historyOverMoves.isEmpty());
+        historyOverMoves.removeLatestTextLine();
+        assertEquals("Add line 3", historyOverMoves.latestSavedText);
+
     }
 
 

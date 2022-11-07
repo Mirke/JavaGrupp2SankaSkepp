@@ -19,7 +19,7 @@ public class HistoryOverMoves {
     }
 
     public void addTextLine(String text) {
-        stringBuilder.append(text);
+        stringBuilder.append(text + "\n" );
         latestSavedText = text;
     }
 
@@ -30,6 +30,15 @@ public class HistoryOverMoves {
     public void removeAllTextLines() {
         stringBuilder.setLength(0);
         latestSavedText = "";
+    }
+
+    public void removeLatestTextLine(){
+        stringBuilder.setLength(stringBuilder.length() - (latestSavedText.length() + 1));
+        StringBuilder temporaryStringBuilder = new StringBuilder(stringBuilder.toString());
+
+        temporaryStringBuilder.setLength(temporaryStringBuilder.length() - 1);
+        latestSavedText = stringBuilder.substring(temporaryStringBuilder.lastIndexOf("\n"),stringBuilder.length());
+        latestSavedText = latestSavedText.replaceAll("\n", "");
     }
 
     public void updateLatestTextLine(String updateOfText) {

@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Tog bort delar och skapade en gitignore som inte tar med .idea filen.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/test/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/test/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/test-classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/test-classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +78,7 @@
       <recent name="com.grupp2.sankaskepp.HistoryFeature" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HelloApplication">
+  <component name="RunManager" selected="JUnit.HistoryOverMovesTest">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias.HelloApplication" />
       <module name="SankaSkepp" />
@@ -145,6 +149,7 @@
       <workItem from="1667400734158" duration="326000" />
       <workItem from="1667736302127" duration="3048000" />
       <workItem from="1667807239310" duration="465000" />
+      <workItem from="1667818209150" duration="5085000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -176,7 +181,13 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1667813047032</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="Tog bort delar och skapade en gitignore som inte tar med .idea filen.">
+      <created>1667818877096</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1667818877096</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
