@@ -10,6 +10,10 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    Author: Tobias
+ */
+
 public class GameBoard extends Parent {
     private VBox vRow = new VBox();
     private TheCell cell;

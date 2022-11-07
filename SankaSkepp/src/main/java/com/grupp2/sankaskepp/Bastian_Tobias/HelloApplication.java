@@ -112,7 +112,7 @@ public class HelloApplication extends Application {
         youPlaceBoats.initializeGridArray();
         youPlaceBoats.placeBoats(youBoat.getBoats());
         youBoard = new GameBoard(youBoat);
-        ComputerAI youAI = new ComputerAI(youBoat);
+       // ComputerAI youAI = new ComputerAI(youBoat);
         ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
 
         // -------------------------------------------
@@ -124,7 +124,7 @@ public class HelloApplication extends Application {
         serverPlaceBoats.initializeGridArray();
         serverPlaceBoats.placeBoats(serverBoat.getBoats());
         serverBoard = new GameBoard();
-        ComputerAI serverAI = new ComputerAI();
+      //  ComputerAI serverAI = new ComputerAI();
         ControlOfInput serverControlOfInput = new ControlOfInput(serverBoard);
 
 

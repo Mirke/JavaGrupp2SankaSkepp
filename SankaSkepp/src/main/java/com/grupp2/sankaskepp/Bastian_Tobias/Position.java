@@ -7,6 +7,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+/*
+    Author: Tobias
+ */
+
 public class Position {
     // Attributes
     private String[][] string2DArray;
