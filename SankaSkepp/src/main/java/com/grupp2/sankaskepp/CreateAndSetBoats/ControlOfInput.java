@@ -9,10 +9,11 @@ public class ControlOfInput {
     ArrayList<String> answer = new ArrayList<>();
     int boats = 10;
 
-    private GameBoard gameBoard;
+    private GameBoard youBoard, enemyBoard;
 
-    public ControlOfInput(GameBoard gameBoard) {
-        this.gameBoard = gameBoard;
+    public ControlOfInput(GameBoard youBoard, GameBoard enemyBoard) {
+        this.youBoard = youBoard;
+        this.enemyBoard = enemyBoard;
     }
 
     public ControlOfInput() {
