@@ -1,8 +1,5 @@
 package com.grupp2.sankaskepp.Bastian_Tobias;
 
-import com.grupp2.sankaskepp.Bastian_Tobias.ComputerAI;
-
-import com.grupp2.sankaskepp.Bastian_Tobias.TheBattle;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
@@ -18,11 +15,10 @@ import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 
-import java.util.Random;
+
 import java.io.IOException;
 
 public class HelloApplication extends Application {
-
 
     private GameBoard youBoard, enemyBoard;
 

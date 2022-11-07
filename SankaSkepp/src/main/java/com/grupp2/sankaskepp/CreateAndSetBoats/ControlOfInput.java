@@ -8,7 +8,6 @@ public class ControlOfInput {
     ArrayList<Integer> skipCheck = new ArrayList<>(0);
     ArrayList<String> answer = new ArrayList<>();
     int boats = 10;
-
     private GameBoard youBoard, enemyBoard;
 
     public ControlOfInput(GameBoard youBoard,GameBoard enemyBoard) {
