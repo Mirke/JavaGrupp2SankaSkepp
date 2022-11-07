@@ -5,15 +5,24 @@ import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
 
 import java.io.IOException;
@@ -71,23 +80,23 @@ public class HelloApplication extends Application {
         //history.appendText("Test");
 
         VBox you = new VBox();
-        you.getStyleClass().add("serverAndYou");
+        you.getStyleClass().add("enemyAndYou");
         you.setAlignment(Pos.BOTTOM_LEFT);
 
         //Pane filler = new Pane();
         //HBox.setHgrow(filler, Priority.ALWAYS);
 
-        VBox server = new VBox();
-        server.getStyleClass().add("serverAndYou");
-        server.setAlignment(Pos.BOTTOM_RIGHT);
+        VBox enemy = new VBox();
+        enemy.getStyleClass().add("enemyAndYou");
+        enemy.setAlignment(Pos.BOTTOM_RIGHT);
 
 
         Text youLabel = new Text("You");
         youLabel.setFill(Color.web("#b938e2"));
         youLabel.setEffect(dropShadow);
-        Text serverLabel = new Text("Server");
-        serverLabel.setFill(Color.web("#b938e2"));
-        serverLabel.setEffect(dropShadow);
+        Text enemyLabel = new Text("Enemy");
+        enemyLabel.setFill(Color.web("#b938e2"));
+        enemyLabel.setEffect(dropShadow);
 
         // Tobias { ***********
 
@@ -98,6 +107,7 @@ public class HelloApplication extends Application {
         youPlaceBoats.initializeGridArray();
         youPlaceBoats.placeBoats(youBoat.getBoats());
         youBoard = new GameBoard(youBoat);
+
        // ComputerAI youAI = new ComputerAI(youBoat);
        // ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
 
@@ -143,7 +153,7 @@ public class HelloApplication extends Application {
         HBox bottomBox = new HBox(40, startButtonBox, stopButtonBox);
 
 
-        HBox boards = new HBox(50, you, server);
+        HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
         root.getChildren().addAll(title, history, boards, bottomBox);
         history.setAlignment(Pos.BASELINE_CENTER);

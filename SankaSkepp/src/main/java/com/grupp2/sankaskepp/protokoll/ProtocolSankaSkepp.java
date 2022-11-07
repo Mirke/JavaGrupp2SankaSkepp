@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class ProtocolSankaSkepp implements Protocol {
 
+
     public String beginGame(int x, int y) {
         String clientFirstShot = "i";
         return String.format("%s shot %s",clientFirstShot , new DummyCoordinates().matrix[x][y]);

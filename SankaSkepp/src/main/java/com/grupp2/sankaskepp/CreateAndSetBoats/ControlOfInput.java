@@ -8,9 +8,10 @@ public class ControlOfInput {
     ArrayList<Integer> skipCheck = new ArrayList<>(0);
     ArrayList<String> answer = new ArrayList<>();
     int boats = 10;
+
     private GameBoard youBoard, enemyBoard;
 
-    public ControlOfInput(GameBoard youBoard,GameBoard enemyBoard) {
+    public ControlOfInput(GameBoard youBoard, GameBoard enemyBoard) {
         this.youBoard = youBoard;
         this.enemyBoard = enemyBoard;
     }
@@ -51,7 +52,7 @@ public class ControlOfInput {
 
                     // Tobias { *********
                     //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
-                    youBoard.parceStringShotCoordinates(true,playerChoice);
+                    gameBoard.parceStringShotCoordinates(true,playerChoice);
                     // *********** } Tobias
 
                     myBoat.getBoats()[i].getPosition().remove(j);
@@ -70,7 +71,7 @@ public class ControlOfInput {
                     //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
                     // Tobias { *********
                     //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
-                    youBoard.parceStringShotCoordinates(true,playerChoice);
+                    gameBoard.parceStringShotCoordinates(true,playerChoice);
                     // *********** } Tobias
 
                     //för att avsluta loopen när vi redan har ett svar
@@ -104,7 +105,7 @@ public class ControlOfInput {
             //Här ska rutan bli blå på position "playerChoice" i userInterface
             // Tobias { *********
             //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
-            youBoard.parceStringShotCoordinates(false,playerChoice);
+            gameBoard.parceStringShotCoordinates(false,playerChoice);
             // *********** } Tobias
         }
         return hit;
@@ -125,12 +126,12 @@ public class ControlOfInput {
             if ("h".equals(answer.get(answerArrayControl)) || "s".equals(answer.get(answerArrayControl))) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 // vet inte om gameBoard här måste vara under sentArrayControl???
-                enemyBoard.parceStringShotCoordinates(true,sentPosition.get(sentArrayControl));
+                gameBoard.parceStringShotCoordinates(true,sentPosition.get(sentArrayControl));
                 sentArrayControl++;
                 answerArrayControl++;
             } else {
                 //metod till tobias kod, färg blir blå för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
-                enemyBoard.parceStringShotCoordinates(false,sentPosition.get(sentArrayControl));
+                gameBoard.parceStringShotCoordinates(false,sentPosition.get(sentArrayControl));
                 sentArrayControl++;
                 answerArrayControl++;
             }
