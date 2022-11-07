@@ -1,6 +1,5 @@
 package com.grupp2.sankaskepp.players;
 
-import com.grupp2.sankaskepp.Bastian_Tobias.HelloApplication;
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 
 import java.io.*;
