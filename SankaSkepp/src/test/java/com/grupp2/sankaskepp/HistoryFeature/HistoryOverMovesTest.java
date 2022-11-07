@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * Given end of game, when I look at text ,then the game shows paragraph of game moves.
  */
 class HistoryOverMovesTest {
-
     @Test
     void createAndSaveTextLine(){
         HistoryOverMoves historyOverMoves = new HistoryOverMoves();
@@ -61,8 +60,4 @@ class HistoryOverMovesTest {
         assertEquals("Add line 3", historyOverMoves.latestSavedText);
 
     }
-
-
-
-
 }

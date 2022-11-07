@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * Author: Wei
  */
-public class Server {
+public class Server implements Runnable {
     //properties
 
     private PrintWriter writer;
@@ -93,7 +93,14 @@ public class Server {
     }
 
 
-
+    @Override
+    public void run() {
+        try {
+            start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 

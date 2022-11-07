@@ -7,6 +7,9 @@ import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
+import com.grupp2.sankaskepp.players.Client;
+import com.grupp2.sankaskepp.players.Server;
+import com.grupp2.sankaskepp.players.ServerStart;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +32,16 @@ public class HelloApplication extends Application {
 
 
     private GameBoard youBoard, serverBoard;
+    // Mikael START
+    private boolean isGameRunning = false;
+    // Creating server and client
+    Server createServer = new Server();
+    Client createClient = new Client();
+
+    // Giving them their own threads
+    Thread t1 = new Thread(createServer);
+    Thread t2 = new Thread(createClient);
+    // Mikael END
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -143,9 +156,21 @@ public class HelloApplication extends Application {
         Button stopButton = new Button("Stop");
         stopButton.setEffect(dropShadow);
 
-        //startButton.setOnAction(e ->);
+        // Mikael - Start Knappen
+        startButton.setOnAction(e -> {
+            if(!isGameRunning){
+                createClient.start();
+                createServer.start();
+                isGameRunning = !isGameRunning;
+            }
+        });
 
-        //stopButton.setOnAction(e ->);
+        // Mikael - Stopp Knapp
+        stopButton.setOnAction(e -> {
+            if(isGameRunning){
+
+            }
+        });
 
         VBox startButtonBox = new VBox(startButton);
         startButtonBox.getStyleClass().add("startButtonBox");
