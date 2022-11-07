@@ -28,7 +28,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
 
 
-    private GameBoard youBoard, serverBoard;
+    private GameBoard youBoard, enemyBoard;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -105,7 +105,7 @@ public class HelloApplication extends Application {
          **********************************************************************/
         // Tobias { ***********
 
-        // you
+        // you = DU
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
@@ -113,19 +113,19 @@ public class HelloApplication extends Application {
         youPlaceBoats.placeBoats(youBoat.getBoats());
         youBoard = new GameBoard(youBoat);
        // ComputerAI youAI = new ComputerAI(youBoat);
-        ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
+       // ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
 
         // -------------------------------------------
 
-        // Server
-        Boat serverBoat = new Boat();
+        // Server = ENEMY
+        Boat enemyBoat = new Boat();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
-        serverBoat.createBoats();
+        enemyBoat.createBoats();
         serverPlaceBoats.initializeGridArray();
-        serverPlaceBoats.placeBoats(serverBoat.getBoats());
-        serverBoard = new GameBoard();
+        serverPlaceBoats.placeBoats(enemyBoat.getBoats());
+        enemyBoard = new GameBoard();
       //  ComputerAI serverAI = new ComputerAI();
-        ControlOfInput serverControlOfInput = new ControlOfInput(serverBoard);
+        ControlOfInput serverControlOfInput = new ControlOfInput(enemyBoard,enemyBoard);
 
 
         // klass där AI spelar mot varann
@@ -135,7 +135,7 @@ public class HelloApplication extends Application {
 
 
         you.getChildren().addAll(youLabel, youBoard);
-        server.getChildren().addAll(serverLabel, serverBoard);
+        server.getChildren().addAll(serverLabel, enemyBoard);
 
 
         Button startButton = new Button("Start");

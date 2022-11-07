@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ändrade namn i main från enemy till you.&#10;vi kommer nog inte behöva &quot;theBattle&quot;,&quot;Position&quot; och kanske ComputerAI klassen i fortsättningen.&#10;ändrade så att ControlOfInput tar in GameBoard i en konstruktor.&#10;GameBoard omvandlar string tll int koordinater och byer färg på cell efter input från ControlOfInput.&#10;metoder för att se var vi placerar våra skott på motspelaren">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="i ControlOfInput så tar konstruktorn in två parametrar av GameBoard, youBoard och enemyBoard. detta så rätt cell på rätt bräde blir markerad.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/ComputerAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/ComputerAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/TheBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/TheBattle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/protokoll/ProtocolSankaSkepp.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/protokoll/ProtocolSankaSkepp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/ComputerAI.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/ComputerAI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheBattle.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheBattle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/protokoll/ProtocolSankaSkepp.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/protokoll/ProtocolSankaSkepp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +117,8 @@
       <workItem from="1667400734158" duration="326000" />
       <workItem from="1667574565050" duration="1408000" />
       <workItem from="1667655121703" duration="348000" />
+      <workItem from="1667762661316" duration="816000" />
+      <workItem from="1667808214670" duration="783000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -161,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667658358763</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="i ControlOfInput så tar konstruktorn in två parametrar av GameBoard, youBoard och enemyBoard. detta så rätt cell på rätt bräde blir markerad.">
+      <created>1667763017740</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667763017740</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +173,7 @@
     <MESSAGE value="Gjorde layout/design." />
     <MESSAGE value="Tror jag löste merge problemet." />
     <MESSAGE value="ändrade namn i main från enemy till you.&#10;vi kommer nog inte behöva &quot;theBattle&quot;,&quot;Position&quot; och kanske ComputerAI klassen i fortsättningen.&#10;ändrade så att ControlOfInput tar in GameBoard i en konstruktor.&#10;GameBoard omvandlar string tll int koordinater och byer färg på cell efter input från ControlOfInput.&#10;metoder för att se var vi placerar våra skott på motspelaren" />
-    <option name="LAST_COMMIT_MESSAGE" value="ändrade namn i main från enemy till you.&#10;vi kommer nog inte behöva &quot;theBattle&quot;,&quot;Position&quot; och kanske ComputerAI klassen i fortsättningen.&#10;ändrade så att ControlOfInput tar in GameBoard i en konstruktor.&#10;GameBoard omvandlar string tll int koordinater och byer färg på cell efter input från ControlOfInput.&#10;metoder för att se var vi placerar våra skott på motspelaren" />
+    <MESSAGE value="i ControlOfInput så tar konstruktorn in två parametrar av GameBoard, youBoard och enemyBoard. detta så rätt cell på rätt bräde blir markerad." />
+    <option name="LAST_COMMIT_MESSAGE" value="i ControlOfInput så tar konstruktorn in två parametrar av GameBoard, youBoard och enemyBoard. detta så rätt cell på rätt bräde blir markerad." />
   </component>
 </project>
