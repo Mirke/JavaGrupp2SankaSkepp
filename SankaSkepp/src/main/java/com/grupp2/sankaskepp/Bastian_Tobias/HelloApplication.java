@@ -159,8 +159,13 @@ public class HelloApplication extends Application {
         // Mikael - Start Knappen
         startButton.setOnAction(e -> {
             if(!isGameRunning){
-                createClient.start();
-                createServer.start();
+                try {
+                    createClient.start();
+                    createServer.start();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
                 isGameRunning = !isGameRunning;
             }
         });

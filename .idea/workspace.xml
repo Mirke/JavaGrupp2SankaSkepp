@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Uppdaterade HistoryOverMoves med ny metod, samt tog bort lite från MikaelMain.">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="working on threads etc.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/test/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/test/java/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/test-classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/test-classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +73,7 @@
       <recent name="com.grupp2.sankaskepp.HistoryFeature" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias.HelloApplication" />
       <module name="SankaSkepp" />
@@ -151,7 +144,8 @@
       <workItem from="1667400734158" duration="326000" />
       <workItem from="1667736302127" duration="3048000" />
       <workItem from="1667807239310" duration="465000" />
-      <workItem from="1667818209150" duration="12560000" />
+      <workItem from="1667818209150" duration="12881000" />
+      <workItem from="1667837731198" duration="540000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -195,7 +189,13 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1667828550441</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="working on threads etc.">
+      <created>1667836433448</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1667836433448</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +218,7 @@
     <MESSAGE value="Starting to write history feature." />
     <MESSAGE value="Tog bort delar och skapade en gitignore som inte tar med .idea filen." />
     <MESSAGE value="Uppdaterade HistoryOverMoves med ny metod, samt tog bort lite från MikaelMain." />
-    <option name="LAST_COMMIT_MESSAGE" value="Uppdaterade HistoryOverMoves med ny metod, samt tog bort lite från MikaelMain." />
+    <MESSAGE value="working on threads etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="working on threads etc." />
   </component>
 </project>
