@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Author: Wei
  */
-public class Client {
+public class Client {public static void main(String[] args) throws InterruptedException {
     //properties
 
     private PrintWriter writer;
@@ -20,30 +20,28 @@ public class Client {
     private boolean firstGuess;
 
 
-
-
     // Constructor
     public Client() {
     }
 
     //Methods
-    public void start() throws IOException {
+    public void start () throws IOException {
         try {
             //clients socket connected to server
-            Socket clientSocket = new Socket("localhost",1619);
+            Socket clientSocket = new Socket("localhost", 1619);
 
             //Create a input stream
             InputStream inputStream = clientSocket.getInputStream();
 
 
             //Create a reader
-            reader = new BufferedReader( new InputStreamReader(inputStream));
+            reader = new BufferedReader(new InputStreamReader(inputStream));
 
             //Create a output stream
             OutputStream outputStream = clientSocket.getOutputStream();
 
             //Create a printwriter
-            writer = new PrintWriter(outputStream,true);
+            writer = new PrintWriter(outputStream, true);
 
 
         } catch (IOException ioException) {
@@ -59,14 +57,13 @@ public class Client {
 
         Random rand = new Random();
         //String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10)); // Commenting out Mikael
-        writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10),rand.nextInt(10)));
-
+        writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
 
 
         boolean sendMessage = true;
-        while(sendMessage) {
+        while (sendMessage) {
             if (reader.ready()) {
-                String messageFromServer= reader.readLine();
+                String messageFromServer = reader.readLine();
                 //System.out.println("Player 1 says " + messageFromServer); //Mikael commenting out
                 System.out.println("Client receiving: " + messageFromServer);
 
@@ -74,20 +71,27 @@ public class Client {
 
                 //coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));// going to edit Mikael
                 //String outputText = "m shot " + coordinate; // going to edit Mikael
-                String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10),rand.nextInt(10)); //Mikaels kod
+                String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
                 //System.out.println(outputText); // commenting and changing code Mikael
                 System.out.println("Client sending: " + outputText);
                 System.out.println();
 
 
-
-
                 //TODO: add delay function
+                //KL random time delay 2-5 s, don't forget "throws InterruptedException" see above
+
+                int t = (int) (Math.random() * 5 + 1);
+                if (t == 1) {
+                    t++;
+                }
+                Thread.sleep(t*1000);
+
                 //System.out.println("Client sending: ");
+
+
                 writer.println(outputText);
                 //sendMessage = false;
             }
-
 
 
         }
@@ -95,6 +99,6 @@ public class Client {
     }
 
 
-
+}
 
 }
