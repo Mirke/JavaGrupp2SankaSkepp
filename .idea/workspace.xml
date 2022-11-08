@@ -4,44 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Ändra så det inte blir rött.">
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/battleshipbackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/AnnaGUI/HelloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/ComputerAI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/Position.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TestStart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheBattle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/TheCell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/Boat.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/PlaceBoats.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMoves.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/HistoryFeature/MikaelMain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Remaining/EnemyGameBoard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Remaining/MainRemain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Remaining/XYposition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/ClientStart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/ServerStart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/protokoll/Coordinate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/protokoll/DummyCoordinates.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/protokoll/Letter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/protokoll/Protocol.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/protokoll/ProtocolSankaSkepp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/module-info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/test-classes/META-INF/jpms.args" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/test-classes/com/grupp2/sankaskepp/HistoryFeature/HistoryOverMovesTest.class" beforeDir="false" />
-    </list>
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Fixar tillbaka för att normala threads inte fungera att blanda med javafx, jobbit så måste kolla upp hur man fixar det." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,7 +201,13 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1667838284109</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL−00011" summary="Fixar tillbaka för att normala threads inte fungera att blanda med javafx, jobbit så måste kolla upp hur man fixar det.">
+      <created>1667896732608</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1667896732608</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +232,7 @@
     <MESSAGE value="Uppdaterade HistoryOverMoves med ny metod, samt tog bort lite från MikaelMain." />
     <MESSAGE value="working on threads etc." />
     <MESSAGE value="Ändra så det inte blir rött." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ändra så det inte blir rött." />
+    <MESSAGE value="Fixar tillbaka för att normala threads inte fungera att blanda med javafx, jobbit så måste kolla upp hur man fixar det." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixar tillbaka för att normala threads inte fungera att blanda med javafx, jobbit så måste kolla upp hur man fixar det." />
   </component>
 </project>
