@@ -37,7 +37,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
 
 
-    private GameBoard youBoard, serverBoard;
+    private GameBoard youBoard, enemyBoard;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -121,8 +121,8 @@ public class HelloApplication extends Application {
         youPlaceBoats.initializeGridArray();
         youPlaceBoats.placeBoats(youBoat.getBoats());
         youBoard = new GameBoard(youBoat);
-        ComputerAI youAI = new ComputerAI(youBoat);
-        ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
+        //ComputerAI youAI = new ComputerAI(youBoat);
+        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
 
         // -------------------------------------------
 
@@ -132,9 +132,11 @@ public class HelloApplication extends Application {
         serverBoat.createBoats();
         serverPlaceBoats.initializeGridArray();
         serverPlaceBoats.placeBoats(serverBoat.getBoats());
-        serverBoard = new GameBoard();
-        ComputerAI serverAI = new ComputerAI();
-        ControlOfInput serverControlOfInput = new ControlOfInput(serverBoard);
+        enemyBoard = new GameBoard();
+       // ComputerAI serverAI = new ComputerAI();
+
+        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
+        ControlOfInput serverControlOfInput = new ControlOfInput(youBoard, enemyBoard);
 
 
         // klass där AI spelar mot varann
@@ -144,7 +146,7 @@ public class HelloApplication extends Application {
 
 
         you.getChildren().addAll(youLabel, youBoard);
-        enemy.getChildren().addAll(enemyLabel, serverBoard);
+        enemy.getChildren().addAll(enemyLabel, enemyBoard);
 
 
         Button startButton = new Button("Start");
