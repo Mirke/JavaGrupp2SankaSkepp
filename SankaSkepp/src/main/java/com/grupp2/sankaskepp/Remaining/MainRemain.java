@@ -36,7 +36,7 @@ public class MainRemain {
 
         }
 
-        //Logik för nästa skott, beroende på var föregående skott träffade
+        //Logik för nästa skott, beroende på var föregående skott träffade 123
 
         public String enemyShot;    //textsträngen från motspelaren
 
