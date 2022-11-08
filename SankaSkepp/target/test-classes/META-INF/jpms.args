@@ -1,4 +1,0 @@
---patch-module
-com.grupp2.sankaskepp=_
---add-reads
-com.grupp2.sankaskepp=ALL-UNNAMED
