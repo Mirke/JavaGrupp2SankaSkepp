@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Author: Wei
  */
-public class Client implements Runnable {
+public class Client {
     //properties
 
     private PrintWriter writer;
@@ -92,15 +92,5 @@ public class Client implements Runnable {
 
         }
 
-    }
-
-
-    @Override
-    public void run() {
-        try {
-            start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

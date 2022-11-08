@@ -32,16 +32,7 @@ public class HelloApplication extends Application {
 
 
     private GameBoard youBoard, serverBoard;
-    // Mikael START
-    private boolean isGameRunning = false;
-    // Creating server and client
-    Server createServer = new Server();
-    Client createClient = new Client();
 
-    // Giving them their own threads
-    Thread t1 = new Thread(createServer);
-    Thread t2 = new Thread(createClient);
-    // Mikael END
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -156,26 +147,10 @@ public class HelloApplication extends Application {
         Button stopButton = new Button("Stop");
         stopButton.setEffect(dropShadow);
 
-        // Mikael - Start Knappen
-        startButton.setOnAction(e -> {
-            if(!isGameRunning){
-                try {
-                    createClient.start();
-                    createServer.start();
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
 
-                isGameRunning = !isGameRunning;
-            }
-        });
+        //startButton.setOnAction(e -> {});
 
-        // Mikael - Stopp Knapp
-        stopButton.setOnAction(e -> {
-            if(isGameRunning){
-
-            }
-        });
+        //stopButton.setOnAction(e -> {});
 
         VBox startButtonBox = new VBox(startButton);
         startButtonBox.getStyleClass().add("startButtonBox");

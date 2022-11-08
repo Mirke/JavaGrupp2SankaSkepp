@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="working on threads etc.">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Ändra så det inte blir rött.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,8 +126,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HistoryOverMovesTest" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.HistoryOverMovesTest" />
         <item itemvalue="JUnit.HistoryOverMovesTest.removeSavedTextLine" />
       </list>
     </recent_temporary>
@@ -145,7 +151,10 @@
       <workItem from="1667736302127" duration="3048000" />
       <workItem from="1667807239310" duration="465000" />
       <workItem from="1667818209150" duration="12881000" />
-      <workItem from="1667837731198" duration="540000" />
+      <workItem from="1667837731198" duration="585000" />
+      <workItem from="1667846891401" duration="2158000" />
+      <workItem from="1667894361219" duration="44000" />
+      <workItem from="1667894916386" duration="341000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -195,7 +204,13 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1667836433448</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL−00010" summary="Ändra så det inte blir rött.">
+      <created>1667838284109</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1667838284109</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +234,7 @@
     <MESSAGE value="Tog bort delar och skapade en gitignore som inte tar med .idea filen." />
     <MESSAGE value="Uppdaterade HistoryOverMoves med ny metod, samt tog bort lite från MikaelMain." />
     <MESSAGE value="working on threads etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="working on threads etc." />
+    <MESSAGE value="Ändra så det inte blir rött." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ändra så det inte blir rött." />
   </component>
 </project>

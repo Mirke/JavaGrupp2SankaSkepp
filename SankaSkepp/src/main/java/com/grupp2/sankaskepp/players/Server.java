@@ -9,7 +9,7 @@ import java.util.Random;
 /**
  * Author: Wei
  */
-public class Server implements Runnable {
+public class Server {
     //properties
 
     private PrintWriter writer;
@@ -22,7 +22,7 @@ public class Server implements Runnable {
     }
 
     //Methods
-    public void start() throws IOException {
+    public void start() {
         try {
             ServerSocket serverSocket = new ServerSocket(1619);
             System.out.println("Server is ready, waiting for client.");
@@ -53,53 +53,47 @@ public class Server implements Runnable {
         Random rand = new Random();
 
         while(sendMessage) {
-            if (reader.ready()) {
-                String messageFromClient = reader.readLine();
-                //System.out.println("Player 2 says " + messageFromClient);
-                System.out.println("Server receiving: " + messageFromClient);
+            try {
+                if (reader.ready()) {
+                    String messageFromClient = reader.readLine();
+                    //System.out.println("Player 2 says " + messageFromClient);
+                    System.out.println("Server receiving: " + messageFromClient);
 
 
 
-                //TODO: hit or miss depending on shot from client, need method to check result
-                /*
-                 * Mikael kod: START
-                 */
-                ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                /*
-                 * Mikael kod: END
-                 */
-                String coordinate = String.valueOf(rand.nextInt(10) + "." +rand.nextInt(10));
-                //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
-                String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10),rand.nextInt(10)); //Mikaels kod
-                System.out.println("Server sending: "+outputText);
-                System.out.println();
-                try {
-                    Thread.sleep(2000);
-                } catch(InterruptedException e) {
-                    System.out.println("Error trying to pause for two seconds with message " + e);
+                    //TODO: hit or miss depending on shot from client, need method to check result
+                    /*
+                     * Mikael kod: START
+                     */
+                    ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
+                    /*
+                     * Mikael kod: END
+                     */
+                    String coordinate = String.valueOf(rand.nextInt(10) + "." +rand.nextInt(10));
+                    //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
+                    String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10),rand.nextInt(10)); //Mikaels kod
+                    System.out.println("Server sending: "+outputText);
+                    System.out.println();
+                    try {
+                        Thread.sleep(2000);
+                    } catch(InterruptedException e) {
+                        System.out.println("Error trying to pause for two seconds with message " + e);
+                    }
+
+                    //TODO: add delay function
+                    //System.out.print("Server sending: ");
+                    writer.println(outputText);
+
+
+                    //sendMessage = false;
+
+
                 }
-
-                //TODO: add delay function
-                //System.out.print("Server sending: ");
-                writer.println(outputText);
-
-
-                //sendMessage = false;
-
-
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }
 
-    }
-
-
-    @Override
-    public void run() {
-        try {
-            start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
 
