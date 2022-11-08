@@ -6,10 +6,11 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
+
 /**
  * Author: Wei
  */
-public class Server {public static void main(String[] args) throws InterruptedException {
+public class Server {
     //properties
 
     private PrintWriter writer;
@@ -22,7 +23,7 @@ public class Server {public static void main(String[] args) throws InterruptedEx
     }
 
     //Methods
-    public void start () throws IOException {
+    public void start() throws IOException, InterruptedException {
         try {
             ServerSocket serverSocket = new ServerSocket(1619);
             System.out.println("Server is ready, waiting for client.");
@@ -103,7 +104,7 @@ public class Server {public static void main(String[] args) throws InterruptedEx
 
 
 }
-}
+
 
 
 

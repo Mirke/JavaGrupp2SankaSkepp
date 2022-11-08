@@ -5,7 +5,7 @@ import java.io.IOException;
  * Author: Wei
  */
 public class ServerStart {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         Server server = new Server();
         server.start();
     }

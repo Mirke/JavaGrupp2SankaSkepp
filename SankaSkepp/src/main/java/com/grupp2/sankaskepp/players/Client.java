@@ -1,4 +1,5 @@
 package com.grupp2.sankaskepp.players;
+
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 
 import java.io.*;
@@ -10,7 +11,7 @@ import java.util.Random;
 /**
  * Author: Wei
  */
-public class Client {public static void main(String[] args) throws InterruptedException {
+public class Client {
     //properties
 
     private PrintWriter writer;
@@ -25,7 +26,7 @@ public class Client {public static void main(String[] args) throws InterruptedEx
     }
 
     //Methods
-    public void start () throws IOException {
+    public void start() throws IOException, InterruptedException {
         try {
             //clients socket connected to server
             Socket clientSocket = new Socket("localhost", 1619);
@@ -84,7 +85,7 @@ public class Client {public static void main(String[] args) throws InterruptedEx
                 if (t == 1) {
                     t++;
                 }
-                Thread.sleep(t*1000);
+                Thread.sleep(t * 1000);
 
                 //System.out.println("Client sending: ");
 
@@ -101,4 +102,3 @@ public class Client {public static void main(String[] args) throws InterruptedEx
 
 }
 
-}

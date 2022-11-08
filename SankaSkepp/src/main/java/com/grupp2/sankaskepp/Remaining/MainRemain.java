@@ -28,8 +28,7 @@ public class MainRemain {
                 remainingEnemyPositions[i][j] = new XYposition
                         (enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j], false, false);
 
-                yourGameBoard[i][j] = new XYposition
-                        (yourGameBoard.getxValue()[i], yourGameBoard.getyValue()[j], false, false);
+                yourGameBoard.setYourPositions(remainingEnemyPositions);
 
                 remainingXYspots.add(remainingEnemyPositions[i][j].getXyValue());
             }
@@ -38,9 +37,9 @@ public class MainRemain {
 
         //Logik för nästa skott, beroende på var föregående skott träffade 123
 
-        public String enemyShot;    //textsträngen från motspelaren
+        String enemyShot = "";    //textsträngen från motspelaren, kommer bli indexOutOfBounds eftersom den är tom
 
-        Boat EnemyBoats[] = new Boat[];
+        Boat EnemyBoats = new Boat();
 
         //while EnemyBoats[] == !0; - formulera logiken mer korrekt
 
@@ -56,16 +55,12 @@ public class MainRemain {
                 Collections.shuffle(remainingXYspots);  // return Random xyValue from remainingXYspots
                 enemyGameBoard.hitList.add(enemyGameBoard.remainingXYspots.get(0));  // add new XyValue to hitList
                 enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+            } else if (enemyGameBoard.hitList.size() > 1) { //använd logik för nästa skott,
+                enemyGameBoard.hitList.remove(enemyGameBoard.hitList.size() - 1); //ta bort värdet för sista index
             }
 
-            else if (enemyGameBoard.hitList.size() > 1) { //använd logik för nästa skott,
-                enemyGameBoard.hitList.remove(enemyGameBoard.hitList.size()-1); //ta bort värdet för sista index
-            }
 
-
-        }
-
-        else if (Character.toString(enemyShot.charAt(0)).equals("h")) {
+        } else if (Character.toString(enemyShot.charAt(0)).equals("h")) {
 
 
             // kolla om hitList>1 isåfall ta nästa möjliga koordinat i linje med två tidigare
