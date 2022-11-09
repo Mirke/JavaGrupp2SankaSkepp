@@ -31,8 +31,6 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        //Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Scene scene = new Scene(createContent());
         scene.getStylesheets().add("BattleshipStyle.css");
         primaryStage.setTitle("Amazing battleship game");
@@ -145,23 +143,19 @@ public class HelloApplication extends Application {
         stopButton.setEffect(dropShadow);
 
         startButton.setOnAction(e -> {
-            // HEYOOO
-
+            // Mikael här hjälp sökes - STAR
 
             Client client = new Client();
             Server server = new Server();
 
-            Thread thread_1 = new Thread(() -> {
-
-            });
-            thread_1.start();
-            Thread thread_2 = new Thread(client);
-            thread_2.start();
+            Thread thread_server = new Thread(server);
+            thread_server.start();
+            Thread thread_client = new Thread(client);
+            thread_client.start();
 
             historyText.setText(server.rightNow);
 
-
-            //
+            // Mikael här hjälp sökes - END
         });
 
         //stopButton.setOnAction(e ->);
