@@ -1,5 +1,10 @@
 package com.grupp2.sankaskepp.players;
 
+import com.grupp2.sankaskepp.Bastian_Tobias.GameBoard;
+import com.grupp2.sankaskepp.Bastian_Tobias.Position;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 
 import java.io.*;
@@ -12,6 +17,21 @@ import java.util.Random;
  */
 public class Server {
     //properties
+    private GameBoard youBoard;
+
+    private Position position = new Position();
+
+    public GameBoard getYouBoard() {
+        return youBoard;
+    }
+
+    public GameBoard getEnemyBoard() {
+        return enemyBoard;
+    }
+
+    ControlOfInput serverAndEnemyControlOfInput;
+
+    private GameBoard enemyBoard;
 
     private PrintWriter writer;
 
@@ -20,6 +40,33 @@ public class Server {
     private boolean gameIsRunning;
 
     public Server() {
+        // Tobias { ***********
+
+        // you
+        Boat youBoat = new Boat();
+        PlaceBoats youPlaceBoats = new PlaceBoats();
+        youBoat.createBoats();
+        youPlaceBoats.initializeGridArray();
+        youPlaceBoats.placeBoats(youBoat.getBoats());
+        youBoard = new GameBoard(youBoat);
+        //ComputerAI youAI = new ComputerAI(youBoat);
+        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
+
+        // -------------------------------------------
+
+        // Server
+        Boat serverBoat = new Boat();
+        PlaceBoats serverPlaceBoats = new PlaceBoats();
+        serverBoat.createBoats();
+        serverPlaceBoats.initializeGridArray();
+        // serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        enemyBoard = new GameBoard();
+        // ComputerAI serverAI = new ComputerAI();
+
+        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat,serverBoat);
+
+
     }
 
     //Methods
@@ -56,6 +103,7 @@ public class Server {
         while (sendMessage) {
             if (reader.ready()) {
                 String messageFromClient = reader.readLine();
+
                 //System.out.println("Player 2 says " + messageFromClient);
                 System.out.println("Server receiving: " + messageFromClient);
 
@@ -64,13 +112,22 @@ public class Server {
                 /*
                  * Mikael kod: START
                  */
-                ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
+                position.shuffleList(position.getAllCoordinates());
+                String pos = position.getAllCoordinates().get(0);
+                String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
+                if(text.equals("game over")){
+                    System.out.println("I lost");
+                    System.exit(0);
+                }
+                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
+                position.remove(position.getAllCoordinates());
+                String outputText = text.concat(" shot ").concat(pos);
                 /*
                  * Mikael kod: END
                  */
                 String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));
                 //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
-                String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
+                //String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
                 System.out.println("Server sending: " + outputText);
                 System.out.println();
                 /*try {
@@ -89,7 +146,7 @@ public class Server {
                 if (t == 1) {
                     t++;
                 }
-                Thread.sleep(t * 1000);
+                // Thread.sleep(t * 1000);
 
                 writer.println(outputText);
 

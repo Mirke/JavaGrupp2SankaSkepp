@@ -10,17 +10,20 @@ public class ControlOfInput {
     int boats = 10;
 
     private GameBoard youBoard, enemyBoard;
+    private Boat myBoat, serverBoat;
 
-    public ControlOfInput(GameBoard youBoard, GameBoard enemyBoard) {
+    public ControlOfInput(GameBoard youBoard, GameBoard enemyBoard,Boat myBoat, Boat serverBoat ) {
         this.youBoard = youBoard;
         this.enemyBoard = enemyBoard;
+        this.myBoat = myBoat;
+        this.serverBoat = serverBoat;
     }
 
     public ControlOfInput() {
 
     }
 
-    public String controlOtherPlayerString(String choice, Boat myBoat){
+    public String controlOtherPlayerString(String choice){
         String hit = "";
 
         /*Metod för att initiera all kod ska i teorin skulle befinna sig i main. Vi kan antingen starta den koden i main
@@ -83,8 +86,6 @@ public class ControlOfInput {
             }
         }
 
-
-
         for(int i = 0; i < myBoat.getBoats().length; i++){
             if(myBoat.getBoats()[i].getPosition().size() == 0 && !skipCheck.contains(i)){
                 boats -= 1;
@@ -121,7 +122,7 @@ public class ControlOfInput {
     }
 
 
-    public void checkAnswerFromOtherPlayer() {
+    private void checkAnswerFromOtherPlayer() {
         try {
             if ("h".equals(answer.get(answerArrayControl)) || "s".equals(answer.get(answerArrayControl))) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
@@ -138,6 +139,12 @@ public class ControlOfInput {
         } catch (IndexOutOfBoundsException e) {
             //Hoppar över, detta kommer ske den första omgången
         }
+    }
+
+    // tobias test - hämtar från mickes protokoll
+    // sedan startar main metoden här i klassen
+    public void StringmessageFromServer(String letter){
+
     }
 
 }

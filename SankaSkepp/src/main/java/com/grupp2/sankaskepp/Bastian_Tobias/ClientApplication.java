@@ -1,46 +1,34 @@
 package com.grupp2.sankaskepp.Bastian_Tobias;
 
-import com.grupp2.sankaskepp.Bastian_Tobias.ComputerAI;
-
-import com.grupp2.sankaskepp.Bastian_Tobias.TheBattle;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.stage.Stage;
+import com.grupp2.sankaskepp.players.Client;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.Random;
 import java.io.IOException;
 
 /**
  * För att köra , höger-klicka på pom.xml filen och välja "add as Maven project"  så ska allt rött försvinna.
  */
 
-public class HelloApplication extends Application {
+public class ClientApplication extends Application {
 
-
+    private Client client = new Client();
     private GameBoard youBoard, enemyBoard;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, InterruptedException {
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         //Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Scene scene = new Scene(createContent());
@@ -55,8 +43,8 @@ public class HelloApplication extends Application {
         launch();
     }
 
-    private Parent createContent() {
-
+    private Parent createContent() throws IOException, InterruptedException {
+        client.start();
         //Anna härifrån och ner
 
         VBox root = new VBox();
@@ -114,33 +102,8 @@ public class HelloApplication extends Application {
          **********************************************************************/
         // Tobias { ***********
 
-        // you
-        Boat youBoat = new Boat();
-        PlaceBoats youPlaceBoats = new PlaceBoats();
-        youBoat.createBoats();
-        youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat.getBoats());
-        youBoard = new GameBoard(youBoat);
-        //ComputerAI youAI = new ComputerAI(youBoat);
-        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
-
-        // -------------------------------------------
-
-        // Server
-        Boat serverBoat = new Boat();
-        PlaceBoats serverPlaceBoats = new PlaceBoats();
-        serverBoat.createBoats();
-        serverPlaceBoats.initializeGridArray();
-        serverPlaceBoats.placeBoats(serverBoat.getBoats());
-        enemyBoard = new GameBoard();
-       // ComputerAI serverAI = new ComputerAI();
-
-        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        ControlOfInput serverControlOfInput = new ControlOfInput(youBoard, enemyBoard);
-
-
-        // klass där AI spelar mot varann
-        // TheBattle theBattle = new TheBattle(enemyBoard,serverBoard,enemyAI,serverAI);
+        this.enemyBoard = client.getEnemyBoard();
+        this.youBoard = client.getYouBoard();
 
         // ********  } Tobias
 
@@ -177,17 +140,11 @@ public class HelloApplication extends Application {
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 
 
-
         //Vbox ships = new VBox(new Text("Boats"));
         //ships.setAlignment(Pos.CENTER_RIGHT);
         //root.setRight(ships);
 
 
         return root;
-        // hej
-
-        // KONTROLLPANEL?
-        //root.setRight(new TextArea("Kanske en kontrollpanel här som håller koll vilka kordinater " +
-        //     "                   som lades och om träff eller miss"));
     }
 }

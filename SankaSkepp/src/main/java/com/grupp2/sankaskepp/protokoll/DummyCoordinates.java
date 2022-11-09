@@ -1,7 +1,5 @@
 package com.grupp2.sankaskepp.protokoll;
 
-
-
 import java.util.Arrays;
 import java.util.List;
 

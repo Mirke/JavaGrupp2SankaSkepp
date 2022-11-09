@@ -1,6 +1,7 @@
 package com.grupp2.sankaskepp.players;
 
 import java.io.IOException;
+
 /**
  * Author: Wei
  */
