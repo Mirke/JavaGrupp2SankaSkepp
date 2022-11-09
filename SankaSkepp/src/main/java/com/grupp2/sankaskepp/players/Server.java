@@ -6,6 +6,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
+
 /**
  * Author: Wei
  */
@@ -22,7 +23,7 @@ public class Server {
     }
 
     //Methods
-    public void start() throws IOException {
+    public void start() throws IOException, InterruptedException {
         try {
             ServerSocket serverSocket = new ServerSocket(1619);
             System.out.println("Server is ready, waiting for client.");
@@ -36,13 +37,13 @@ public class Server {
 
 
             //Create a reader
-            reader = new BufferedReader( new InputStreamReader(inputStream));
+            reader = new BufferedReader(new InputStreamReader(inputStream));
 
             //Create a output stream
             OutputStream outputStream = clientSocket.getOutputStream();
 
             //Create a printwriter
-            writer = new PrintWriter (outputStream,true);
+            writer = new PrintWriter(outputStream, true);
 
 
         } catch (IOException ioException) {
@@ -52,12 +53,11 @@ public class Server {
         boolean sendMessage = true;
         Random rand = new Random();
 
-        while(sendMessage) {
+        while (sendMessage) {
             if (reader.ready()) {
                 String messageFromClient = reader.readLine();
                 //System.out.println("Player 2 says " + messageFromClient);
                 System.out.println("Server receiving: " + messageFromClient);
-
 
 
                 //TODO: hit or miss depending on shot from client, need method to check result
@@ -68,19 +68,29 @@ public class Server {
                 /*
                  * Mikael kod: END
                  */
-                String coordinate = String.valueOf(rand.nextInt(10) + "." +rand.nextInt(10));
+                String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));
                 //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
-                String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10),rand.nextInt(10)); //Mikaels kod
-                System.out.println("Server sending: "+outputText);
+                String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
+                System.out.println("Server sending: " + outputText);
                 System.out.println();
-                try {
+                /*try {
                     Thread.sleep(2000);
-                } catch(InterruptedException e) {
+                } catch (InterruptedException e) {
                     System.out.println("Error trying to pause for two seconds with message " + e);
-                }
+                }*/
 
-                //TODO: add delay function
+                //delay function
+
                 //System.out.print("Server sending: ");
+
+                //KL random time delay 2-5 s, don't forget "throws InterruptedException" see above
+
+                int t = (int) (Math.random() * 5 + 1);
+                if (t == 1) {
+                    t++;
+                }
+                Thread.sleep(t * 1000);
+
                 writer.println(outputText);
 
 
@@ -93,8 +103,8 @@ public class Server {
     }
 
 
-
 }
+
 
 
 
