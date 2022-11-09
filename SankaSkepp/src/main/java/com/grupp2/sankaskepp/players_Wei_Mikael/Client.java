@@ -1,9 +1,8 @@
-package com.grupp2.sankaskepp.players;
+package com.grupp2.sankaskepp.players_Wei_Mikael;
 
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
 
@@ -11,7 +10,7 @@ import java.util.Random;
 /**
  * Author: Wei
  */
-public class Client {
+public class Client  implements Runnable {
     //properties
 
     private PrintWriter writer;
@@ -19,6 +18,8 @@ public class Client {
     private BufferedReader reader;
 
     private boolean firstGuess;
+
+
 
 
     // Constructor
@@ -100,5 +101,15 @@ public class Client {
     }
 
 
+    @Override
+    public void run() {
+        try {
+            start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

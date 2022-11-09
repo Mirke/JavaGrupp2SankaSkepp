@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp.players;
+package com.grupp2.sankaskepp.players_Wei_Mikael;
 
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 
@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * Author: Wei
  */
-public class Server {
+public class Server implements Runnable{
     //properties
 
     private PrintWriter writer;
@@ -18,6 +18,8 @@ public class Server {
     private BufferedReader reader;
 
     private boolean gameIsRunning;
+
+    public String rightNow = "";
 
     public Server() {
     }
@@ -58,6 +60,8 @@ public class Server {
                 String messageFromClient = reader.readLine();
                 //System.out.println("Player 2 says " + messageFromClient);
                 System.out.println("Server receiving: " + messageFromClient);
+
+                this.rightNow = messageFromClient;
 
 
                 //TODO: hit or miss depending on shot from client, need method to check result
@@ -103,6 +107,16 @@ public class Server {
     }
 
 
+    @Override
+    public void run() {
+        try {
+            start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 
