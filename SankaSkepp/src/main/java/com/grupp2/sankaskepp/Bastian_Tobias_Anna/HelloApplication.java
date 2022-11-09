@@ -1,33 +1,23 @@
-package com.grupp2.sankaskepp.Bastian_Tobias;
+package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.Bastian_Tobias.ComputerAI;
-
-import com.grupp2.sankaskepp.Bastian_Tobias.TheBattle;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
+import com.grupp2.sankaskepp.players_Wei_Mikael.Client;
+import com.grupp2.sankaskepp.players_Wei_Mikael.Server;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
-import java.util.Random;
 import java.io.IOException;
 
 /**
@@ -133,7 +123,7 @@ public class HelloApplication extends Application {
         serverPlaceBoats.initializeGridArray();
         serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
-       // ComputerAI serverAI = new ComputerAI();
+        // ComputerAI serverAI = new ComputerAI();
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
         ControlOfInput serverControlOfInput = new ControlOfInput(youBoard, enemyBoard);
@@ -154,7 +144,25 @@ public class HelloApplication extends Application {
         Button stopButton = new Button("Stop");
         stopButton.setEffect(dropShadow);
 
-        //startButton.setOnAction(e ->);
+        startButton.setOnAction(e -> {
+            // HEYOOO
+
+
+            Client client = new Client();
+            Server server = new Server();
+
+            Thread thread_1 = new Thread(() -> {
+
+            });
+            thread_1.start();
+            Thread thread_2 = new Thread(client);
+            thread_2.start();
+
+            historyText.setText(server.rightNow);
+
+
+            //
+        });
 
         //stopButton.setOnAction(e ->);
 

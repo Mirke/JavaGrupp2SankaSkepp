@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp.Bastian_Tobias;
+package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;

@@ -1,6 +1,4 @@
-package com.grupp2.sankaskepp.Bastian_Tobias;
-
-import com.grupp2.sankaskepp.Bastian_Tobias.ComputerAI;
+package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
 public class TheBattle {
     // attributes
