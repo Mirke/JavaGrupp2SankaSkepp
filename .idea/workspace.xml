@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/module-info.class" afterDir="false" />
-    </list>
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,7 +187,13 @@
       <option name="project" value="LOCAL" />
       <updated>1667907502118</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="Båda spelplanerna kan nu kommunicera och visa resultat">
+      <created>1668090290448</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1668090290448</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,6 +215,7 @@
     <MESSAGE value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
     <MESSAGE value="behövde göra om allt från min branch..... hoppas det funkar nu" />
     <MESSAGE value="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot." />
-    <option name="LAST_COMMIT_MESSAGE" value="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot." />
+    <MESSAGE value="Båda spelplanerna kan nu kommunicera och visa resultat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Båda spelplanerna kan nu kommunicera och visa resultat" />
   </component>
 </project>
