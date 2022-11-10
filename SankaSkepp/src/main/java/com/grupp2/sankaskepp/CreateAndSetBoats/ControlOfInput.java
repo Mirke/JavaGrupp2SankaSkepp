@@ -128,25 +128,27 @@ public class ControlOfInput {
 
 
     private void checkAnswerFromOtherPlayer() {
-        try {
-            if ("h".equals(answer.get(answerArrayControl)) || "s".equals(answer.get(answerArrayControl))) {
+        //try {
+            if (answer.get(answerArrayControl).equals("h") || answer.get(answerArrayControl).equals("s")) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 // vet inte om gameBoard här måste vara under sentArrayControl???
                 enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
                 answerArrayControl++;
                 sentArrayControl++;
-            } else if (sentArrayControl >=0) {
+            } else if (answer.get(answerArrayControl).equals("m")) {
                 //metod till tobias kod, färg blir blå för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 enemyBoard.parceStringShotCoordinates(false, sentPosition.get(sentArrayControl));
                 answerArrayControl++;
                 sentArrayControl++;
             }
             else{
-
+                System.out.println("inget");
+                answerArrayControl++;
             }
+/*
         } catch (IndexOutOfBoundsException e) {
             //Hoppar över, detta kommer ske den första omgången
-        }
+        }*/
     }
 
     // tobias test - hämtar från mickes protokoll
