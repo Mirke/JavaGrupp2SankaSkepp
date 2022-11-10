@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot.">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Ändrat if-satserna till switch för att få renare kod. Båtlistan inlagd. Mycket mer logik återstår!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" afterDir="false" />
     </list>
@@ -37,20 +37,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/karin/IdeaProjects/JavaGrupp2SankaSkepp3/SankaSkepp/src/main/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.grupp2.sankaskepp.Bastian_Tobias" />
@@ -151,6 +152,7 @@
       <workItem from="1667479818693" duration="4120000" />
       <workItem from="1667899467822" duration="2626000" />
       <workItem from="1667981964661" duration="12969000" />
+      <workItem from="1668069530762" duration="63000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -190,7 +192,13 @@
       <option name="project" value="LOCAL" />
       <updated>1667907502118</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="Ändrat if-satserna till switch för att få renare kod. Båtlistan inlagd. Mycket mer logik återstår!">
+      <created>1668066345943</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1668066345943</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +220,7 @@
     <MESSAGE value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
     <MESSAGE value="behövde göra om allt från min branch..... hoppas det funkar nu" />
     <MESSAGE value="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot." />
-    <option name="LAST_COMMIT_MESSAGE" value="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot." />
+    <MESSAGE value="Ändrat if-satserna till switch för att få renare kod. Båtlistan inlagd. Mycket mer logik återstår!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ändrat if-satserna till switch för att få renare kod. Båtlistan inlagd. Mycket mer logik återstår!" />
   </component>
 </project>
