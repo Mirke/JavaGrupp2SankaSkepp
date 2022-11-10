@@ -35,6 +35,7 @@ public class Client {
     private BufferedReader reader;
 
     private Position position = new Position();
+    private Position position2 = new Position();
 
     private ControlOfInput serverAndEnemyControlOfInput;
 
@@ -60,7 +61,7 @@ public class Client {
         PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
         serverPlaceBoats.initializeGridArray();
-        // serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();
 
@@ -103,7 +104,9 @@ public class Client {
 
         Collections.shuffle(position.getAllCoordinates());
         String pos = position.getAllCoordinates().get(0);
+        serverAndEnemyControlOfInput.sentString("i shot " + pos);
         writer.println("i shot " + pos);
+
 
         Random rand = new Random();
         //String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10)); // Commenting out Mikael
@@ -111,6 +114,7 @@ public class Client {
 
 
         boolean sendMessage = true;
+        int i = 0;
         while (sendMessage) {
             if (reader.ready()) {
                 String messageFromServer = reader.readLine();
@@ -118,17 +122,27 @@ public class Client {
                 System.out.println("Client receiving: " + messageFromServer);
 
 
+                //Collections.shuffle(position.getAllCoordinates());
+
                 Collections.shuffle(position.getAllCoordinates());
                 pos = position.getAllCoordinates().get(0);
-                String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
-                if(text.equals("game over")){
+                position.getAllCoordinates().remove(0);
+
+
+                    String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
+
+                if(text.contains("game over")){
                     System.out.println("I lost");
-                    System.exit(0);
+                    sendMessage = false;
+                    break;
+                    //System.exit(0);
                 }
                 //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                position.remove(position.getAllCoordinates());
+                //position.remove(position.getAllCoordinates());
                 String outputText = text.concat(" shot ").concat(pos);
-
+                if(!outputText.contains("game over")) {
+                    serverAndEnemyControlOfInput.sentString(outputText);
+                }
                 //TODO: hit or miss depending on shot from server, need method to check result
 
                 //coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));// going to edit Mikael
@@ -146,7 +160,7 @@ public class Client {
                 if (t == 1) {
                     t++;
                 }
-              //  Thread.sleep(t * 1000);
+                //Thread.sleep(t * 1000);
 
                 //System.out.println("Client sending: ");
 
@@ -159,7 +173,6 @@ public class Client {
         }
 
     }
-
 
 }
 

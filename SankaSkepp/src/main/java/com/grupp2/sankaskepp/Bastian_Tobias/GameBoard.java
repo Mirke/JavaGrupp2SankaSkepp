@@ -57,7 +57,7 @@ public class GameBoard extends Parent {
 
         int x = Integer.parseInt(Character.toString(xChar));
 
-        int y = 0;
+        int y = 10;
         switch (yChar) {
 
             case 'a':

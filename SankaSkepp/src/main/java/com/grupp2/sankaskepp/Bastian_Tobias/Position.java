@@ -10,7 +10,7 @@ import java.util.List;
 public class Position {
     // Attributes
     private String[][] string2DArray;
-    private List<String> allCoordinates;
+    private List<String> allCoordinates = new ArrayList<>(0);
     private List<String> allShipCoordinates;
     private Boat boat;
     private final int X_HORISONTAL = 10;
@@ -20,7 +20,7 @@ public class Position {
     // Constructors
 
     public Position(){
-        allCoordinates = new ArrayList<>();
+
 
         for (int i = 0; i < X_HORISONTAL; i++) {
 

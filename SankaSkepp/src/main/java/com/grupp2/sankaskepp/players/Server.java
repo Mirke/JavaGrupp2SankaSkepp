@@ -10,6 +10,7 @@ import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -19,7 +20,9 @@ public class Server {
     //properties
     private GameBoard youBoard;
 
+
     private Position position = new Position();
+    private Position position2 = new Position();
 
     public GameBoard getYouBoard() {
         return youBoard;
@@ -29,7 +32,7 @@ public class Server {
         return enemyBoard;
     }
 
-    ControlOfInput serverAndEnemyControlOfInput;
+    private ControlOfInput serverAndEnemyControlOfInput;
 
     private GameBoard enemyBoard;
 
@@ -59,7 +62,7 @@ public class Server {
         PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
         serverPlaceBoats.initializeGridArray();
-        // serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();
 
@@ -99,6 +102,7 @@ public class Server {
 
         boolean sendMessage = true;
         Random rand = new Random();
+        int i = 0;
 
         while (sendMessage) {
             if (reader.ready()) {
@@ -112,16 +116,27 @@ public class Server {
                 /*
                  * Mikael kod: START
                  */
-                position.shuffleList(position.getAllCoordinates());
-                String pos = position.getAllCoordinates().get(0);
+                //position.shuffleList(position.getAllCoordinates());
+                Collections.shuffle(position2.getAllCoordinates());
+                String pos = position2.getAllCoordinates().get(0);
+                position2.getAllCoordinates().remove(0);
+
+
+
                 String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
-                if(text.equals("game over")){
+
+                if(text.contains("game over")){
                     System.out.println("I lost");
-                    System.exit(0);
+                    sendMessage = false;
+                    break;
+                    //System.exit(0);
                 }
                 //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                position.remove(position.getAllCoordinates());
+                //position.remove(position.getAllCoordinates());
                 String outputText = text.concat(" shot ").concat(pos);
+                if(!outputText.contains("game over")) {
+                    serverAndEnemyControlOfInput.sentString(outputText);
+                }
                 /*
                  * Mikael kod: END
                  */
@@ -146,7 +161,7 @@ public class Server {
                 if (t == 1) {
                     t++;
                 }
-                // Thread.sleep(t * 1000);
+                 //Thread.sleep(t * 1000);
 
                 writer.println(outputText);
 
