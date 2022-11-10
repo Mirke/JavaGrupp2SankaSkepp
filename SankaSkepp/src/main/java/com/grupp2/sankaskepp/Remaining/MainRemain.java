@@ -50,6 +50,7 @@ public class MainRemain {
         case "i":   Collections.shuffle(remainingXYspots);  // return Random xyValue from remainingXYspots
                     enemyGameBoard.hitList.add(enemyGameBoard.remainingXYspots.get(0));  // add new XyValue to hitList
                     enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+                    break;
 
 
             case "m":
@@ -58,9 +59,11 @@ public class MainRemain {
                     Collections.shuffle(remainingXYspots);  // return Random xyValue from remainingXYspots
                     enemyGameBoard.hitList.add(enemyGameBoard.remainingXYspots.get(0));  // add new XyValue to hitList
                     enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+                    break;
             }
                 else if (enemyGameBoard.hitList.size() > 1) { //använd logik för nästa skott,
                     enemyGameBoard.hitList.remove(enemyGameBoard.hitList.size() - 1); //ta bort värdet för sista index
+                    break;
             }
 
 
@@ -68,6 +71,7 @@ public class MainRemain {
                     // kolla om hitList>1 isåfall ta nästa möjliga koordinat i linje med två tidigare
                     // find position next to XyValue in hitList, will be  next shot
                      enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+                    break;
 
             case "s":
                     /*   EnemyBoats.length tells which boat was sunk
@@ -79,6 +83,7 @@ public class MainRemain {
                     Collections.shuffle(remainingXYspots);  // return Random xyValue from remainingXYspots
                     enemyGameBoard.hitList.add(enemyGameBoard.remainingXYspots.get(0));  // add new XyValue to hitList
                     enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+                    break;
 
         }
     }
