@@ -113,33 +113,44 @@ public class Server {
 
 
                 //TODO: hit or miss depending on shot from client, need method to check result
-                /*
-                 * Mikael kod: START
-                 */
+
                 //position.shuffleList(position.getAllCoordinates());
-                Collections.shuffle(position2.getAllCoordinates());
-                String pos = position2.getAllCoordinates().get(0);
-                position2.getAllCoordinates().remove(0);
 
 
+                /*Bastian med fler (skriv här)*/
+                String pos = "";
+                String text = "";
+                if(!messageFromClient.contains("game over")) {
+                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
+                }
+                else{
+                    System.out.println("I won");
+                    serverAndEnemyControlOfInput.getAnswer().add("s");
+                    serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
+                    break;
+                }
 
-                String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
-
+                String outputText = "";
                 if(text.contains("game over")){
                     System.out.println("I lost");
                     sendMessage = false;
-                    break;
-                    //System.exit(0);
-                }
-                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                //position.remove(position.getAllCoordinates());
-                String outputText = text.concat(" shot ").concat(pos);
-                if(!outputText.contains("game over")) {
+                    outputText = "game over";
+
+                }else{
+                    Collections.shuffle(position2.getAllCoordinates());
+                    pos = position2.getAllCoordinates().get(0);
+                    position2.getAllCoordinates().remove(0);
+
+                    outputText = text.concat(" shot ").concat(pos);
                     serverAndEnemyControlOfInput.sentString(outputText);
                 }
-                /*
-                 * Mikael kod: END
-                 */
+                /*Bastian med fler (skriv här)*/
+
+                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
+                //position.remove(position.getAllCoordinates());
+
+
+
                 String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));
                 //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
                 //String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod

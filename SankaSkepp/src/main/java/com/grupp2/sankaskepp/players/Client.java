@@ -104,8 +104,9 @@ public class Client {
 
         Collections.shuffle(position.getAllCoordinates());
         String pos = position.getAllCoordinates().get(0);
-        serverAndEnemyControlOfInput.sentString("i shot " + pos);
-        writer.println("i shot " + pos);
+        position.getAllCoordinates().remove(0);
+        serverAndEnemyControlOfInput.sentString("i shot ".concat(pos));
+        writer.println("i shot ".concat(pos));
 
 
         Random rand = new Random();
@@ -124,25 +125,44 @@ public class Client {
 
                 //Collections.shuffle(position.getAllCoordinates());
 
-                String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
-
-                Collections.shuffle(position.getAllCoordinates());
-                pos = position.getAllCoordinates().get(0);
-                position.getAllCoordinates().remove(0);
 
 
+
+                /* Bastian*/
+                pos = "";
+                String text = "";
+                if(!messageFromServer.contains("game over")) {
+                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
+                }
+                else{
+                    System.out.println("I won");
+                    serverAndEnemyControlOfInput.getAnswer().add("s");
+                    serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
+                    break;
+                }
+
+
+                String outputText = "";
                 if(text.contains("game over")){
                     System.out.println("I lost");
                     sendMessage = false;
-                    break;
-                    //System.exit(0);
-                }
-                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                //position.remove(position.getAllCoordinates());
-                String outputText = text.concat(" shot ").concat(pos);
-                if(!outputText.contains("game over")) {
+                    outputText = "game over";
+
+                }else{
+                    Collections.shuffle(position.getAllCoordinates());
+                    pos = position.getAllCoordinates().get(0);
+                    position.getAllCoordinates().remove(0);
+
+                    outputText = text.concat(" shot ").concat(pos);
                     serverAndEnemyControlOfInput.sentString(outputText);
                 }
+                /*Bastian */
+
+                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
+                //position.remove(position.getAllCoordinates());
+
+
+
                 //TODO: hit or miss depending on shot from server, need method to check result
 
                 //coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));// going to edit Mikael

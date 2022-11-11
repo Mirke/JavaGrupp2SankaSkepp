@@ -127,7 +127,7 @@ public class ControlOfInput {
     int sentArrayControl = 0;
     int answerArrayControl = 0;
 
-    private void checkAnswerFromOtherPlayer() {
+    public void checkAnswerFromOtherPlayer() {
             if (answer.get(answerArrayControl).equals("h") || answer.get(answerArrayControl).equals("s")) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 // vet inte om gameBoard här måste vara under sentArrayControl???
@@ -146,5 +146,11 @@ public class ControlOfInput {
             }
     }
 
+    public ArrayList<String> getAnswer() {
+        return answer;
+    }
 
+    public void setAnswer(ArrayList<String> answer) {
+        this.answer = answer;
+    }
 }
