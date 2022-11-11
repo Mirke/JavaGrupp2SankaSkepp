@@ -6,11 +6,12 @@ import java.util.ArrayList;
 
 public class ControlOfInput {
     ArrayList<Integer> skipCheck = new ArrayList<>(0);
-    ArrayList<String> answer = new ArrayList<>();
+    ArrayList<String> answer = new ArrayList<>(0);
     int boats = 10;
 
     private GameBoard youBoard, enemyBoard;
-    private Boat myBoat, serverBoat;
+    private Boat myBoat;
+    private Boat serverBoat;
 
     public ControlOfInput(GameBoard youBoard, GameBoard enemyBoard, Boat myBoat, Boat serverBoat) {
         this.youBoard = youBoard;
@@ -53,7 +54,7 @@ public class ControlOfInput {
                 for (int j = 0; j < myBoat.getBoats()[i].getPosition().size(); j++) {
 
                     if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
-                            myBoat.getBoats()[i].getPosition().size() == 1 && !skipCheck.contains(i)) {
+                            myBoat.getBoats()[i].getPosition().size() == 1) {
 
                         // Tobias { *********
                         //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
@@ -65,7 +66,7 @@ public class ControlOfInput {
                         j = myBoat.getBoats()[i].getPosition().size() - 1;
                         i = myBoat.getBoats().length - 1;
 
-                    } else if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) && !skipCheck.contains(i)) {
+                    } else if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice)) {
                         hit = "h";
                         //För att ta bort värdet i arraylisten
                         myBoat.getBoats()[i].getPosition().remove(j);
@@ -87,8 +88,17 @@ public class ControlOfInput {
                     }
                 }
             }
+        if (hit.equals("")) {
+            hit = "m";
 
-            for (int i = 0; i < myBoat.getBoats().length; i++) {
+            //Här ska rutan bli blå på position "playerChoice" i userInterface
+            // Tobias { *********
+            //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
+            youBoard.parceStringShotCoordinates(false, playerChoice);
+            // *********** } Tobias
+        }
+
+        for (int i = 0; i < myBoat.getBoats().length; i++) {
                 if (myBoat.getBoats()[i].getPosition().size() == 0 && !skipCheck.contains(i)) {
                     boats -= 1;
                     skipCheck.add(i);
@@ -102,33 +112,22 @@ public class ControlOfInput {
                     }
                 }
             }
-            if (hit.equals("")) {
-                hit = "m";
-
-                //Här ska rutan bli blå på position "playerChoice" i userInterface
-                // Tobias { *********
-                //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
-                youBoard.parceStringShotCoordinates(false, playerChoice);
-                // *********** } Tobias
-            }
 
 
         return hit;
     }
 
     ArrayList<String> sentPosition = new ArrayList<>();
-    int sentArrayControl = 0;
-    int answerArrayControl = 0;
-
 
     public void sentString(String sentString) {
         sentPosition.add(Character.toString(sentString.charAt(7)).concat(Character.toString(sentString.charAt(8))));
 
     }
 
+    int sentArrayControl = 0;
+    int answerArrayControl = 0;
 
     private void checkAnswerFromOtherPlayer() {
-        //try {
             if (answer.get(answerArrayControl).equals("h") || answer.get(answerArrayControl).equals("s")) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 // vet inte om gameBoard här måste vara under sentArrayControl???
@@ -145,16 +144,7 @@ public class ControlOfInput {
                 System.out.println("inget");
                 answerArrayControl++;
             }
-/*
-        } catch (IndexOutOfBoundsException e) {
-            //Hoppar över, detta kommer ske den första omgången
-        }*/
     }
 
-    // tobias test - hämtar från mickes protokoll
-    // sedan startar main metoden här i klassen
-    public void StringmessageFromServer(String letter) {
-
-    }
 
 }

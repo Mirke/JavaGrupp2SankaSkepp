@@ -124,12 +124,12 @@ public class Client {
 
                 //Collections.shuffle(position.getAllCoordinates());
 
+                String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
+
                 Collections.shuffle(position.getAllCoordinates());
                 pos = position.getAllCoordinates().get(0);
                 position.getAllCoordinates().remove(0);
 
-
-                    String text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
 
                 if(text.contains("game over")){
                     System.out.println("I lost");
