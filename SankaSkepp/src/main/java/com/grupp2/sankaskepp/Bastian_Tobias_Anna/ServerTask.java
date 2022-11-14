@@ -1,9 +1,11 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
+
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,8 +13,8 @@ import java.util.Random;
 
 public class ServerTask extends Task<Void> {
 
-    private PrintWriter printWriter;
-    private BufferedReader bufferedReader;
+    private PrintWriter writer;
+    private BufferedReader reader;
     private Boolean isClientConnected;
     private final Random rand = new Random();
     private final ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
@@ -25,7 +27,7 @@ public class ServerTask extends Task<Void> {
     }
 
     @Override
-    protected Void call() throws Exception {
+    protected Void call() {
         try {
             setupServerAndListenForClient();
             serverSpeaksWithClient();
@@ -42,25 +44,26 @@ public class ServerTask extends Task<Void> {
         Socket clientSocket = serverSocket.accept();
         isClientConnected = true;
         InputStream inputStream = clientSocket.getInputStream();
-        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        reader = new BufferedReader(new InputStreamReader(inputStream));
         OutputStream outputStream = clientSocket.getOutputStream();
-        printWriter = new PrintWriter(outputStream, true);
+        writer = new PrintWriter(outputStream, true);
     }
 
     private void serverSpeaksWithClient() throws IOException {
         while (isClientConnected) {
-            if (bufferedReader.ready()) {
-                messageFromClient = bufferedReader.readLine();
+            if (reader.ready()) {
+                messageFromClient = reader.readLine();
                 printMessageFromClient(true);
-                latestMessageFromClient();
+                //latestMessageFromClient();
                 serverUpdateMessage();
-                printMessageOutFromServer(true);
+                printMessageOutFromServer(false);
                 sendServerMessageToClient();
-                latestMessageSentFromServer();
+               // latestMessageSentFromServer();
             }
         }
         sendGameStoppedMessage();
     }
+
     private void printMessageFromClient(boolean show) {
         if (show) System.out.printf("Server receiving: %s\n", messageFromClient);
     }
@@ -70,13 +73,13 @@ public class ServerTask extends Task<Void> {
     }
 
     private void printMessageOutFromServer(boolean show) {
-        if(show) System.out.printf("Server sending: %s\n", messageFromServer);
+        if (show) System.out.printf("Server sending: %s\n", messageFromServer);
     }
 
     private void latestMessageFromClient() {
         String editedMessage = String.format("""
                 You: %s          
-                """,messageFromClient);
+                """, messageFromClient);
         serverLatestMessageText = new SimpleStringProperty(editedMessage);
         textInBackup.textProperty().bind(serverLatestMessageText);
     }
@@ -84,7 +87,7 @@ public class ServerTask extends Task<Void> {
     private void latestMessageSentFromServer() {
         String editedMessage = String.format("""
                 Enemy: %s          
-                """,messageFromServer);
+                """, messageFromServer);
         serverLatestMessageText = new SimpleStringProperty(editedMessage);
         textInBackup.textProperty().bind(serverLatestMessageText);
     }
@@ -93,10 +96,10 @@ public class ServerTask extends Task<Void> {
     private void sendServerMessageToClient() {
         try {
             Thread.sleep(delay() * 1000);
+            writer.println(messageFromServer);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        printWriter.println(messageFromServer);
     }
 
     private int delay() {

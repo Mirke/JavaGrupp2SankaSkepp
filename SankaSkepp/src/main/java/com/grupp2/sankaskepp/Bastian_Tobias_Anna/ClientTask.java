@@ -11,87 +11,95 @@ import java.net.Socket;
 import java.util.Random;
 
 public class ClientTask extends Task<Void> {
+
     private PrintWriter writer;
     private BufferedReader reader;
-    private Boolean isClientConnected;
+    private Boolean isServerConnected = true;
     private final Random rand = new Random();
     private final ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
     private String messageFromClient = "";
     private String messageFromServer = "";
-    private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("init\n");
+    private ObservableStringValue clientLatestMessageText = new SimpleStringProperty("init\n");
     private Text textInBackup;
 
-    @Override
-    protected Void call() throws Exception {
-        try {
-            setupClientAndCallServer();
-            clientSpeaksWithServer();
+    public ClientTask() {
+    }
 
-        } catch (IOException e) {
-            isClientConnected = false;
-        }
+    @Override
+    protected Void call() throws IOException {
+
+        setupClientAndCallServer();
+        clientSpeaksWithServer();
+
         return null;
     }
 
     // Weis kod
     private void setupClientAndCallServer() throws IOException {
+        try {
+        System.out.println("Client trying to connect to Server...");
         Socket clientSocket = new Socket("localhost", 1619);
         InputStream inputStream = clientSocket.getInputStream();
         reader = new BufferedReader(new InputStreamReader(inputStream));
         OutputStream outputStream = clientSocket.getOutputStream();
         writer = new PrintWriter(outputStream, true);
+        } catch (IOException e) {
+            throw new IOException(e);
+        }
     }
 
     private void clientSpeaksWithServer() throws IOException {
-        while (isClientConnected) {
+        writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
+        isServerConnected = true;
+        while (isServerConnected) {
             if (reader.ready()) {
-                messageFromClient = reader.readLine();
+                messageFromServer = reader.readLine();
                 printMessageFromServer(true);
-                latestMessageFromServer();
+               // latestMessageFromServer();
                 clientUpdateMessage();
-                printMessageOutFromClient(true);
+                printMessageOutFromClient(false);
                 sendClientMessageToServer();
-                latestMessageSentFromClient();
+                //latestMessageSentFromClient();
             }
         }
         sendGameStoppedMessage();
     }
 
     private void printMessageFromServer(boolean show) {
-        if (show) System.out.printf("Server receiving: %s\n", messageFromClient);
+        if (show) System.out.printf("Client receiving: %s\n", messageFromServer);
     }
 
     private void clientUpdateMessage() {
-        messageFromServer = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10));
+        messageFromClient = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10));
     }
 
     private void printMessageOutFromClient(boolean show) {
-        if(show) System.out.printf("Server sending: %s\n", messageFromServer);
+        if (show) System.out.printf("Client sending: %s\n", messageFromClient);
     }
 
     private void latestMessageFromServer() {
         String editedMessage = String.format("""
                 You: %s          
-                """,messageFromClient);
-        serverLatestMessageText = new SimpleStringProperty(editedMessage);
-        textInBackup.textProperty().bind(serverLatestMessageText);
+                """, messageFromServer);
+        clientLatestMessageText = new SimpleStringProperty(editedMessage);
+        textInBackup.textProperty().bind(clientLatestMessageText);
     }
 
     private void latestMessageSentFromClient() {
         String editedMessage = String.format("""
                 Enemy: %s          
-                """,messageFromServer);
-        serverLatestMessageText = new SimpleStringProperty(editedMessage);
-        textInBackup.textProperty().bind(serverLatestMessageText);
+                """, messageFromServer);
+        clientLatestMessageText = new SimpleStringProperty(editedMessage);
+        textInBackup.textProperty().bind(clientLatestMessageText);
     }
 
     private void sendClientMessageToServer() {
         try {
             Thread.sleep(delay() * 1000);
+            writer.println(messageFromClient);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        writer.println(messageFromServer);
     }
 
     private int delay() {
@@ -103,7 +111,7 @@ public class ClientTask extends Task<Void> {
     }
 
     public void setClientConnected(Boolean clientConnected) {
-        isClientConnected = clientConnected;
+        isServerConnected = clientConnected;
     }
 
     private void sendGameStoppedMessage() {

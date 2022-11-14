@@ -1,6 +1,7 @@
 
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
+import com.grupp2.sankaskepp.players.Client;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,9 +18,9 @@ public class HelloController {
             threadForServer.setDaemon(true);
             threadForServer.start();
 
+            threadForClient = new Thread(new ClientTask());
+            threadForClient.setDaemon(true);
+            threadForClient.start();
         };
     }
-
-
-
 }
