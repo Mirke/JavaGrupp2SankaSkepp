@@ -20,7 +20,7 @@ public class ServerTask extends Task<Void> {
     private final ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
     private String messageFromClient = "";
     private String messageFromServer = "";
-    private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("init\n");
+    private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
     private Text textInBackup;
 
     public ServerTask(Text historyTextIn) {
@@ -55,7 +55,7 @@ public class ServerTask extends Task<Void> {
         while (isClientConnected) {
             if (reader.ready()) {
                 messageFromClient = reader.readLine();
-                printMessageFromClient(true);
+                printMessageFromClient(false);
                 //latestMessageFromClient();
                 serverUpdateMessage();
                 printMessageOutFromServer(false);
@@ -80,16 +80,14 @@ public class ServerTask extends Task<Void> {
 
     private void latestMessageFromClient() {
         String editedMessage = String.format("""
-                You: %s          
-                """, messageFromClient);
+                You: %s""", messageFromClient);
         serverLatestMessageText = new SimpleStringProperty(editedMessage);
         textInBackup.textProperty().bind(serverLatestMessageText);
     }
 
     private void latestMessageSentFromServer() {
         String editedMessage = String.format("""
-                Enemy: %s          
-                """, messageFromServer);
+                Enemy: %s""", messageFromServer);
         serverLatestMessageText = new SimpleStringProperty(editedMessage);
         textInBackup.textProperty().bind(serverLatestMessageText);
     }
