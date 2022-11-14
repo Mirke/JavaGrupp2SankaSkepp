@@ -117,7 +117,7 @@ public class Server {
                 //position.shuffleList(position.getAllCoordinates());
 
 
-                /*Bastian med fler (skriv här)*/
+
                 String pos = "";
                 String text = "";
                 if(!messageFromClient.contains("game over")) {
@@ -144,7 +144,7 @@ public class Server {
                     outputText = text.concat(" shot ").concat(pos);
                     serverAndEnemyControlOfInput.sentString(outputText);
                 }
-                /*Bastian med fler (skriv här)*/
+
 
                 //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
                 //position.remove(position.getAllCoordinates());

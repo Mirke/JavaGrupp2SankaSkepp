@@ -128,7 +128,7 @@ public class Client {
 
 
 
-                /* Bastian*/
+
                 pos = "";
                 String text = "";
                 if(!messageFromServer.contains("game over")) {
@@ -156,7 +156,7 @@ public class Client {
                     outputText = text.concat(" shot ").concat(pos);
                     serverAndEnemyControlOfInput.sentString(outputText);
                 }
-                /*Bastian */
+
 
                 //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
                 //position.remove(position.getAllCoordinates());
