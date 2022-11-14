@@ -22,7 +22,9 @@ public class ClientTask extends Task<Void> {
     private ObservableStringValue clientLatestMessageText = new SimpleStringProperty("init\n");
     private Text textInBackup;
 
-    public ClientTask() {
+    public ClientTask(Text historyTextIn) {
+        textInBackup = historyTextIn;
+        textInBackup.textProperty().bind(clientLatestMessageText);
     }
 
     @Override
@@ -37,12 +39,12 @@ public class ClientTask extends Task<Void> {
     // Weis kod
     private void setupClientAndCallServer() throws IOException {
         try {
-        System.out.println("Client trying to connect to Server...");
-        Socket clientSocket = new Socket("localhost", 1619);
-        InputStream inputStream = clientSocket.getInputStream();
-        reader = new BufferedReader(new InputStreamReader(inputStream));
-        OutputStream outputStream = clientSocket.getOutputStream();
-        writer = new PrintWriter(outputStream, true);
+            System.out.println("Client trying to connect to Server...");
+            Socket clientSocket = new Socket("localhost", 1619);
+            InputStream inputStream = clientSocket.getInputStream();
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            OutputStream outputStream = clientSocket.getOutputStream();
+            writer = new PrintWriter(outputStream, true);
         } catch (IOException e) {
             throw new IOException(e);
         }
@@ -55,11 +57,11 @@ public class ClientTask extends Task<Void> {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
                 printMessageFromServer(true);
-               // latestMessageFromServer();
+                //latestMessageFromServer();
                 clientUpdateMessage();
                 printMessageOutFromClient(false);
                 sendClientMessageToServer();
-                //latestMessageSentFromClient();
+                latestMessageSentFromClient();
             }
         }
         sendGameStoppedMessage();
@@ -87,7 +89,7 @@ public class ClientTask extends Task<Void> {
 
     private void latestMessageSentFromClient() {
         String editedMessage = String.format("""
-                Enemy: %s          
+                You: %s          
                 """, messageFromServer);
         clientLatestMessageText = new SimpleStringProperty(editedMessage);
         textInBackup.textProperty().bind(clientLatestMessageText);
@@ -96,10 +98,10 @@ public class ClientTask extends Task<Void> {
     private void sendClientMessageToServer() {
         try {
             Thread.sleep(delay() * 1000);
-            writer.println(messageFromClient);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        writer.println(messageFromClient);
     }
 
     private int delay() {

@@ -24,7 +24,7 @@ public class HelloController {
             threadForServer.setDaemon(true);
             threadForServer.start();
 
-            threadForClient = new Thread(new ClientTask());
+            threadForClient = new Thread(new ClientTask(historyText));
             threadForClient.setDaemon(true);
             threadForClient.start();
         };

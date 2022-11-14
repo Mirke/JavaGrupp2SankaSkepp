@@ -62,7 +62,9 @@ public class BattleshipGame extends Application {
         Text historyText = new Text("Test123");
         historyText.setFill(Color.web("37a8b7"));
         historyText.setEffect(dropShadow);
+
         helloController = new HelloController(historyText);
+
         history.getChildren().add(historyText);
         history.getStyleClass().add("history");
 

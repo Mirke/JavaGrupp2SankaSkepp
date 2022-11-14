@@ -56,7 +56,7 @@ public class ServerTask extends Task<Void> {
             if (reader.ready()) {
                 messageFromClient = reader.readLine();
                 printMessageFromClient(true);
-                latestMessageFromClient();
+                //latestMessageFromClient();
                 serverUpdateMessage();
                 printMessageOutFromServer(false);
                 sendServerMessageToClient();
@@ -98,7 +98,6 @@ public class ServerTask extends Task<Void> {
     private void sendServerMessageToClient() {
         try {
             Thread.sleep(delay() * 1000);
-
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
