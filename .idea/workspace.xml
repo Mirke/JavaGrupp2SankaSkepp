@@ -4,19 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Tränar">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="History text uppdaterar snyggare nu utan en newline.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Tobbe_branch_slitOchSlang" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,10 +65,20 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.grupp2.sankaskepp.Bastian_Tobias_Anna" />
       <recent name="com.grupp2.sankaskepp.Bastian_Tobias" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.BattleshipGame">
+    <configuration name="BattleshipGame" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.BattleshipGame" />
+      <module name="SankaSkepp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.ClientApplication" />
       <module name="SankaSkepp" />
@@ -124,6 +144,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.BattleshipGame" />
+      <item itemvalue="Application.ClientApplication" />
+      <item itemvalue="Application.ClientStart" />
+      <item itemvalue="Application.HelloApplication" />
+      <item itemvalue="Application.ServerApplication" />
+      <item itemvalue="Application.ServerStart" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ClientApplication" />
@@ -153,6 +181,7 @@
       <workItem from="1667479818693" duration="4120000" />
       <workItem from="1667899467822" duration="2626000" />
       <workItem from="1667981964661" duration="12969000" />
+      <workItem from="1668443995789" duration="24834000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -210,7 +239,37 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1668160852822</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL−00011" summary="Skapat Tasks och lagt till kod i HelloController för event.">
+      <created>1668446206471</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1668446206471</updated>
+    </task>
+    <task id="LOCAL−00012" summary="SkapaDe pratar med varandra.">
+      <created>1668456308247</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1668456308247</updated>
+    </task>
+    <task id="LOCAL−00013" summary="Nu uppdaterar texten sig.">
+      <created>1668457315935</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1668457315935</updated>
+    </task>
+    <task id="LOCAL−00014" summary="Nu uppdaterar de history text efter varandra">
+      <created>1668458407217</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1668458407217</updated>
+    </task>
+    <task id="LOCAL−00015" summary="History text uppdaterar snyggare nu utan en newline.">
+      <created>1668458964388</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1668458964388</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +295,11 @@
     <MESSAGE value="Fler ändringar som får programmet att fungera bättre och oftare" />
     <MESSAGE value="." />
     <MESSAGE value="Tränar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tränar" />
+    <MESSAGE value="Skapat Tasks och lagt till kod i HelloController för event." />
+    <MESSAGE value="SkapaDe pratar med varandra." />
+    <MESSAGE value="Nu uppdaterar texten sig." />
+    <MESSAGE value="Nu uppdaterar de history text efter varandra" />
+    <MESSAGE value="History text uppdaterar snyggare nu utan en newline." />
+    <option name="LAST_COMMIT_MESSAGE" value="History text uppdaterar snyggare nu utan en newline." />
   </component>
 </project>
