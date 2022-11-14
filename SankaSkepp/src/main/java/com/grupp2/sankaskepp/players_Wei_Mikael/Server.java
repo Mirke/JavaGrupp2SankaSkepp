@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp.players;
+package com.grupp2.sankaskepp.players_Wei_Mikael;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;

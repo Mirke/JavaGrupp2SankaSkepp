@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp.players;
+package com.grupp2.sankaskepp.players_Wei_Mikael;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
@@ -7,21 +7,15 @@ import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Collections;
 import java.util.Random;
 
+
 /**
  * Author: Wei
  */
-public class Server implements Runnable{
-    //properties
-    private GameBoard youBoard;
-
-
-    private Position position = new Position();
-    private Position position2 = new Position();
+public class Client {
 
     public GameBoard getYouBoard() {
         return youBoard;
@@ -31,21 +25,23 @@ public class Server implements Runnable{
         return enemyBoard;
     }
 
-    private ControlOfInput serverAndEnemyControlOfInput;
-
-    private GameBoard enemyBoard;
+    //properties
+    private GameBoard youBoard, enemyBoard;
 
     private PrintWriter writer;
 
     private BufferedReader reader;
 
-    private boolean gameIsRunning;
+    private Position position = new Position();
+    private Position position2 = new Position();
 
-    public String rightNow = "";
+    private ControlOfInput serverAndEnemyControlOfInput;
 
-    public Server() {
-        // Tobias { ***********
 
+    private boolean firstGuess;
+
+    // Constructor
+    public Client() {
         // you
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
@@ -68,20 +64,15 @@ public class Server implements Runnable{
         // ComputerAI serverAI = new ComputerAI();
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat,serverBoat);
-
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard,youBoat,serverBoat);
 
     }
 
     //Methods
     public void start() throws IOException, InterruptedException {
         try {
-            ServerSocket serverSocket = new ServerSocket(1619);
-            System.out.println("Server is ready, waiting for client.");
-
-            //accept client´s socket
-            Socket clientSocket = serverSocket.accept();
-            System.out.println("Client has joined the game.");
+            //clients socket connected to server
+            Socket clientSocket = new Socket("localhost", 1619);
 
             //Create a input stream
             InputStream inputStream = clientSocket.getInputStream();
@@ -100,31 +91,46 @@ public class Server implements Runnable{
         } catch (IOException ioException) {
             System.out.println(ioException);
         }
+        /*
+         * Mikael kod: START
+         */
+
+     // ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
+        /*
+         * Mikael kod: END
+         */
+
+        Collections.shuffle(position.getAllCoordinates());
+        String pos = position.getAllCoordinates().get(0);
+        position.getAllCoordinates().remove(0);
+        serverAndEnemyControlOfInput.sentString("i shot ".concat(pos));
+        writer.println("i shot ".concat(pos));
+
+
+        Random rand = new Random();
+        //String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10)); // Commenting out Mikael
+      //  writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
+
 
         boolean sendMessage = true;
-        Random rand = new Random();
         int i = 0;
-
         while (sendMessage) {
             if (reader.ready()) {
-                String messageFromClient = reader.readLine();
-
-                //System.out.println("Player 2 says " + messageFromClient);
-                System.out.println("Server receiving: " + messageFromClient);
-
-                this.rightNow = messageFromClient;
+                String messageFromServer = reader.readLine();
+                //System.out.println("Player 1 says " + messageFromServer); //Mikael commenting out
+                System.out.println("Client receiving: " + messageFromServer);
 
 
-                //TODO: hit or miss depending on shot from client, need method to check result
-
-                //position.shuffleList(position.getAllCoordinates());
+                //Collections.shuffle(position.getAllCoordinates());
 
 
 
-                String pos = "";
+
+
+                pos = "";
                 String text = "";
-                if(!messageFromClient.contains("game over")) {
-                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
+                if(!messageFromServer.contains("game over")) {
+                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
                 }
                 else{
                     System.out.println("I won");
@@ -133,6 +139,7 @@ public class Server implements Runnable{
                     break;
                 }
 
+
                 String outputText = "";
                 if(text.contains("game over")){
                     System.out.println("I lost");
@@ -140,9 +147,9 @@ public class Server implements Runnable{
                     outputText = "game over";
 
                 }else{
-                    Collections.shuffle(position2.getAllCoordinates());
-                    pos = position2.getAllCoordinates().get(0);
-                    position2.getAllCoordinates().remove(0);
+                    Collections.shuffle(position.getAllCoordinates());
+                    pos = position.getAllCoordinates().get(0);
+                    position.getAllCoordinates().remove(0);
 
                     outputText = text.concat(" shot ").concat(pos);
                     serverAndEnemyControlOfInput.sentString(outputText);
@@ -154,53 +161,36 @@ public class Server implements Runnable{
 
 
 
-                String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));
-                //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
-                //String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
-                System.out.println("Server sending: " + outputText);
+                //TODO: hit or miss depending on shot from server, need method to check result
+
+                //coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));// going to edit Mikael
+                //String outputText = "m shot " + coordinate; // going to edit Mikael
+               // String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
+                //System.out.println(outputText); // commenting and changing code Mikael
+                System.out.println("Client sending: " + outputText);
                 System.out.println();
-                /*try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    System.out.println("Error trying to pause for two seconds with message " + e);
-                }*/
 
-                //delay function
 
-                //System.out.print("Server sending: ");
-
+                //TODO: add delay function
                 //KL random time delay 2-5 s, don't forget "throws InterruptedException" see above
 
                 int t = (int) (Math.random() * 5 + 1);
                 if (t == 1) {
                     t++;
                 }
-                 //Thread.sleep(t * 1000);
+                //Thread.sleep(t * 1000);
+
+                //System.out.println("Client sending: ");
+
 
                 writer.println(outputText);
-
-
                 //sendMessage = false;
-
-
             }
+
+
         }
 
     }
 
-
-    @Override
-    public void run() {
-        try {
-            start();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
-
-
-
 
