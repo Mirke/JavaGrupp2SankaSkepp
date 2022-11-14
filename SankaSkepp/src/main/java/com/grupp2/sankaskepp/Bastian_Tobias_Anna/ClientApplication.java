@@ -1,22 +1,17 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
-import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
-import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-
-import com.grupp2.sankaskepp.players_Wei_Mikael.Client;
-import com.grupp2.sankaskepp.players_Wei_Mikael.Server;
+import com.grupp2.sankaskepp.players.Client;
 import javafx.application.Application;
-import javafx.application.Platform;
+import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
 
 import java.io.IOException;
 
@@ -24,13 +19,15 @@ import java.io.IOException;
  * För att köra , höger-klicka på pom.xml filen och välja "add as Maven project"  så ska allt rött försvinna.
  */
 
-public class HelloApplication extends Application {
+public class ClientApplication extends Application {
 
-
+    private Client client = new Client();
     private GameBoard youBoard, enemyBoard;
 
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, InterruptedException {
+        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        //Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Scene scene = new Scene(createContent());
         scene.getStylesheets().add("BattleshipStyle.css");
         primaryStage.setTitle("Amazing battleship game");
@@ -43,8 +40,8 @@ public class HelloApplication extends Application {
         launch();
     }
 
-    private Parent createContent() {
-
+    private Parent createContent() throws IOException, InterruptedException {
+        client.start();
         //Anna härifrån och ner
 
         VBox root = new VBox();
@@ -102,33 +99,8 @@ public class HelloApplication extends Application {
          **********************************************************************/
         // Tobias { ***********
 
-        // you
-        Boat youBoat = new Boat();
-        PlaceBoats youPlaceBoats = new PlaceBoats();
-        youBoat.createBoats();
-        youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat.getBoats());
-        youBoard = new GameBoard(youBoat);
-        //ComputerAI youAI = new ComputerAI(youBoat);
-        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
-
-        // -------------------------------------------
-
-        // Server
-        Boat serverBoat = new Boat();
-        PlaceBoats serverPlaceBoats = new PlaceBoats();
-        serverBoat.createBoats();
-        serverPlaceBoats.initializeGridArray();
-        serverPlaceBoats.placeBoats(serverBoat.getBoats());
-        enemyBoard = new GameBoard();
-        // ComputerAI serverAI = new ComputerAI();
-
-        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        ControlOfInput serverControlOfInput = new ControlOfInput(youBoard, enemyBoard);
-
-
-        // klass där AI spelar mot varann
-        // TheBattle theBattle = new TheBattle(enemyBoard,serverBoard,enemyAI,serverAI);
+        this.enemyBoard = client.getEnemyBoard();
+        this.youBoard = client.getYouBoard();
 
         // ********  } Tobias
 
@@ -142,21 +114,7 @@ public class HelloApplication extends Application {
         Button stopButton = new Button("Stop");
         stopButton.setEffect(dropShadow);
 
-        startButton.setOnAction(e -> {
-            // Mikael här hjälp sökes - STAR
-
-            Client client = new Client();
-            Server server = new Server();
-
-            Thread thread_server = new Thread(server);
-            thread_server.start();
-            Thread thread_client = new Thread(client);
-            thread_client.start();
-
-            historyText.setText(server.rightNow);
-
-            // Mikael här hjälp sökes - END
-        });
+        //startButton.setOnAction(e ->);
 
         //stopButton.setOnAction(e ->);
 
@@ -179,17 +137,11 @@ public class HelloApplication extends Application {
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 
 
-
         //Vbox ships = new VBox(new Text("Boats"));
         //ships.setAlignment(Pos.CENTER_RIGHT);
         //root.setRight(ships);
 
 
         return root;
-        // hej
-
-        // KONTROLLPANEL?
-        //root.setRight(new TextArea("Kanske en kontrollpanel här som håller koll vilka kordinater " +
-        //     "                   som lades och om träff eller miss"));
     }
 }

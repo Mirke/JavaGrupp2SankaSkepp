@@ -56,7 +56,7 @@ public class GameBoard extends Parent {
 
         int x = Integer.parseInt(Character.toString(xChar));
 
-        int y = 0;
+        int y = 10;
         switch (yChar) {
 
             case 'a':
@@ -175,7 +175,6 @@ public class GameBoard extends Parent {
         cell.aBoat = true;
         cell.setFill(Color.RED);
         cell.setStroke(Color.BLACK);
-
     }
 
     private void boatIsMiss(int x, int y) {

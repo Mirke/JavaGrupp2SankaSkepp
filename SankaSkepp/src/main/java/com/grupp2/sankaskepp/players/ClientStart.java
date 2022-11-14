@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp.players_Wei_Mikael;
+package com.grupp2.sankaskepp.players;
 
 import java.io.IOException;
 

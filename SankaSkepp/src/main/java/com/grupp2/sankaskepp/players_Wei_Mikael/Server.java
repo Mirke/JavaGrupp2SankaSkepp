@@ -1,10 +1,15 @@
 package com.grupp2.sankaskepp.players_Wei_Mikael;
 
-import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
+import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
+import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -12,6 +17,23 @@ import java.util.Random;
  */
 public class Server implements Runnable{
     //properties
+    private GameBoard youBoard;
+
+
+    private Position position = new Position();
+    private Position position2 = new Position();
+
+    public GameBoard getYouBoard() {
+        return youBoard;
+    }
+
+    public GameBoard getEnemyBoard() {
+        return enemyBoard;
+    }
+
+    private ControlOfInput serverAndEnemyControlOfInput;
+
+    private GameBoard enemyBoard;
 
     private PrintWriter writer;
 
@@ -22,6 +44,33 @@ public class Server implements Runnable{
     public String rightNow = "";
 
     public Server() {
+        // Tobias { ***********
+
+        // you
+        Boat youBoat = new Boat();
+        PlaceBoats youPlaceBoats = new PlaceBoats();
+        youBoat.createBoats();
+        youPlaceBoats.initializeGridArray();
+        youPlaceBoats.placeBoats(youBoat.getBoats());
+        youBoard = new GameBoard(youBoat);
+        //ComputerAI youAI = new ComputerAI(youBoat);
+        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
+
+        // -------------------------------------------
+
+        // Server
+        Boat serverBoat = new Boat();
+        PlaceBoats serverPlaceBoats = new PlaceBoats();
+        serverBoat.createBoats();
+        serverPlaceBoats.initializeGridArray();
+        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        enemyBoard = new GameBoard();
+        // ComputerAI serverAI = new ComputerAI();
+
+        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat,serverBoat);
+
+
     }
 
     //Methods
@@ -54,10 +103,12 @@ public class Server implements Runnable{
 
         boolean sendMessage = true;
         Random rand = new Random();
+        int i = 0;
 
         while (sendMessage) {
             if (reader.ready()) {
                 String messageFromClient = reader.readLine();
+
                 //System.out.println("Player 2 says " + messageFromClient);
                 System.out.println("Server receiving: " + messageFromClient);
 
@@ -65,16 +116,47 @@ public class Server implements Runnable{
 
 
                 //TODO: hit or miss depending on shot from client, need method to check result
-                /*
-                 * Mikael kod: START
-                 */
-                ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                /*
-                 * Mikael kod: END
-                 */
+
+                //position.shuffleList(position.getAllCoordinates());
+
+
+
+                String pos = "";
+                String text = "";
+                if(!messageFromClient.contains("game over")) {
+                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
+                }
+                else{
+                    System.out.println("I won");
+                    serverAndEnemyControlOfInput.getAnswer().add("s");
+                    serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
+                    break;
+                }
+
+                String outputText = "";
+                if(text.contains("game over")){
+                    System.out.println("I lost");
+                    sendMessage = false;
+                    outputText = "game over";
+
+                }else{
+                    Collections.shuffle(position2.getAllCoordinates());
+                    pos = position2.getAllCoordinates().get(0);
+                    position2.getAllCoordinates().remove(0);
+
+                    outputText = text.concat(" shot ").concat(pos);
+                    serverAndEnemyControlOfInput.sentString(outputText);
+                }
+
+
+                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
+                //position.remove(position.getAllCoordinates());
+
+
+
                 String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));
                 //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
-                String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
+                //String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
                 System.out.println("Server sending: " + outputText);
                 System.out.println();
                 /*try {
@@ -93,7 +175,7 @@ public class Server implements Runnable{
                 if (t == 1) {
                     t++;
                 }
-                Thread.sleep(t * 1000);
+                 //Thread.sleep(t * 1000);
 
                 writer.println(outputText);
 
