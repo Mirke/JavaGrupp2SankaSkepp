@@ -1,9 +1,6 @@
 package com.grupp2.sankaskepp.protokoll;
 
 
-import com.grupp2.sankaskepp.Bastian_Tobias.Position;
-import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
-
 import java.util.Random;
 
 public class ProtocolSankaSkepp implements Protocol {

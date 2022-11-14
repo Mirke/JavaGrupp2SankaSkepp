@@ -1,16 +1,14 @@
 package com.grupp2.sankaskepp.players;
 
-import com.grupp2.sankaskepp.Bastian_Tobias.GameBoard;
-import com.grupp2.sankaskepp.Bastian_Tobias.Position;
+import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
+import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 
 import java.io.*;
 import java.net.Socket;
 import java.util.Collections;
-import java.util.List;
 import java.util.Random;
 
 

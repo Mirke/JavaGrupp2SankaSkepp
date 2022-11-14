@@ -1,6 +1,5 @@
-package com.grupp2.sankaskepp.Bastian_Tobias;
+package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.Bastian_Tobias.TheCell;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;

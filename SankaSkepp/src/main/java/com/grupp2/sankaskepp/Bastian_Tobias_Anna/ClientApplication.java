@@ -1,8 +1,5 @@
-package com.grupp2.sankaskepp.Bastian_Tobias;
+package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
-import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
-import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import com.grupp2.sankaskepp.players.Client;
 import javafx.application.Application;
 import javafx.geometry.Pos;

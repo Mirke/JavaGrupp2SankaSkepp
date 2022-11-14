@@ -1,6 +1,6 @@
 package com.grupp2.sankaskepp.CreateAndSetBoats;
 
-import com.grupp2.sankaskepp.Bastian_Tobias.GameBoard;
+import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
 
 import java.util.ArrayList;
 
