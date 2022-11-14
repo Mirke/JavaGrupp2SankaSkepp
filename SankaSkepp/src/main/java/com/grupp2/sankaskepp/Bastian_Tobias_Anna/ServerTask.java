@@ -23,7 +23,9 @@ public class ServerTask extends Task<Void> {
     private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("init\n");
     private Text textInBackup;
 
-    public ServerTask() {
+    public ServerTask(Text historyTextIn) {
+        textInBackup = historyTextIn;
+        textInBackup.textProperty().bind(serverLatestMessageText);
     }
 
     @Override
@@ -54,11 +56,11 @@ public class ServerTask extends Task<Void> {
             if (reader.ready()) {
                 messageFromClient = reader.readLine();
                 printMessageFromClient(true);
-                //latestMessageFromClient();
+                latestMessageFromClient();
                 serverUpdateMessage();
                 printMessageOutFromServer(false);
                 sendServerMessageToClient();
-               // latestMessageSentFromServer();
+                latestMessageSentFromServer();
             }
         }
         sendGameStoppedMessage();
@@ -96,10 +98,11 @@ public class ServerTask extends Task<Void> {
     private void sendServerMessageToClient() {
         try {
             Thread.sleep(delay() * 1000);
-            writer.println(messageFromServer);
+
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        writer.println(messageFromServer);
     }
 
     private int delay() {
