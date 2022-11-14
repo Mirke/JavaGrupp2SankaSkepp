@@ -1,14 +1,16 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
 import java.util.Random;
 
 public class ServerTask extends Task<Void> {
@@ -21,9 +23,47 @@ public class ServerTask extends Task<Void> {
     private String messageFromClient = "";
     private String messageFromServer = "";
     private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
-    private Text textInBackup;
+    public Text textInBackup;
+
+    private GameBoard youBoard;
+    private Position position = new Position();
+    private Position position2 = new Position();
+
+    private ControlOfInput serverAndEnemyControlOfInput;
+    private GameBoard enemyBoard;
 
     public ServerTask(Text historyTextIn) {
+
+        //Init - Start
+        // Tobias { ***********
+        // you
+        Boat youBoat = new Boat();
+        PlaceBoats youPlaceBoats = new PlaceBoats();
+        youBoat.createBoats();
+        youPlaceBoats.initializeGridArray();
+        youPlaceBoats.placeBoats(youBoat.getBoats());
+        youBoard = new GameBoard(youBoat);
+        //ComputerAI youAI = new ComputerAI(youBoat);
+        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
+
+        // -------------------------------------------
+
+        // Server
+        Boat serverBoat = new Boat();
+        PlaceBoats serverPlaceBoats = new PlaceBoats();
+        serverBoat.createBoats();
+        serverPlaceBoats.initializeGridArray();
+        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        enemyBoard = new GameBoard();
+        // ComputerAI serverAI = new ComputerAI();
+
+        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat,serverBoat);
+        //Init - End
+
+
+
+
         textInBackup = historyTextIn;
         textInBackup.textProperty().bind(serverLatestMessageText);
     }
@@ -42,6 +82,7 @@ public class ServerTask extends Task<Void> {
 
     // Weis kod
     private void setupServerAndListenForClient() throws IOException {
+        System.out.println("Server ON");
         ServerSocket serverSocket = new ServerSocket(1619);
         Socket clientSocket = serverSocket.accept();
         isClientConnected = true;
@@ -55,12 +96,50 @@ public class ServerTask extends Task<Void> {
         while (isClientConnected) {
             if (reader.ready()) {
                 messageFromClient = reader.readLine();
-                printMessageFromClient(false);
+
+                String pos = "";
+                String text = "";
+                if(!messageFromClient.contains("game over")) {
+                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
+                }
+                else{
+                    System.out.println("I won");
+                    serverAndEnemyControlOfInput.getAnswer().add("s");
+                    serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
+                    break;
+                }
+
+                String outputText = "";
+                if(text.contains("game over")){
+                    System.out.println("I lost");
+                    isClientConnected = false;
+                    outputText = "game over";
+
+                }else{
+                    Collections.shuffle(position2.getAllCoordinates());
+                    pos = position2.getAllCoordinates().get(0);
+                    position2.getAllCoordinates().remove(0);
+
+                    outputText = text.concat(" shot ").concat(pos);
+                    serverAndEnemyControlOfInput.sentString(outputText);
+                }
+
+                //printMessageFromClient(false);
                 //latestMessageFromClient();
-                serverUpdateMessage();
-                printMessageOutFromServer(false);
-                sendServerMessageToClient();
-                latestMessageSentFromServer();
+                //serverUpdateMessage();
+                //String editedMessage = String.format("""
+                //You: %s""", outputText);
+                //serverLatestMessageText = new SimpleStringProperty(editedMessage);
+                //textInBackup.textProperty().bind(serverLatestMessageText);
+                //printMessageOutFromServer(false);
+                try {
+                    Thread.sleep(delay() * 1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                writer.println(outputText);
+                //sendServerMessageToClient();
+                //latestMessageSentFromServer();
             }
         }
         sendGameStoppedMessage();
@@ -110,12 +189,15 @@ public class ServerTask extends Task<Void> {
         return t;
     }
 
-    public void setClientConnected(Boolean clientConnected) {
-        isClientConnected = clientConnected;
-    }
-
     private void sendGameStoppedMessage() {
         textInBackup.textProperty().bind(new SimpleStringProperty("Game stopped"));
+    }
+
+    public GameBoard getYouBoard() {
+        return youBoard;
+    }
+    public GameBoard getEnemyBoard() {
+        return enemyBoard;
     }
 }
 

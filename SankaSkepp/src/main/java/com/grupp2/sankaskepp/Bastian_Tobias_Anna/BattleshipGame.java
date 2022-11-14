@@ -20,8 +20,6 @@ public class BattleshipGame extends Application {
     Server server = new Server();
     private GameBoard youBoard, enemyBoard;
 
-
-
     HelloController helloController;
 
     @Override
@@ -42,6 +40,7 @@ public class BattleshipGame extends Application {
 
     private Parent createContent() throws IOException, InterruptedException {
         //server.start();
+
         //Anna härifrån och ner
 
         VBox root = new VBox();
@@ -64,6 +63,7 @@ public class BattleshipGame extends Application {
         historyText.setEffect(dropShadow);
 
         helloController = new HelloController(historyText);
+
 
         history.getChildren().add(historyText);
         history.getStyleClass().add("history");
@@ -102,8 +102,10 @@ public class BattleshipGame extends Application {
          **********************************************************************/
         // Tobias { ***********
 
-        this.enemyBoard = server.getEnemyBoard();
-        this.youBoard = server.getYouBoard();
+        //this.enemyBoard = server.getEnemyBoard();
+        //this.youBoard = server.getYouBoard();
+        this.enemyBoard = helloController.enemyBoard;
+        this.youBoard = helloController.youBoard;
         // klass där AI spelar mot varann
         // TheBattle theBattle = new TheBattle(enemyBoard,serverBoard,enemyAI,serverAI);
 
