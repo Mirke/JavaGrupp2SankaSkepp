@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="kommenterade bort på rad 96 i ClientTask.">
-      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MyStringCoordinates.java" afterDir="false" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället">
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +280,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668510174876</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället">
+      <created>1668521753548</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668521753548</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +320,7 @@
     <MESSAGE value="History text uppdaterar snyggare nu utan en newline." />
     <MESSAGE value="MyParceValue" />
     <MESSAGE value="kommenterade bort på rad 96 i ClientTask." />
-    <option name="LAST_COMMIT_MESSAGE" value="kommenterade bort på rad 96 i ClientTask." />
+    <MESSAGE value="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället" />
+    <option name="LAST_COMMIT_MESSAGE" value="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället" />
   </component>
 </project>
