@@ -93,7 +93,7 @@ public class ClientTask extends Task<Void> {
         writer.println("i shot ".concat(pos));
         // init - Stop
 
-        writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
+       // writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
         isServerConnected = true;
 
         while (isServerConnected) {
@@ -142,6 +142,7 @@ public class ClientTask extends Task<Void> {
                 //sendClientMessageToServer();
 
                 //latestMessageSentFromClient();
+
                 try {
                     Thread.sleep(delay() * 1000);
                     editedMessage = String.format("""
@@ -152,6 +153,8 @@ public class ClientTask extends Task<Void> {
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+
+
                 writer.println(outputText);
             }
         }
@@ -197,6 +200,8 @@ public class ClientTask extends Task<Void> {
         writer.println(messageFromClient);
     }
 
+
+
     private int delay() {
         int t = (int) (Math.random() * 5 + 1);
         if (t == 1) {
@@ -204,6 +209,8 @@ public class ClientTask extends Task<Void> {
         }
         return t;
     }
+
+
 
     private void sendGameStoppedMessage() {
         textInBackup.textProperty().bind(new SimpleStringProperty("Game stopped"));

@@ -1,7 +1,7 @@
 
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.players.Client;
+
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

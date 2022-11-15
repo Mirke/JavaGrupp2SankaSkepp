@@ -1,6 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.players.Server;
+
+import com.grupp2.sankaskepp.players_Wei_Mikael.Client;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -17,7 +18,8 @@ import java.io.IOException;
 
 public class BattleshipGame extends Application {
 
-    Server server = new Server();
+   // Server server = new Server();
+    // Client client = new Client();
     private GameBoard youBoard, enemyBoard;
 
     HelloController helloController;
