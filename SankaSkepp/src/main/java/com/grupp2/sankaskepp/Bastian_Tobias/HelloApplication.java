@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.LinearGradient;
@@ -72,6 +74,30 @@ public class HelloApplication extends Application {
         title.getStyleClass().add("title");
         title.setPrefHeight(150);
         title.setAlignment(Pos.TOP_CENTER);
+
+        Text submarineText = new Text("4 submarines");
+        submarineText.setFill(Color.web("37a8b7"));
+        submarineText.setEffect(dropShadow);
+        HBox submarine = new HBox();
+
+        Text cruiserText = new Text("3 cruisers");
+        cruiserText.setFill(Color.web("37a8b7"));
+        cruiserText.setEffect(dropShadow);
+        HBox cruiser = new HBox();
+
+        Text battleshipText = new Text("2 battleships");
+        battleshipText.setFill(Color.web("37a8b7"));
+        battleshipText.setEffect(dropShadow);
+        HBox battleship = new HBox();
+
+        Text hangarshipText = new Text("1 hangarship");
+        hangarshipText.setFill(Color.web("37a8b7"));
+        hangarshipText.setEffect(dropShadow);
+        HBox hangarship = new HBox();
+
+        //HBox submarine = new HBox();
+        //submarine.setStyle("-fx-background-image: url('submarine.png');" + "-fx-background-position: center center;" );
+
 
         HBox history = new HBox();
         Text historyText = new Text("Test");
@@ -143,6 +169,7 @@ public class HelloApplication extends Application {
         // ********  } Tobias
 
 
+
         you.getChildren().addAll(youLabel, youBoard);
         enemy.getChildren().addAll(enemyLabel, serverBoard);
 
@@ -167,10 +194,16 @@ public class HelloApplication extends Application {
         HBox bottomBox = new HBox(40, startButtonBox, stopButtonBox);
 
 
+
         HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(title, history, boards, bottomBox);
+        root.getChildren().addAll(title, history, boards, bottomBox, submarine, cruiser);
         history.setAlignment(Pos.BASELINE_CENTER);
+        submarine.setAlignment(Pos.TOP_RIGHT);
+
+        //submarine.setAlignment(Pos.TOP_RIGHT);
+
+
 
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
 
