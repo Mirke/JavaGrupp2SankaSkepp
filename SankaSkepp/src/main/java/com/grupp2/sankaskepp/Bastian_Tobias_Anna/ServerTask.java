@@ -132,11 +132,14 @@ public class ServerTask extends Task<Void> {
                 //serverLatestMessageText = new SimpleStringProperty(editedMessage);
                 //textInBackup.textProperty().bind(serverLatestMessageText);
                 //printMessageOutFromServer(false);
+
                 try {
                     Thread.sleep(delay() * 1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+
+
                 writer.println(outputText);
                 //sendServerMessageToClient();
                 //latestMessageSentFromServer();

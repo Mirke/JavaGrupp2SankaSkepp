@@ -1,6 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.players.Server;
+
+import com.grupp2.sankaskepp.players_Wei_Mikael.Server;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;

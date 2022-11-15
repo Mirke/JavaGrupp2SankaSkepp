@@ -14,6 +14,7 @@ public class GameBoard extends Parent {
     private TheCell cell;
     private Boat boat;
 
+    private MyParceValue myParceValue = new MyParceValue();
     // lista som håller skeppen koordinater som string
     List<String> allShipCoordinates = new ArrayList<>();
 
@@ -51,50 +52,13 @@ public class GameBoard extends Parent {
 
     // Methods
     public void parceStringShotCoordinates(boolean hit, String shot) {
-        char xChar = shot.charAt(0);
-        char yChar = shot.charAt(1);
-
-        int x = Integer.parseInt(Character.toString(xChar));
-
-        int y = 10;
-        switch (yChar) {
-
-            case 'a':
-                y = 0;
-                break;
-            case 'b':
-                y = 1;
-                break;
-            case 'c':
-                y = 2;
-                break;
-            case 'd':
-                y = 3;
-                break;
-            case 'e':
-                y = 4;
-                break;
-            case 'f':
-                y = 5;
-                break;
-            case 'g':
-                y = 6;
-                break;
-            case 'h':
-                y = 7;
-                break;
-            case 'i':
-                y = 8;
-                break;
-            case 'j':
-                y = 9;
-                break;
-        }
+        int x = myParceValue.stringToXint(shot);
+        int y = myParceValue.StringToYint(shot);
         // skicka vidare bool och koordinater för att målas upp på brädet.
-        if(hit) {
+        if (hit) {
             boatIsHit(x, y);
-        }else{
-            boatIsMiss(x,y);
+        } else {
+            boatIsMiss(x, y);
         }
     }
 
@@ -173,7 +137,7 @@ public class GameBoard extends Parent {
         // hit
         this.cell = getTheCell(x, y);
         cell.aBoat = true;
-        cell.setFill(Color.RED);
+        cell.setFill(Color.PURPLE);
         cell.setStroke(Color.BLACK);
     }
 
