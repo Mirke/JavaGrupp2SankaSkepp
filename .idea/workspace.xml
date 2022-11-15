@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="MyParceValue">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="kommenterade bort på rad 96 i ClientTask.">
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MyStringCoordinates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/ClientStart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/Server.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players/ServerStart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668505410743</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="kommenterade bort på rad 96 i ClientTask.">
+      <created>1668510174875</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1668510174876</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +313,7 @@
     <MESSAGE value="Nu uppdaterar de history text efter varandra" />
     <MESSAGE value="History text uppdaterar snyggare nu utan en newline." />
     <MESSAGE value="MyParceValue" />
-    <option name="LAST_COMMIT_MESSAGE" value="MyParceValue" />
+    <MESSAGE value="kommenterade bort på rad 96 i ClientTask." />
+    <option name="LAST_COMMIT_MESSAGE" value="kommenterade bort på rad 96 i ClientTask." />
   </component>
 </project>
