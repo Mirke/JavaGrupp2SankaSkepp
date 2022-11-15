@@ -3,6 +3,7 @@ package com.grupp2.sankaskepp.Remaining;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 
 import java.util.Collections;
+
 /*
     Karins MainRemain har flyttats hit
  */
@@ -14,24 +15,27 @@ public class ComputerLogic {
     private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
 
     // Constructors
-    public ComputerLogic(){
+    public ComputerLogic() {
 
     }
+
     // Methods
-    public void iForStartOfRound(){
+    public void iForStartOfRound() {
         Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
         myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getRemainingXYspots().get(0));  // add new XyValue to hitList
         myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
 
 
     }
-    public void hForHit(){
+
+    public void hForHit() {
         // kolla om hitList>1 isåfall ta nästa möjliga koordinat i linje med två tidigare
         // find position next to XyValue in hitList, will be  next shot
         myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
 
     }
-    public void mForMiss(){
+
+    public void mForMiss() {
         if (myStringCoordinates.getEnemyGameBoard().hitList.size() < 2) {
             myStringCoordinates.getEnemyGameBoard().hitList.clear();   // clear hitList
             Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
@@ -42,7 +46,8 @@ public class ComputerLogic {
         }
 
     }
-    public void sForSink(){
+
+    public void sForSink() {
         // EnemyBoats.length tells which boat was sunk
         // logic to clear safe points around boat - add positions to guardedSpots[]
         // remove boat from ListEnemyBoats[]
