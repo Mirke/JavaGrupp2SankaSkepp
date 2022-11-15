@@ -1,12 +1,15 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
+
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
+import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -26,8 +29,8 @@ public class ServerTask extends Task<Void> {
     public Text textInBackup;
 
     private GameBoard youBoard;
-    private Position position = new Position();
-    private Position position2 = new Position();
+
+    private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
 
     private ControlOfInput serverAndEnemyControlOfInput;
     private GameBoard enemyBoard;
@@ -58,11 +61,8 @@ public class ServerTask extends Task<Void> {
         // ComputerAI serverAI = new ComputerAI();
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat,serverBoat);
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
         //Init - End
-
-
-
 
         textInBackup = historyTextIn;
         textInBackup.textProperty().bind(serverLatestMessageText);
@@ -99,10 +99,9 @@ public class ServerTask extends Task<Void> {
 
                 String pos = "";
                 String text = "";
-                if(!messageFromClient.contains("game over")) {
+                if (!messageFromClient.contains("game over")) {
                     text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
-                }
-                else{
+                } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
                     serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
@@ -110,15 +109,15 @@ public class ServerTask extends Task<Void> {
                 }
 
                 String outputText = "";
-                if(text.contains("game over")){
+                if (text.contains("game over")) {
                     System.out.println("I lost");
                     isClientConnected = false;
                     outputText = "game over";
 
-                }else{
-                    Collections.shuffle(position2.getAllCoordinates());
-                    pos = position2.getAllCoordinates().get(0);
-                    position2.getAllCoordinates().remove(0);
+                } else {
+                    Collections.shuffle(myStringCoordinates.getRemainingXYspots());
+                    pos = myStringCoordinates.getRemainingXYspots().get(0);
+                    myStringCoordinates.getRemainingXYspots().remove(0);
 
                     outputText = text.concat(" shot ").concat(pos);
                     serverAndEnemyControlOfInput.sentString(outputText);
@@ -185,7 +184,7 @@ public class ServerTask extends Task<Void> {
     }
 
     private int delay() {
-        int t = (int) (Math.random() * 5 + 1);
+        int t = 1;
         if (t == 1) {
             t++;
         }
@@ -199,6 +198,7 @@ public class ServerTask extends Task<Void> {
     public GameBoard getYouBoard() {
         return youBoard;
     }
+
     public GameBoard getEnemyBoard() {
         return enemyBoard;
     }
