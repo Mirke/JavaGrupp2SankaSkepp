@@ -1,4 +1,4 @@
-package com.grupp2.sankaskepp.Bastian_Tobias;
+package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 
@@ -10,7 +10,7 @@ import java.util.List;
 public class Position {
     // Attributes
     private String[][] string2DArray;
-    private List<String> allCoordinates;
+    private List<String> allCoordinates = new ArrayList<>(0);
     private List<String> allShipCoordinates;
     private Boat boat;
     private final int X_HORISONTAL = 10;
@@ -19,6 +19,19 @@ public class Position {
 
     // Constructors
 
+    public Position(){
+
+
+        for (int i = 0; i < X_HORISONTAL; i++) {
+
+            for (int j = 0; j < Y_VERTICAL; j++) {
+                // 2D array
+              //  string2DArray[i][j] = xString(i).concat(yString(j));
+                // alla koordinater i en lista
+                allCoordinates.add(yString(i).concat(xString(j)));
+            }
+        }
+    }
     public Position(Boat boat) {
         this.boat = boat;
 
@@ -40,15 +53,46 @@ public class Position {
     }
 
     // Methods
-    public void remove(List<String> str){
+    public void yUp(int y) {
+        // y + 1
+    }
+
+    public void yDown(int y) {
+        // y - 1
+    }
+
+    public void xLeft(int x) {
+        // x - 1
+    }
+
+    public void xRight(int x) {
+        // y + 1
+    }
+    public void topLeft(){
+        // x + 1, y + 1
+    }
+    public void topRight(){
+        // x + 1, y + 1
+    }
+    public void bottomLeft(){
+        // x - 1, y - 1
+    }
+    public void bottomRight(){
+        // x + 1, y - 1
+    }
+
+    public void remove(List<String> str) {
         str.remove(0);
     }
-    public void remove(List<String> list, String str){
+
+    public void remove(List<String> list, String str) {
         list.remove(str);
     }
-    public void shuffleList(List<String> list){
+
+    public void shuffleList(List<String> list) {
         Collections.shuffle(list);
     }
+
     public void listOfAllShipCoordinates() {
         allShipCoordinates = new ArrayList<>();
         for (int i = 0; i < ALLBOATS.length; i++) {

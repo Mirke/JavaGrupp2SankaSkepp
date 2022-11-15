@@ -4,28 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;.">
-      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/resources/submarine.png" afterDir="false" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/resources/battleshipbackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/battleshipbackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Anna_Branch" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -49,15 +53,113 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yaffletank/IdeaProjects/JavaGrupp2SankaSkepp_merge1/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Användaren\IdeaProjects\JavaGrupp2SankaSkepp\SankaSkepp\src\main\resources" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.grupp2.sankaskepp.Bastian_Tobias_Anna" />
+      <recent name="com.grupp2.sankaskepp.Bastian_Tobias" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.BattleshipGame">
+    <configuration name="BattleshipGame" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.BattleshipGame" />
+      <module name="SankaSkepp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.ClientApplication" />
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClientStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.players.ClientStart" />
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.players.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias.HelloApplication" />
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.ServerApplication" />
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.Bastian_Tobias_Anna.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerStart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.grupp2.sankaskepp.players.ServerStart" />
+      <module name="SankaSkepp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.grupp2.sankaskepp.players.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.BattleshipGame" />
+      <item itemvalue="Application.ClientApplication" />
+      <item itemvalue="Application.ClientStart" />
+      <item itemvalue="Application.HelloApplication" />
+      <item itemvalue="Application.ServerApplication" />
+      <item itemvalue="Application.ServerStart" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ClientApplication" />
+        <item itemvalue="Application.ServerApplication" />
+        <item itemvalue="Application.ClientStart" />
+        <item itemvalue="Application.ServerStart" />
+        <item itemvalue="Application.HelloApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -76,12 +178,9 @@
       <workItem from="1667400003795" duration="722000" />
       <workItem from="1667400734158" duration="326000" />
       <workItem from="1667479818693" duration="4120000" />
-      <workItem from="1668272638829" duration="751000" />
-      <workItem from="1668276015863" duration="958000" />
-      <workItem from="1668358153008" duration="167000" />
-      <workItem from="1668360656730" duration="275000" />
-      <workItem from="1668413705862" duration="16782000" />
-      <workItem from="1668500364974" duration="7863000" />
+      <workItem from="1667899467822" duration="2626000" />
+      <workItem from="1667981964661" duration="12969000" />
+      <workItem from="1668443995789" duration="24834000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -107,7 +206,97 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1667815567221</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="behövde göra om allt från min branch..... hoppas det funkar nu">
+      <created>1667893606849</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667893606849</updated>
+    </task>
+    <task id="LOCAL-00007" summary="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot.">
+      <created>1667907502118</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667907502118</updated>
+    </task>
+    <task id="LOCAL−00008" summary="Båda spelplanerna kan nu kommunicera och visa resultat">
+      <created>1668090290448</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1668090290448</updated>
+    </task>
+    <task id="LOCAL−00009" summary="Fler ändringar som får programmet att fungera bättre och oftare">
+      <created>1668094631239</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1668094631239</updated>
+    </task>
+    <task id="LOCAL−00010" summary=".">
+      <created>1668160852822</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1668160852822</updated>
+    </task>
+    <task id="LOCAL−00011" summary="Skapat Tasks och lagt till kod i HelloController för event.">
+      <created>1668446206471</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1668446206471</updated>
+    </task>
+    <task id="LOCAL−00012" summary="SkapaDe pratar med varandra.">
+      <created>1668456308247</created>
+      <option name="number" value="LOCAL−00012" />
+      <option name="presentableId" value="LOCAL−00012" />
+      <updated>1668456308247</updated>
+    </task>
+    <task id="LOCAL−00013" summary="Nu uppdaterar texten sig.">
+      <created>1668457315935</created>
+      <option name="number" value="LOCAL−00013" />
+      <option name="presentableId" value="LOCAL−00013" />
+      <updated>1668457315935</updated>
+    </task>
+    <task id="LOCAL−00014" summary="Nu uppdaterar de history text efter varandra">
+      <created>1668458407217</created>
+      <option name="number" value="LOCAL−00014" />
+      <option name="presentableId" value="LOCAL−00014" />
+      <updated>1668458407217</updated>
+    </task>
+    <task id="LOCAL−00015" summary="History text uppdaterar snyggare nu utan en newline.">
+      <created>1668458964388</created>
+      <option name="number" value="LOCAL−00015" />
+      <option name="presentableId" value="LOCAL−00015" />
+      <updated>1668458964388</updated>
+    </task>
+    <task id="LOCAL-00016" summary="MyParceValue">
+      <created>1668505410743</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1668505410743</updated>
+    </task>
+    <task id="LOCAL-00017" summary="kommenterade bort på rad 96 i ClientTask.">
+      <created>1668510174875</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1668510174876</updated>
+    </task>
+    <task id="LOCAL-00018" summary="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället">
+      <created>1668521753548</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668521753548</updated>
+    </task>
+    <task id="LOCAL-00019" summary="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput">
+      <created>1668522890920</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1668522890920</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +316,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gjorde layout/design." />
     <MESSAGE value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
+    <MESSAGE value="behövde göra om allt från min branch..... hoppas det funkar nu" />
+    <MESSAGE value="jag och bastian har fixat lite syntax fel, nu funkar koden men blir outofbounds på rad 46 eftesom listan är ju tom men funkar om man lägger till ett string värde i enemyShot." />
+    <MESSAGE value="Båda spelplanerna kan nu kommunicera och visa resultat" />
+    <MESSAGE value="Fler ändringar som får programmet att fungera bättre och oftare" />
+    <MESSAGE value="." />
+    <MESSAGE value="Tränar" />
+    <MESSAGE value="Skapat Tasks och lagt till kod i HelloController för event." />
+    <MESSAGE value="SkapaDe pratar med varandra." />
+    <MESSAGE value="Nu uppdaterar texten sig." />
+    <MESSAGE value="Nu uppdaterar de history text efter varandra" />
+    <MESSAGE value="History text uppdaterar snyggare nu utan en newline." />
+    <MESSAGE value="MyParceValue" />
+    <MESSAGE value="kommenterade bort på rad 96 i ClientTask." />
+    <MESSAGE value="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället" />
+    <MESSAGE value="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput" />
+    <option name="LAST_COMMIT_MESSAGE" value="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput" />
   </component>
 </project>
