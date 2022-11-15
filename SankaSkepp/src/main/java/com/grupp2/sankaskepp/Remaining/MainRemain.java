@@ -8,36 +8,13 @@ import java.util.Set;
 
 public class MainRemain {
     // tobias test - finns metod som tar in String till enemyShot (längst ner)
-  private String enemyShot = "";    //textsträngen från motspelaren, kommer bli indexOutOfBounds eftersom den är tom
+    private String enemyShot = "";    //textsträngen från motspelaren, kommer bli indexOutOfBounds eftersom den är tom
+
+    private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
 
     // tobias test - ändrade så main inte är static
     public void main() {
 
-
-        EnemyGameBoard enemyGameBoard = new EnemyGameBoard();
-
-        YourGameBoard yourGameBoard = new YourGameBoard();
-
-        XYposition xyPosition = new XYposition();
-
-        //Make List of all positions in EnemyGameBoard - Karin
-
-        List<String> remainingXYspots = (List<String>) enemyGameBoard.getRemainingXYspots();
-
-        XYposition[][] remainingEnemyPositions = enemyGameBoard.getRemainingEnemyPositions();
-
-
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                remainingEnemyPositions[i][j] = new XYposition
-                        (enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j], false, false);
-
-                yourGameBoard.setYourPositions(remainingEnemyPositions);
-
-                remainingXYspots.add(remainingEnemyPositions[i][j].getXyValue());
-            }
-
-        }
 
         //Logik för nästa skott, beroende på var föregående skott träffade 123
 
@@ -47,20 +24,20 @@ public class MainRemain {
 
         if (Character.toString(this.enemyShot.charAt(0)).equals("i")) {
 
-            Collections.shuffle(remainingXYspots);  // return Random xyValue from remainingXYspots
-            enemyGameBoard.hitList.add(enemyGameBoard.remainingXYspots.get(0));  // add new XyValue to hitList
-            enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+            Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
+            myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getRemainingXYspots().get(0));  // add new XyValue to hitList
+            myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
 
 
         } else if (Character.toString(this.enemyShot.charAt(0)).equals("m")) {
 
-            if (enemyGameBoard.hitList.size() < 2) {
-                enemyGameBoard.hitList.clear();   // clear hitList
-                Collections.shuffle(remainingXYspots);  // return Random xyValue from remainingXYspots
-                enemyGameBoard.hitList.add(enemyGameBoard.remainingXYspots.get(0));  // add new XyValue to hitList
-                enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
-            } else if (enemyGameBoard.hitList.size() > 1) { //använd logik för nästa skott,
-                enemyGameBoard.hitList.remove(enemyGameBoard.hitList.size() - 1); //ta bort värdet för sista index
+            if (myStringCoordinates.getEnemyGameBoard().hitList.size() < 2) {
+                myStringCoordinates.getEnemyGameBoard().hitList.clear();   // clear hitList
+                Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
+                myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));  // add new XyValue to hitList
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+            } else if (myStringCoordinates.getEnemyGameBoard().hitList.size() > 1) { //använd logik för nästa skott,
+                myStringCoordinates.getEnemyGameBoard().hitList.remove(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1); //ta bort värdet för sista index
             }
 
 
@@ -68,7 +45,7 @@ public class MainRemain {
 
             // kolla om hitList>1 isåfall ta nästa möjliga koordinat i linje med två tidigare
             // find position next to XyValue in hitList, will be  next shot
-            enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+            myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
 
         } else if (Character.toString(enemyShot.charAt(0)).equals("s")) {
 
@@ -76,16 +53,17 @@ public class MainRemain {
             // logic to clear safe points around boat - add positions to guardedSpots[]
             // remove boat from ListEnemyBoats[]
             // remove guardedSpots from remainingXYspots
-            enemyGameBoard.hitList.clear();   // clear hitList
-            Collections.shuffle(remainingXYspots);  // return Random xyValue from remainingXYspots
-            enemyGameBoard.hitList.add(enemyGameBoard.remainingXYspots.get(0));  // add new XyValue to hitList
-            enemyGameBoard.remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+            myStringCoordinates.getEnemyGameBoard().hitList.clear();   // clear hitList
+            Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
+            myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));  // add new XyValue to hitList
+            myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
 
         }
     }
+
     // tobias test - hämtar från mickes protokoll
     // sedan startar main metoden här i klassen
-    public void takeStringLetter(String letter){
+    public void takeStringLetter(String letter) {
         this.enemyShot = letter;
         main();
     }
