@@ -1,12 +1,14 @@
 package com.grupp2.sankaskepp.CreateAndSetBoats;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
+import com.grupp2.sankaskepp.Remaining.ComputerLogic;
 
 import java.util.ArrayList;
 
 public class ControlOfInput {
     ArrayList<Integer> skipCheck = new ArrayList<>(0);
     ArrayList<String> answer = new ArrayList<>(0);
+    ComputerLogic computerLogic = new ComputerLogic();
     int boats = 10;
 
     private GameBoard youBoard, enemyBoard;
@@ -36,15 +38,7 @@ public class ControlOfInput {
             answer.add(Character.toString(choice.charAt(0)));
             checkAnswerFromOtherPlayer();
 
-            /*
-            if (Character.toString(choice.charAt(0)).equals("i")) {
-                //Metod där starten av programmet sker
-            }
-            if (choice.equals("game over")) {
-                //Metod för att avsluta spelet efter att man har vunnit
-                //System.out.println("Avslutar spelet");
-            }
-*/
+
             //Tar ut värdena från andra spelarens textsträng och omvandlar dem till en egen textsträng som sedan kan kontrolleras
             String y = Character.toString(choice.charAt(7));
             String x = Character.toString(choice.charAt(8));
@@ -55,6 +49,8 @@ public class ControlOfInput {
 
                     if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
                             myBoat.getBoats()[i].getPosition().size() == 1) {
+
+                        hit = hit.concat(computerLogic.sForSink());
 
                         // Tobias { *********
                         //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
@@ -69,6 +65,9 @@ public class ControlOfInput {
                     } else if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice)) {
                         hit = "h";
                         //För att ta bort värdet i arraylisten
+
+                        hit = hit.concat(computerLogic.hForHit());
+
                         myBoat.getBoats()[i].getPosition().remove(j);
 
                         /*Metoden nedan kan vara exakt likadan kod som när man lägger till båtarna men att man
@@ -91,11 +90,16 @@ public class ControlOfInput {
         if (hit.equals("")) {
             hit = "m";
 
+            hit = hit.concat(computerLogic.mForMiss());
+
             //Här ska rutan bli blå på position "playerChoice" i userInterface
             // Tobias { *********
             //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
             youBoard.parceStringShotCoordinates(false, playerChoice);
             // *********** } Tobias
+        }
+        if (Character.toString(choice.charAt(0)).equals("i")) {
+            hit = hit.concat(computerLogic.iForStartOfRound());
         }
 
         for (int i = 0; i < myBoat.getBoats().length; i++) {
