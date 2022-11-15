@@ -98,6 +98,7 @@ public class ClientTask extends Task<Void> {
         // writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
         isServerConnected = true;
 
+        String outputText = "";
         while (isServerConnected) {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
@@ -120,7 +121,7 @@ public class ClientTask extends Task<Void> {
                 }
 
 
-                String outputText = "";
+                outputText = "";
                 if (text.contains("game over")) {
                     System.out.println("I lost");
                     isServerConnected = false;
@@ -159,7 +160,7 @@ public class ClientTask extends Task<Void> {
                 writer.println(outputText);
             }
         }
-        sendGameStoppedMessage();
+        sendGameStoppedMessage(outputText);
     }
 
     private void printMessageOutFromClient(boolean show, String outputText) {
@@ -211,8 +212,13 @@ public class ClientTask extends Task<Void> {
     }
 
 
-    private void sendGameStoppedMessage() {
-        textInBackup.textProperty().bind(new SimpleStringProperty("Game stopped"));
+    private void sendGameStoppedMessage(String outputText) {
+        if(outputText == "game over"){
+            outputText = "You: I lost!";
+        } else {
+            outputText = "You: I won!";
+        }
+        textInBackup.textProperty().bind(new SimpleStringProperty(outputText));
     }
 
     public GameBoard getYouBoard() {
