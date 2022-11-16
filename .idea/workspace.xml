@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;.">
-      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/resources/submarine.png" afterDir="false" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Bakgrundsbild.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/resources/battleshipbackground.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/battleshipbackground.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +76,8 @@
       <workItem from="1668358153008" duration="167000" />
       <workItem from="1668360656730" duration="275000" />
       <workItem from="1668413705862" duration="16782000" />
-      <workItem from="1668500364974" duration="7863000" />
+      <workItem from="1668500364974" duration="12661000" />
+      <workItem from="1668586787011" duration="1558000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -107,7 +103,19 @@
       <option name="presentableId" value="LOCAL−00005" />
       <updated>1667815567221</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL−00006" summary="Bakgrund.">
+      <created>1668521557114</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1668521557114</updated>
+    </task>
+    <task id="LOCAL−00007" summary="Bakgrundsbild.">
+      <created>1668525247523</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1668525247523</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +135,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gjorde layout/design." />
     <MESSAGE value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refaktorering av &quot;Server&quot; till &quot;Enemy&quot;." />
+    <MESSAGE value="Bakgrund." />
+    <MESSAGE value="Bakgrundsbild." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bakgrundsbild." />
   </component>
 </project>
