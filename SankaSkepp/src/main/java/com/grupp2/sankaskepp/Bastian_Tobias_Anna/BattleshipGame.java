@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -18,16 +20,12 @@ import java.io.IOException;
 
 public class BattleshipGame extends Application {
 
-   // Server server = new Server();
-    // Client client = new Client();
     private GameBoard youBoard, enemyBoard;
 
     HelloController helloController;
 
     @Override
     public void start(Stage primaryStage) throws IOException, InterruptedException {
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        //Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         Scene scene = new Scene(createContent());
         scene.getStylesheets().add("BattleshipStyle.css");
         primaryStage.setTitle("Amazing battleship game");
@@ -41,7 +39,6 @@ public class BattleshipGame extends Application {
     }
 
     private Parent createContent() throws IOException, InterruptedException {
-        //server.start();
 
         //Anna härifrån och ner
 
@@ -56,7 +53,7 @@ public class BattleshipGame extends Application {
         titleLabel.setFill(Color.web("#b2dee4"));
         titleLabel.setEffect(dropShadow);
         title.getStyleClass().add("title");
-        title.setPrefHeight(150);
+        title.setPrefHeight(70);
         title.setAlignment(Pos.TOP_CENTER);
 
         HBox history = new HBox();
@@ -65,10 +62,34 @@ public class BattleshipGame extends Application {
         historyText.setEffect(dropShadow);
 
         helloController = new HelloController(historyText);
-
-
         history.getChildren().add(historyText);
         history.getStyleClass().add("history");
+
+
+        Text submarineText = new Text("4 submarines");
+        submarineText.setFill(Color.web("37a8b7"));
+        submarineText.setEffect(dropShadow);
+        HBox submarine = new HBox();
+
+        Text cruiserText = new Text("3 cruisers");
+        cruiserText.setFill(Color.web("37a8b7"));
+        cruiserText.setEffect(dropShadow);
+        HBox cruiser = new HBox();
+
+        Text battleshipText = new Text("2 battleships");
+        battleshipText.setFill(Color.web("37a8b7"));
+        battleshipText.setEffect(dropShadow);
+        HBox battleship = new HBox();
+
+        Text hangarshipText = new Text("1 hangarship");
+        hangarshipText.setFill(Color.web("37a8b7"));
+        hangarshipText.setEffect(dropShadow);
+        HBox hangarship = new HBox();
+
+        //HBox submarine = new HBox();
+        //submarine.setStyle("-fx-background-image: url('submarine.png');" + "-fx-background-position: center center;" );
+
+
 
         title.getChildren().add(titleLabel);
 
@@ -76,6 +97,10 @@ public class BattleshipGame extends Application {
         //history.setStyle("-fx-background-color: transparent");
         //history.setEditable(false);
         //history.appendText("Test");
+
+        Region filler = new Region();
+        filler.setPrefHeight(50);
+        HBox.setHgrow(filler, Priority.ALWAYS);
 
         VBox you = new VBox();
         you.getStyleClass().add("enemyAndYou");
@@ -133,14 +158,14 @@ public class BattleshipGame extends Application {
         stopButtonBox.getStyleClass().add("stopButtonBox");
 
         startButton.setAlignment(Pos.CENTER);
-        stopButton.setAlignment(Pos.CENTER);
+        //stopButton.setAlignment(Pos.CENTER);
 
-        HBox bottomBox = new HBox(40, startButtonBox, stopButtonBox);
+        HBox bottomBox = new HBox(40, startButtonBox);
 
 
         HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(title, history, boards, bottomBox);
+        root.getChildren().addAll(title, history, filler, boards, bottomBox, submarine, cruiser);
         history.setAlignment(Pos.BASELINE_CENTER);
 
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
