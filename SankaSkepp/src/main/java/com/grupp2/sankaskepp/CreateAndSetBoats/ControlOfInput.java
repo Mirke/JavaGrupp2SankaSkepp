@@ -50,8 +50,6 @@ public class ControlOfInput {
                     if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
                             myBoat.getBoats()[i].getPosition().size() == 1) {
 
-                        hit = hit.concat(computerLogic.sForSink());
-
                         // Tobias { *********
                         //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
                         youBoard.parceStringShotCoordinates(true, playerChoice);
@@ -59,6 +57,7 @@ public class ControlOfInput {
 
                         myBoat.getBoats()[i].getPosition().remove(j);
                         hit = "s";
+                        hit = hit.concat(computerLogic.sForSink());
                         j = myBoat.getBoats()[i].getPosition().size() - 1;
                         i = myBoat.getBoats().length - 1;
 
