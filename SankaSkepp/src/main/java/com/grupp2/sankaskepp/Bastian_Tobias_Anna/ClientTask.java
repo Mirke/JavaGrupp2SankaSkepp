@@ -88,17 +88,22 @@ public class ClientTask extends Task<Void> {
 
     private void clientSpeaksWithServer() throws IOException {
         // init -Start
+        /*
         Collections.shuffle(myStringCoordinates.getRemainingXYspots());
         String pos = myStringCoordinates.getRemainingXYspots().get(0);
         myStringCoordinates.getRemainingXYspots().remove(0);
         serverAndEnemyControlOfInput.sentString("i shot ".concat(pos));
         writer.println("i shot ".concat(pos));
+        */
+        String outputText = serverAndEnemyControlOfInput.startRound();
+        serverAndEnemyControlOfInput.sentString(outputText);
+        writer.println(outputText);
         // init - Stop
 
         // writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
         isServerConnected = true;
 
-        String outputText = "";
+        outputText = "";
         while (isServerConnected) {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
@@ -109,10 +114,10 @@ public class ClientTask extends Task<Void> {
                 clientLatestMessageText = new SimpleStringProperty(editedMessage);
                 textInBackup.textProperty().bind(clientLatestMessageText);
 
-                pos = "";
-                String text = "";
+
                 if (!messageFromServer.contains("game over")) {
-                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
+                    outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
+                    serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
@@ -121,20 +126,22 @@ public class ClientTask extends Task<Void> {
                 }
 
 
-                outputText = "";
-                if (text.contains("game over")) {
+
+                if (outputText.contains("game over")) {
                     System.out.println("I lost");
                     isServerConnected = false;
                     outputText = "game over";
 
-                } else {
+                }
+                    /*
                     Collections.shuffle(myStringCoordinates.getRemainingXYspots());
                     pos = myStringCoordinates.getRemainingXYspots().get(0);
                     myStringCoordinates.getRemainingXYspots().remove(0);
 
                     outputText = text.concat(" shot ").concat(pos);
                     serverAndEnemyControlOfInput.sentString(outputText);
-                }
+                     */
+
                 // init - end
 
                 printMessageFromServer(true);

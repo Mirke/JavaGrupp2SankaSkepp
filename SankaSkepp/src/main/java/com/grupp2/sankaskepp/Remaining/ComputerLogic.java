@@ -2,6 +2,7 @@ package com.grupp2.sankaskepp.Remaining;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.MyParceValue;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 
 import java.util.Collections;
 
@@ -22,11 +23,30 @@ public class ComputerLogic {
 
     }
 
+    public String ifRecievingi() {
+        Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
+        myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getRemainingXYspots().get(0));// add new XyValue to hitList
+        String text = " shot ".concat(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
+        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+
+
+         /* int x = 0;
+                int y = 0;
+                int k = (int) (Math.random()* enemyPositions.length); //plocka ut enemyXY på position k, dela upp k i x och y
+                if (k >= 10) { x = k/10; y = k%10;}
+                else if (k<10) {x = 0; y = k;}
+                enemyGameBoard.hitList.add(enemyGameBoard.enemyXY[x][y].getXyValue());  // add new XyValue to hitList
+                enemyXY[x][y].wasHit = true;
+                nextXY = enemyXY[x][y].getXyValue();*/
+
+        return text;
+    }
+
     // Methods
     public String iForStartOfRound() {
         Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
         myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getRemainingXYspots().get(0));// add new XyValue to hitList
-        String text = " shot ".concat(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
+        String text = "i shot ".concat(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
         myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
 
          /* int x = 0;
@@ -41,15 +61,17 @@ public class ComputerLogic {
         return text;
     }
 
-    public String hForHit() {
+    public String hForHit(ControlOfInput controlOfInput) {
         // kolla om hitList>1 isåfall ta nästa möjliga koordinat i linje med två tidigare
         // find position next to XyValue in hitList, will be  next shot
+        /*
         String text =  " shot ".concat(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
         myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
+        */
 
-        int x = 0;
-        int y = 0;
-        String nextXY = " ";
+        int x = myParceValue.stringToXint(controlOfInput.getSentPosition().get(controlOfInput.getSentPosition().size() - 1));
+        int y = myParceValue.stringToYint(controlOfInput.getSentPosition().get(controlOfInput.getSentPosition().size() - 1));;
+        String nextXY = "";
 
         if (x == 0) {
             if (y == 0) { //Check upper left corner
@@ -114,38 +136,47 @@ public class ComputerLogic {
         }
 
         if (y == 9) { //Check border along y = 9
-            if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x++][9].wasHit) {
+            if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x++][9].wasHit && x < 9) {
                 x++;
 
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][9].wasHit) {
+            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][9].wasHit && x > 0) {
                 x--;
 
             } else nextXY = (myStringCoordinates.getRemainingEnemyPositions()[x][8].getXyValue());
         }
-        nextXY = (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+
+        nextXY = " shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
         myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].wasHit = true;
+        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(nextXY);
+
+        if(y != 0 && y != 9 && x != 0 && x != 9){
+            nextXY =  " shot ".concat(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
+            myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);
+        }
+
         //myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getRemainingXYspots().nextXY);  // add new XyValue to hitList
-        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(nextXY);  // remove xyValue from remainingXYspots
+          // remove xyValue from remainingXYspots
 
 
-        return text;
+        return nextXY;
     }
 
-    public String mForMiss() {
+    public String mForMiss(ControlOfInput controlOfInput) {
         String text = "";
         if (myStringCoordinates.getEnemyGameBoard().hitList.size() < 2) {
-            myStringCoordinates.getEnemyGameBoard().hitList.clear();   // clear hitList
+            myStringCoordinates.getEnemyGameBoard().hitList.remove( myStringCoordinates.getEnemyGameBoard().hitList.size() - 1);   // clear hitList
             Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
             myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));  // add new XyValue to hitList
             text =  " shot ".concat(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
             myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
         } else if (myStringCoordinates.getEnemyGameBoard().hitList.size() > 1) { //använd logik för nästa skott,
+            text =  myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1);
             myStringCoordinates.getEnemyGameBoard().hitList.remove(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1); //ta bort värdet för sista index
         }
         return text;
     }
 
-    public String sForSink() {
+    public String sForSink(ControlOfInput controlOfInput) {
         // EnemyBoats.length tells which boat was sunk
         // logic to clear safe points around boat - add positions to guardedSpots[]
         // remove boat from ListEnemyBoats[]

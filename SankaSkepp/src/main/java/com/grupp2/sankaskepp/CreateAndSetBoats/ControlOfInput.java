@@ -45,8 +45,9 @@ public class ControlOfInput {
             String playerChoice = y + x;
 
             for (int i = 0; i < myBoat.getBoats().length; i++) {
+                System.out.println("Inne i forloop 1");
                 for (int j = 0; j < myBoat.getBoats()[i].getPosition().size(); j++) {
-
+                    System.out.println("Inne i forloop 2");
                     if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
                             myBoat.getBoats()[i].getPosition().size() == 1) {
 
@@ -57,7 +58,9 @@ public class ControlOfInput {
 
                         myBoat.getBoats()[i].getPosition().remove(j);
                         hit = "s";
-                        hit = hit.concat(computerLogic.sForSink());
+
+                        hit = hit.concat(computerLogic.sForSink(this));
+
                         j = myBoat.getBoats()[i].getPosition().size() - 1;
                         i = myBoat.getBoats().length - 1;
 
@@ -65,7 +68,9 @@ public class ControlOfInput {
                         hit = "h";
                         //För att ta bort värdet i arraylisten
 
-                        hit = hit.concat(computerLogic.hForHit());
+                        if(!Character.toString(choice.charAt(0)).equals("i")) {
+                            hit = hit.concat(computerLogic.hForHit(this));
+                        }
 
                         myBoat.getBoats()[i].getPosition().remove(j);
 
@@ -82,14 +87,16 @@ public class ControlOfInput {
                         j = myBoat.getBoats()[i].getPosition().size() - 1;
                         i = myBoat.getBoats().length - 1;
 
-
                     }
                 }
             }
-        if (hit.equals("")) {
+        if(hit.equals("")) {
             hit = "m";
+            System.out.println("inne i miss");
 
-            hit = hit.concat(computerLogic.mForMiss());
+            if(!Character.toString(choice.charAt(0)).equals("i")) {
+                hit = hit.concat(computerLogic.mForMiss(this));
+            }
 
             //Här ska rutan bli blå på position "playerChoice" i userInterface
             // Tobias { *********
@@ -98,10 +105,14 @@ public class ControlOfInput {
             // *********** } Tobias
         }
         if (Character.toString(choice.charAt(0)).equals("i")) {
-            hit = hit.concat(computerLogic.iForStartOfRound());
+            System.out.println("inne i i");
+            hit = hit.concat(computerLogic.ifRecievingi());
+
         }
 
+
         for (int i = 0; i < myBoat.getBoats().length; i++) {
+            System.out.println("Kollar skipcheck");
                 if (myBoat.getBoats()[i].getPosition().size() == 0 && !skipCheck.contains(i)) {
                     boats -= 1;
                     skipCheck.add(i);
@@ -116,7 +127,7 @@ public class ControlOfInput {
                 }
             }
 
-
+        System.out.println("returnerar " + hit);
         return hit;
     }
 
@@ -149,11 +160,20 @@ public class ControlOfInput {
             }
     }
 
+    public String startRound(){
+        String text = computerLogic.iForStartOfRound();
+        return text;
+    }
+
     public ArrayList<String> getAnswer() {
         return answer;
     }
 
     public void setAnswer(ArrayList<String> answer) {
         this.answer = answer;
+    }
+
+    public ArrayList<String> getSentPosition() {
+        return sentPosition;
     }
 }

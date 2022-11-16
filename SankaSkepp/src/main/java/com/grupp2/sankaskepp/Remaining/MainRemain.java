@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class MainRemain {
+public class MainRemain {/*
     // tobias test - finns metod som tar in String till enemyShot (längst ner)
     private String enemyShot = "";    //textsträngen från motspelaren, kommer bli indexOutOfBounds eftersom den är tom
 
@@ -28,6 +28,7 @@ public class MainRemain {
                 myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
                 break;
             }
+
             case "m": {
 
                 if (myStringCoordinates.getEnemyGameBoard().hitList.size() < 2) {
@@ -143,6 +144,6 @@ public class MainRemain {
         public void takeStringLetter (String letter){
             this.enemyShot = letter;
             main();
-        }
+        }*/
     }
 
