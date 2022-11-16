@@ -1,5 +1,5 @@
 .root {
-    -fx-background-image: url(battleshipbackground.jpg);
+    -fx-background-image: url(battleshipbackground4.jpg);
     -fx-background-size: stretch;
     -fx-font-family: Magneto;
 }
@@ -17,7 +17,7 @@
 
 
 .history{
-    -fx-font-size: 30;
+    -fx-font-size: 40;
     -fx-font-family: Algerian;
 }
 
@@ -35,8 +35,8 @@
     -fx-font-size: 15;
     -fx-pref-width: 80;
     -fx-pref-height: 30;
-
 }
+
 
 
 

@@ -4,6 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/MyParceValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/MyParceValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" afterDir="false" />
+    </list>
     <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Kopplad med karin och tobias kod men det fungerar inte riktigt ännu" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,13 +298,7 @@
       <option name="project" value="LOCAL" />
       <updated>1668522890920</updated>
     </task>
-    <task id="LOCAL−00016" summary="Kopplad med karin och tobias kod men det fungerar inte riktigt ännu">
-      <created>1668527551487</created>
-      <option name="number" value="LOCAL−00016" />
-      <option name="presentableId" value="LOCAL−00016" />
-      <updated>1668527551487</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +333,6 @@
     <MESSAGE value="kommenterade bort på rad 96 i ClientTask." />
     <MESSAGE value="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället" />
     <MESSAGE value="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput" />
-    <MESSAGE value="Kopplad med karin och tobias kod men det fungerar inte riktigt ännu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kopplad med karin och tobias kod men det fungerar inte riktigt ännu" />
+    <option name="LAST_COMMIT_MESSAGE" value="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput" />
   </component>
 </project>

@@ -93,6 +93,7 @@ public class ServerTask extends Task<Void> {
     }
 
     private void serverSpeaksWithClient() throws IOException {
+        String outputText = "";
         while (isClientConnected) {
             if (reader.ready()) {
                 messageFromClient = reader.readLine();
@@ -108,7 +109,7 @@ public class ServerTask extends Task<Void> {
                     break;
                 }
 
-                String outputText = "";
+                outputText = "";
                 if (text.contains("game over")) {
                     System.out.println("I lost");
                     isClientConnected = false;
@@ -144,7 +145,7 @@ public class ServerTask extends Task<Void> {
                 //latestMessageSentFromServer();
             }
         }
-        sendGameStoppedMessage();
+        sendGameStoppedMessage(outputText);
     }
 
     private void printMessageFromClient(boolean show) {
@@ -191,8 +192,13 @@ public class ServerTask extends Task<Void> {
         return t;
     }
 
-    private void sendGameStoppedMessage() {
-        textInBackup.textProperty().bind(new SimpleStringProperty("Game stopped"));
+    private void sendGameStoppedMessage(String outputText) {
+        if(outputText == "game over"){
+            outputText = "Enemy: I lost!";
+        } else {
+            outputText = "Enemy: I won!";
+        }
+        textInBackup.textProperty().bind(new SimpleStringProperty(outputText));
     }
 
     public GameBoard getYouBoard() {
