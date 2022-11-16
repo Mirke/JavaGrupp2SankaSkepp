@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/MyParceValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/MyParceValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,21 +48,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Yaffletank/IdeaProjects/JavaGrupp2SankaSkepp_merge1/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/karin/IdeaProjects/JavaGrupp2SankaSkepp5/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MainRemain.java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.grupp2.sankaskepp.Bastian_Tobias_Anna" />
@@ -176,6 +182,7 @@
       <workItem from="1667899467822" duration="2626000" />
       <workItem from="1667981964661" duration="12969000" />
       <workItem from="1668443995789" duration="24834000" />
+      <workItem from="1668579706857" duration="12580000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>

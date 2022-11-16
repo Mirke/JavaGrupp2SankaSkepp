@@ -53,7 +53,7 @@ public class GameBoard extends Parent {
     // Methods
     public void parceStringShotCoordinates(boolean hit, String shot) {
         int x = myParceValue.stringToXint(shot);
-        int y = myParceValue.StringToYint(shot);
+        int y = myParceValue.stringToYint(shot);
         // skicka vidare bool och koordinater för att målas upp på brädet.
         if (hit) {
             boatIsHit(x, y);
