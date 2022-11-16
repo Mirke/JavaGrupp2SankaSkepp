@@ -135,7 +135,7 @@ public class ServerTask extends Task<Void> {
                 //printMessageOutFromServer(false);
 
                 try {
-                    Thread.sleep(delay() * 100);
+                    Thread.sleep(delay() * 1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }

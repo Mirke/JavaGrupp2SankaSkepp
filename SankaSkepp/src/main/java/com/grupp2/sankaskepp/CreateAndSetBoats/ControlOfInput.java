@@ -14,6 +14,8 @@ public class ControlOfInput {
     private GameBoard youBoard, enemyBoard;
     private Boat myBoat;
     private Boat serverBoat;
+    private String hit = "";
+    private String choice = "";
 
     public ControlOfInput(GameBoard youBoard, GameBoard enemyBoard, Boat myBoat, Boat serverBoat) {
         this.youBoard = youBoard;
@@ -28,15 +30,13 @@ public class ControlOfInput {
 
     public String controlOtherPlayerString(String choice) {
 
-        String hit = "";
+        this.choice = choice;
+        hit = "";
 
         /*Metod för att initiera all kod ska i teorin skulle befinna sig i main. Vi kan antingen starta den koden i main
         /* Eller så skickar vi in informationen som fås genom socket till den här metoden som i sin tur startar main
         /* ifall att första Char är "i" likt exemplet nedan. Detta kan även lösas på andra sätt.
          */
-
-            answer.add(Character.toString(choice.charAt(0)));
-            checkAnswerFromOtherPlayer();
 
 
             //Tar ut värdena från andra spelarens textsträng och omvandlar dem till en egen textsträng som sedan kan kontrolleras
@@ -45,9 +45,7 @@ public class ControlOfInput {
             String playerChoice = y + x;
 
             for (int i = 0; i < myBoat.getBoats().length; i++) {
-                System.out.println("Inne i forloop 1");
                 for (int j = 0; j < myBoat.getBoats()[i].getPosition().size(); j++) {
-                    System.out.println("Inne i forloop 2");
                     if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice) &&
                             myBoat.getBoats()[i].getPosition().size() == 1) {
 
@@ -59,18 +57,12 @@ public class ControlOfInput {
                         myBoat.getBoats()[i].getPosition().remove(j);
                         hit = "s";
 
-                        hit = hit.concat(computerLogic.sForSink(this));
-
                         j = myBoat.getBoats()[i].getPosition().size() - 1;
                         i = myBoat.getBoats().length - 1;
 
                     } else if (myBoat.getBoats()[i].getPosition().get(j).equals(playerChoice)) {
                         hit = "h";
                         //För att ta bort värdet i arraylisten
-
-                        if(!Character.toString(choice.charAt(0)).equals("i")) {
-                            hit = hit.concat(computerLogic.hForHit(this));
-                        }
 
                         myBoat.getBoats()[i].getPosition().remove(j);
 
@@ -92,27 +84,16 @@ public class ControlOfInput {
             }
         if(hit.equals("")) {
             hit = "m";
-            System.out.println("inne i miss");
-
-            if(!Character.toString(choice.charAt(0)).equals("i")) {
-                hit = hit.concat(computerLogic.mForMiss(this));
-            }
-
             //Här ska rutan bli blå på position "playerChoice" i userInterface
             // Tobias { *********
             //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
             youBoard.parceStringShotCoordinates(false, playerChoice);
             // *********** } Tobias
         }
-        if (Character.toString(choice.charAt(0)).equals("i")) {
-            System.out.println("inne i i");
-            hit = hit.concat(computerLogic.ifRecievingi());
 
-        }
 
 
         for (int i = 0; i < myBoat.getBoats().length; i++) {
-            System.out.println("Kollar skipcheck");
                 if (myBoat.getBoats()[i].getPosition().size() == 0 && !skipCheck.contains(i)) {
                     boats -= 1;
                     skipCheck.add(i);
@@ -127,7 +108,10 @@ public class ControlOfInput {
                 }
             }
 
-        System.out.println("returnerar " + hit);
+        answer.add(Character.toString(choice.charAt(0)));
+        checkAnswerFromOtherPlayer();
+
+        System.out.println("returnerar från controlOfinput " + hit);
         return hit;
     }
 
@@ -141,23 +125,43 @@ public class ControlOfInput {
     int sentArrayControl = 0;
     int answerArrayControl = 0;
 
-    public void checkAnswerFromOtherPlayer() {
-            if (answer.get(answerArrayControl).equals("h") || answer.get(answerArrayControl).equals("s")) {
+    public String checkAnswerFromOtherPlayer() {
+            if (answer.get(answerArrayControl).equals("s")) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 // vet inte om gameBoard här måste vara under sentArrayControl???
+                hit = hit.concat(computerLogic.sForSink(this));
+
                 enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
                 answerArrayControl++;
                 sentArrayControl++;
-            } else if (answer.get(answerArrayControl).equals("m")) {
+            }else if (answer.get(answerArrayControl).equals("h")) {
+            //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
+            // vet inte om gameBoard här måste vara under sentArrayControl???
+            if(!Character.toString(choice.charAt(0)).equals("i")) {
+                hit = hit.concat(computerLogic.hForHit(this));
+            }
+            enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
+            answerArrayControl++;
+            sentArrayControl++;
+        }
+        else if (answer.get(answerArrayControl).equals("m")) {
                 //metod till tobias kod, färg blir blå för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
+                if(!Character.toString(choice.charAt(0)).equals("i")) {
+                    hit = hit.concat(computerLogic.mForMiss(this));
+                }
                 enemyBoard.parceStringShotCoordinates(false, sentPosition.get(sentArrayControl));
                 answerArrayControl++;
                 sentArrayControl++;
             }
             else{
                 System.out.println("inget");
+                if (Character.toString(choice.charAt(0)).equals("i")) {
+                    hit = hit.concat(computerLogic.ifRecievingi());
+
+                }
                 answerArrayControl++;
             }
+            return hit;
     }
 
     public String startRound(){

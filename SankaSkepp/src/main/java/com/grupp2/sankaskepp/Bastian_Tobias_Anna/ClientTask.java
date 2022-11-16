@@ -153,7 +153,7 @@ public class ClientTask extends Task<Void> {
                 //latestMessageSentFromClient();
 
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                     editedMessage = String.format("""
                             You: %s""", outputText);
                     clientLatestMessageText = new SimpleStringProperty(editedMessage);
