@@ -140,12 +140,7 @@ public class Server implements Runnable{
                     outputText = "game over";
 
                 }else{
-                    Collections.shuffle(position2.getAllCoordinates());
-                    pos = position2.getAllCoordinates().get(0);
-                    position2.getAllCoordinates().remove(0);
-
-                    outputText = text.concat(" shot ").concat(pos);
-                    serverAndEnemyControlOfInput.sentString(outputText);
+                    serverAndEnemyControlOfInput.sentString(text);
                 }
 
 

@@ -9,7 +9,7 @@ public class MyParceValue {
         return x;
     }
 
-    public int StringToYint(String shot) {
+    public int stringToYint(String shot) {
 
         char yChar = shot.charAt(1);
 

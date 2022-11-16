@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="">
     <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" afterDir="false" />
@@ -295,7 +296,13 @@
       <option name="project" value="LOCAL" />
       <updated>1668522890920</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL−00020" summary="Nu fungerar det med de senaste uppdateringarna.">
+      <created>1668611012181</created>
+      <option name="number" value="LOCAL−00020" />
+      <option name="presentableId" value="LOCAL−00020" />
+      <updated>1668611012181</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +337,7 @@
     <MESSAGE value="kommenterade bort på rad 96 i ClientTask." />
     <MESSAGE value="ett försök till att strukturera lite&#10;MyStringCoordinates ny metod som startar upp listor med bla alla koordinster. är ihop kopplad med MainRemain för tillfället" />
     <MESSAGE value="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput" />
-    <option name="LAST_COMMIT_MESSAGE" value="ComputerLogic tar över MainRemain med metoder som ska kallas på i ControlOfInput" />
+    <MESSAGE value="Nu fungerar det med de senaste uppdateringarna." />
+    <option name="LAST_COMMIT_MESSAGE" value="Nu fungerar det med de senaste uppdateringarna." />
   </component>
 </project>

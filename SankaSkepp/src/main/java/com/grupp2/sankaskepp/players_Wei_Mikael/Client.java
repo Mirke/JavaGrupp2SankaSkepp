@@ -100,11 +100,8 @@ public class Client {
          * Mikael kod: END
          */
 
-        Collections.shuffle(position.getAllCoordinates());
-        String pos = position.getAllCoordinates().get(0);
-        position.getAllCoordinates().remove(0);
-        serverAndEnemyControlOfInput.sentString("i shot ".concat(pos));
-        writer.println("i shot ".concat(pos));
+
+        writer.println(serverAndEnemyControlOfInput.controlOtherPlayerString("k shot qq"));
 
 
         Random rand = new Random();
@@ -127,7 +124,6 @@ public class Client {
 
 
 
-                pos = "";
                 String text = "";
                 if(!messageFromServer.contains("game over")) {
                     text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
@@ -147,12 +143,8 @@ public class Client {
                     outputText = "game over";
 
                 }else{
-                    Collections.shuffle(position.getAllCoordinates());
-                    pos = position.getAllCoordinates().get(0);
-                    position.getAllCoordinates().remove(0);
 
-                    outputText = text.concat(" shot ").concat(pos);
-                    serverAndEnemyControlOfInput.sentString(outputText);
+                    serverAndEnemyControlOfInput.sentString(text);
                 }
 
 

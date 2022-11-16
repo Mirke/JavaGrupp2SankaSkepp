@@ -99,9 +99,9 @@ public class ServerTask extends Task<Void> {
                 messageFromClient = reader.readLine();
 
                 String pos = "";
-                String text = "";
                 if (!messageFromClient.contains("game over")) {
-                    text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
+                    outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
+                    serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
@@ -109,20 +109,21 @@ public class ServerTask extends Task<Void> {
                     break;
                 }
 
-                outputText = "";
-                if (text.contains("game over")) {
+
+                if (outputText.contains("game over")) {
                     System.out.println("I lost");
                     isClientConnected = false;
                     outputText = "game over";
 
-                } else {
+                }
+                /*
                     Collections.shuffle(myStringCoordinates.getRemainingXYspots());
                     pos = myStringCoordinates.getRemainingXYspots().get(0);
                     myStringCoordinates.getRemainingXYspots().remove(0);
 
-                    outputText = text.concat(" shot ").concat(pos);
+
                     serverAndEnemyControlOfInput.sentString(outputText);
-                }
+               */
 
                 //printMessageFromClient(false);
                 //latestMessageFromClient();
@@ -177,7 +178,7 @@ public class ServerTask extends Task<Void> {
 
     private void sendServerMessageToClient() {
         try {
-            Thread.sleep(delay() * 1000);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
