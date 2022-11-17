@@ -1,5 +1,7 @@
 package com.grupp2.sankaskepp.Remaining;
 
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class MyStringCoordinates {
     private YourGameBoard yourGameBoard = new YourGameBoard();
 
     private XYposition xyPosition = new XYposition();
+
 
     private XYposition[][] remainingEnemyPositions = new XYposition[10][10];
     private List<String> remainingEnemyPositions2 = new ArrayList<>();
