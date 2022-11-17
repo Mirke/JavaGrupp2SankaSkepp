@@ -1,15 +1,13 @@
 package com.grupp2.sankaskepp.players_Wei_Mikael;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
-import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Collections;
-import java.util.Random;
+
 
 
 /**
@@ -32,13 +30,10 @@ public class Client {
 
     private BufferedReader reader;
 
-    private Position position = new Position();
-    private Position position2 = new Position();
 
     private ControlOfInput serverAndEnemyControlOfInput;
 
 
-    private boolean firstGuess;
 
     // Constructor
     public Client() {
@@ -49,8 +44,7 @@ public class Client {
         youPlaceBoats.initializeGridArray();
         youPlaceBoats.placeBoats(youBoat.getBoats());
         youBoard = new GameBoard(youBoat);
-        //ComputerAI youAI = new ComputerAI(youBoat);
-        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
+
 
         // -------------------------------------------
 
@@ -59,9 +53,8 @@ public class Client {
         PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
         serverPlaceBoats.initializeGridArray();
-        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
-        // ComputerAI serverAI = new ComputerAI();
+
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
         serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard,youBoat,serverBoat);
@@ -91,34 +84,21 @@ public class Client {
         } catch (IOException ioException) {
             System.out.println(ioException);
         }
-        /*
-         * Mikael kod: START
-         */
-
-     // ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-        /*
-         * Mikael kod: END
-         */
 
 
         writer.println(serverAndEnemyControlOfInput.controlOtherPlayerString("k shot qq"));
 
 
-        Random rand = new Random();
-        //String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10)); // Commenting out Mikael
-      //  writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
 
 
         boolean sendMessage = true;
-        int i = 0;
+
         while (sendMessage) {
             if (reader.ready()) {
                 String messageFromServer = reader.readLine();
-                //System.out.println("Player 1 says " + messageFromServer); //Mikael commenting out
                 System.out.println("Client receiving: " + messageFromServer);
 
 
-                //Collections.shuffle(position.getAllCoordinates());
 
 
 
@@ -148,35 +128,10 @@ public class Client {
                 }
 
 
-                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                //position.remove(position.getAllCoordinates());
-
-
-
-                //TODO: hit or miss depending on shot from server, need method to check result
-
-                //coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));// going to edit Mikael
-                //String outputText = "m shot " + coordinate; // going to edit Mikael
-               // String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
-                //System.out.println(outputText); // commenting and changing code Mikael
                 System.out.println("Client sending: " + outputText);
                 System.out.println();
 
 
-                //TODO: add delay function
-                //KL random time delay 2-5 s, don't forget "throws InterruptedException" see above
-
-                int t = (int) (Math.random() * 5 + 1);
-                if (t == 1) {
-                    t++;
-                }
-                //Thread.sleep(t * 1000);
-
-                //System.out.println("Client sending: ");
-
-
-                writer.println(outputText);
-                //sendMessage = false;
             }
 
 
