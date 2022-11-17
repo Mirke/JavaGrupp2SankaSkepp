@@ -4,7 +4,6 @@ import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
-import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
@@ -12,7 +11,6 @@ import javafx.scene.text.Text;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Collections;
 import java.util.Random;
 
 public class ClientTask extends Task<Void> {
@@ -21,7 +19,6 @@ public class ClientTask extends Task<Void> {
     private BufferedReader reader;
     private Boolean isServerConnected = true;
     private final Random rand = new Random();
-    private final ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
     private String messageFromClient = "";
     private String messageFromServer = "";
     private ObservableStringValue clientLatestMessageText = new SimpleStringProperty("History");
@@ -42,9 +39,7 @@ public class ClientTask extends Task<Void> {
         youBoard = new GameBoard(youBoat);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
-
         // -------------------------------------------
-
         // Server
         Boat serverBoat = new Boat();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
@@ -178,38 +173,6 @@ public class ClientTask extends Task<Void> {
         if (show) System.out.printf("Client receiving: %s\n", messageFromServer);
     }
 
-    private void clientUpdateMessage() {
-        messageFromClient = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10));
-    }
-
-    private void printMessageOutFromClient(boolean show) {
-        if (show) System.out.printf("Client sending: %s\n", messageFromClient);
-    }
-
-    private void latestMessageFromServer() {
-        String editedMessage = String.format("""
-                You: %s""", messageFromServer);
-        clientLatestMessageText = new SimpleStringProperty(editedMessage);
-        textInBackup.textProperty().bind(clientLatestMessageText);
-    }
-
-    private void latestMessageSentFromClient() {
-        String editedMessage = String.format("""
-                You: %s""", messageFromServer);
-        clientLatestMessageText = new SimpleStringProperty(editedMessage);
-        textInBackup.textProperty().bind(clientLatestMessageText);
-    }
-
-    private void sendClientMessageToServer() {
-        try {
-            Thread.sleep(delay() * 1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        writer.println(messageFromClient);
-    }
-
-
     private int delay() {
         int t = 1;
         if (t == 1) {
@@ -217,7 +180,6 @@ public class ClientTask extends Task<Void> {
         }
         return t;
     }
-
 
     private void sendGameStoppedMessage(String outputText) {
         if(outputText == "game over"){
