@@ -4,7 +4,6 @@ import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
-import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
@@ -13,7 +12,6 @@ import javafx.scene.text.Text;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Collections;
 import java.util.Random;
 
 public class ServerTask extends Task<Void> {
@@ -22,7 +20,6 @@ public class ServerTask extends Task<Void> {
     private BufferedReader reader;
     private Boolean isClientConnected;
     private final Random rand = new Random();
-    private final ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
     private String messageFromClient = "";
     private String messageFromServer = "";
     private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
@@ -147,42 +144,6 @@ public class ServerTask extends Task<Void> {
             }
         }
         sendGameStoppedMessage(outputText);
-    }
-
-    private void printMessageFromClient(boolean show) {
-        if (show) System.out.printf("Server receiving: %s\n", messageFromClient);
-    }
-
-    private void serverUpdateMessage() {
-        messageFromServer = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10));
-    }
-
-    private void printMessageOutFromServer(boolean show) {
-        if (show) System.out.printf("Server sending: %s\n", messageFromServer);
-    }
-
-    private void latestMessageFromClient() {
-        String editedMessage = String.format("""
-                You: %s""", messageFromClient);
-        serverLatestMessageText = new SimpleStringProperty(editedMessage);
-        textInBackup.textProperty().bind(serverLatestMessageText);
-    }
-
-    private void latestMessageSentFromServer() {
-        String editedMessage = String.format("""
-                Enemy: %s""", messageFromServer);
-        serverLatestMessageText = new SimpleStringProperty(editedMessage);
-        textInBackup.textProperty().bind(serverLatestMessageText);
-    }
-
-
-    private void sendServerMessageToClient() {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        writer.println(messageFromServer);
     }
 
     private int delay() {

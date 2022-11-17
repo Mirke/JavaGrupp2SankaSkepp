@@ -5,10 +5,8 @@ import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-
 import java.io.*;
 import java.net.Socket;
-import java.util.Collections;
 import java.util.Random;
 
 
@@ -64,7 +62,7 @@ public class Client {
         // ComputerAI serverAI = new ComputerAI();
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard,youBoat,serverBoat);
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
 
     }
 
@@ -91,74 +89,32 @@ public class Client {
         } catch (IOException ioException) {
             System.out.println(ioException);
         }
-        /*
-         * Mikael kod: START
-         */
-
-     // ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-        /*
-         * Mikael kod: END
-         */
-
-
         writer.println(serverAndEnemyControlOfInput.controlOtherPlayerString("k shot qq"));
-
-
         Random rand = new Random();
-        //String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10)); // Commenting out Mikael
-      //  writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
-
-
         boolean sendMessage = true;
         int i = 0;
         while (sendMessage) {
             if (reader.ready()) {
                 String messageFromServer = reader.readLine();
-                //System.out.println("Player 1 says " + messageFromServer); //Mikael commenting out
                 System.out.println("Client receiving: " + messageFromServer);
 
-
-                //Collections.shuffle(position.getAllCoordinates());
-
-
-
-
-
                 String text = "";
-                if(!messageFromServer.contains("game over")) {
+                if (!messageFromServer.contains("game over")) {
                     text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
-                }
-                else{
+                } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
                     serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
                     break;
                 }
-
-
                 String outputText = "";
-                if(text.contains("game over")){
+                if (text.contains("game over")) {
                     System.out.println("I lost");
                     sendMessage = false;
                     outputText = "game over";
-
-                }else{
-
+                } else {
                     serverAndEnemyControlOfInput.sentString(text);
                 }
-
-
-                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                //position.remove(position.getAllCoordinates());
-
-
-
-                //TODO: hit or miss depending on shot from server, need method to check result
-
-                //coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));// going to edit Mikael
-                //String outputText = "m shot " + coordinate; // going to edit Mikael
-               // String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
-                //System.out.println(outputText); // commenting and changing code Mikael
                 System.out.println("Client sending: " + outputText);
                 System.out.println();
 
@@ -170,10 +126,6 @@ public class Client {
                 if (t == 1) {
                     t++;
                 }
-                //Thread.sleep(t * 1000);
-
-                //System.out.println("Client sending: ");
-
 
                 writer.println(outputText);
                 //sendMessage = false;
