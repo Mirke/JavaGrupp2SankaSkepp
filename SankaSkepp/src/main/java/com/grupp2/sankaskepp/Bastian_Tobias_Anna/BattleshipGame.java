@@ -57,7 +57,7 @@ public class BattleshipGame extends Application {
         title.setAlignment(Pos.TOP_CENTER);
 
         HBox history = new HBox();
-        Text historyText = new Text("Test123");
+        Text historyText = new Text("History");
         historyText.setFill(Color.web("37a8b7"));
         historyText.setEffect(dropShadow);
 

@@ -8,13 +8,13 @@ import javafx.scene.text.Text;
 
 public class HelloController {
 
-    Text historyText = new Text("test");
+    Text historyText = new Text("History");
     Thread threadForServer;
     Thread threadForClient;
     ServerTask serverTask = new ServerTask(historyText);
     ClientTask clientTask = new ClientTask(historyText);
     public GameBoard youBoard = clientTask.getYouBoard();
-    public GameBoard enemyBoard = clientTask.getEnemyBoard();
+    public GameBoard enemyBoard = serverTask.getYouBoard();
 
     public HelloController(Text historyTextIn) {
         this.historyText = historyTextIn;
