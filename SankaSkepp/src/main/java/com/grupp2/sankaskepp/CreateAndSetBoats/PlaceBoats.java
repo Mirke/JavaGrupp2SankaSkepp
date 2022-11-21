@@ -11,14 +11,21 @@ public class PlaceBoats {
     int y;
     int x;
     boolean horisontal;
-    boolean works = true;
+    boolean works = false;
 
     int controlLoop = 0;
 
-    public void placeBoats(Boat []boats){
+    public void placeBoats(Boat boat){
         boolean works2 = false;
         while(!works2) {
-            works2 = setTheBoats(boats);
+            works2 = setTheBoats(boat.getBoats());
+
+            if(!works2) {
+                for (int i = 0; i < boat.getBoats().length - 1; i++) {
+                    boat.getBoats()[i].getPosition().clear();
+                    controlLoop = 0;
+                }
+            }
         }
     }
 
@@ -39,7 +46,7 @@ public class PlaceBoats {
                         if (!field[y][x + i].equals("!!") && (x + i) < 11) {
 
                             controlLoop++;
-                            if(controlLoop == 200){
+                            if(controlLoop == 300){
                                 a = 10;
                                 i = 10;
                             }
@@ -89,7 +96,7 @@ public class PlaceBoats {
                         if (!field[y + i][x].equals("!!") && (y + i) < 11) {
 
                             controlLoop++;
-                            if(controlLoop == 200){
+                            if(controlLoop == 300){
                                 a = 10;
                                 i = 10;
                             }
@@ -142,8 +149,8 @@ public class PlaceBoats {
             }
         }
 
-        if(controlLoop >= 200){
-            works = false;
+        if(controlLoop < 300){
+            works = true;
         }
         return works;
     }

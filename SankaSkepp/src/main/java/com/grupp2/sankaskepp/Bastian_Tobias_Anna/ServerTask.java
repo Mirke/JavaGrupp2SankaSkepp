@@ -40,8 +40,8 @@ public class ServerTask extends Task<Void> {
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
-        youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat.getBoats());
+         //youPlaceBoats.initializeGridArray();
+        youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
@@ -52,7 +52,7 @@ public class ServerTask extends Task<Void> {
         Boat serverBoat = new Boat();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
-        serverPlaceBoats.initializeGridArray();
+        //serverPlaceBoats.initializeGridArray();
         //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();

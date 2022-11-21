@@ -42,7 +42,7 @@ public class ControlOfInput {
             //Tar ut värdena från andra spelarens textsträng och omvandlar dem till en egen textsträng som sedan kan kontrolleras
             String y = Character.toString(choice.charAt(7));
             String x = Character.toString(choice.charAt(8));
-            String playerChoice = y + x;
+            String playerChoice = y.concat(x);
 
             for (int i = 0; i < myBoat.getBoats().length; i++) {
                 for (int j = 0; j < myBoat.getBoats()[i].getPosition().size(); j++) {
