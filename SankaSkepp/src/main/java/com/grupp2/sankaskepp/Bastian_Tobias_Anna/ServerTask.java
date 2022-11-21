@@ -98,7 +98,7 @@ public class ServerTask extends Task<Void> {
                 String pos = "";
                 if (!messageFromClient.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
-                    serverAndEnemyControlOfInput.sentString(outputText);
+                    //serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");

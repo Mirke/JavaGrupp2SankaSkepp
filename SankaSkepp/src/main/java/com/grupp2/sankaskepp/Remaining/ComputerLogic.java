@@ -178,13 +178,11 @@ public class ComputerLogic {
     }
 
     public String mForMiss(ControlOfInput controlOfInput) {
-        System.out.println("inne i mformiss");
         String nextXY = "";
         myStringCoordinates.getEnemyGameBoard().hitList.remove(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1);
 
         boolean works = false;
         if (myStringCoordinates.getEnemyGameBoard().hitList.size() >= 1) {
-            System.out.println("inne if");
             int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
             int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
 
@@ -374,7 +372,6 @@ public class ComputerLogic {
             myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots*/
 
         } else if (myStringCoordinates.getEnemyGameBoard().hitList.size() <= 1) {
-            System.out.println("inne i if else");
             myStringCoordinates.getEnemyGameBoard().hitList.clear();
             nextXY =  " shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
 
@@ -385,7 +382,6 @@ public class ComputerLogic {
             myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
 
         }else{
-            System.out.println("inne i else");
             myStringCoordinates.getEnemyGameBoard().hitList.clear();
             nextXY =  " shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
 
@@ -396,7 +392,6 @@ public class ComputerLogic {
             myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
             myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
         }
-        System.out.println("returnerar" + nextXY);
         return nextXY;
     }
 

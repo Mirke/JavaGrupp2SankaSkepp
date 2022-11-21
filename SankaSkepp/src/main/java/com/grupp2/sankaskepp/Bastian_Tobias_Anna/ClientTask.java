@@ -112,7 +112,7 @@ public class ClientTask extends Task<Void> {
 
                 if (!messageFromServer.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
-                    serverAndEnemyControlOfInput.sentString(outputText);
+                    //serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");

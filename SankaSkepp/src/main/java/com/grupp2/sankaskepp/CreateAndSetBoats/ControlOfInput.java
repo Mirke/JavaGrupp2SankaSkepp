@@ -111,7 +111,7 @@ public class ControlOfInput {
         answer.add(Character.toString(choice.charAt(0)));
         checkAnswerFromOtherPlayer();
 
-        System.out.println("returnerar från controlOfinput " + hit);
+        sentString(hit);
         return hit;
     }
 

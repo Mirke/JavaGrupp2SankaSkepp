@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/protokoll/Coordinate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/protokoll/DummyCoordinates.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/protokoll/Letter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/protokoll/Protocol.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/protokoll/ProtocolSankaSkepp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,11 +151,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientApplication" />
-        <item itemvalue="Application.ServerApplication" />
-        <item itemvalue="Application.ClientStart" />
         <item itemvalue="Application.ServerStart" />
+        <item itemvalue="Application.ServerApplication" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.ClientStart" />
+        <item itemvalue="Application.ClientApplication" />
       </list>
     </recent_temporary>
   </component>
