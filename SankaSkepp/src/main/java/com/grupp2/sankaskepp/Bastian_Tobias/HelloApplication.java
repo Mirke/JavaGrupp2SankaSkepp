@@ -78,26 +78,64 @@ public class HelloApplication extends Application {
 
         title.getChildren().add(titleLabel);
 
-
-        Text submarineText = new Text("4 submarines");
-        submarineText.setFill(Color.web("37a8b7"));
-        submarineText.setEffect(dropShadow);
         HBox submarine = new HBox();
+        //submarine.setPadding();
+        Text submarineLabel = new Text("4 submarines");
+        submarineLabel.setFill(Color.web("37a8b7"));
+        submarineLabel.setEffect(dropShadow);
+        submarine.setAlignment(Pos.TOP_RIGHT);
+        submarine.getChildren().add(submarineLabel);
+        //submarineLabel.setStyle("-fx-padding: 20,40,30,10");
 
-        Text cruiserText = new Text("3 cruisers");
-        cruiserText.setFill(Color.web("37a8b7"));
-        cruiserText.setEffect(dropShadow);
         HBox cruiser = new HBox();
+        Text cruiserLabel = new Text("3 cruisers");
+        cruiserLabel.setFill(Color.web("37a8b7"));
+        cruiserLabel.setEffect(dropShadow);
+        cruiser.setAlignment(Pos.TOP_RIGHT);
+        cruiser.getChildren().add(cruiserLabel);
 
-        Text battleshipText = new Text("2 battleships");
+        //VBox subcruiser = new VBox(submarine, cruiser);
+
+        HBox battleship = new HBox();
+        Text battleshipLabel = new Text("2 battleships");
+        battleshipLabel.setFill(Color.web("37a8b7"));
+        battleshipLabel.setEffect(dropShadow);
+        battleship.setAlignment(Pos.TOP_RIGHT);
+        battleship.getChildren().add(battleshipLabel);
+
+        HBox hangarship = new HBox();
+        Text hangarshipLabel = new Text("1 hangarship");
+        hangarshipLabel.setFill(Color.web("37a8b7"));
+        hangarshipLabel.setEffect(dropShadow);
+        hangarship.setAlignment(Pos.TOP_RIGHT);
+        hangarship.getChildren().add(hangarshipLabel);
+
+        /*Text battleshipText = new Text("2 battleships");
+        Label battleshipLabel = new Label("battleshipText");
         battleshipText.setFill(Color.web("37a8b7"));
         battleshipText.setEffect(dropShadow);
-        HBox battleship = new HBox();
+
+          HBox battleship = new HBox(battleshipLabel);
 
         Text hangarshipText = new Text("1 hangarship");
         hangarshipText.setFill(Color.web("37a8b7"));
         hangarshipText.setEffect(dropShadow);
-        HBox hangarship = new HBox();
+        Label hangarshipLabel = new Label("hangarshipText");
+
+          HBox hangarship = new HBox(hangarshipLabel);*/
+
+            //VBox battlehangar = new VBox(battleship, hangarship);
+
+                VBox boatBox = new VBox();
+                submarine.setPadding(new Insets(70,180,0,0));
+                cruiser.setPadding(new Insets(78,80,0,0));
+                battleship.setPadding(new Insets(400,80,0,0));
+                hangarship.setPadding(new Insets(420,80,0,0));
+                boatBox.getChildren().addAll(submarine, cruiser, battleship, hangarship);
+
+        //subcruiser.setAlignment(Pos.TOP_RIGHT);
+        //battlehangar.setAlignment(Pos.BOTTOM_RIGHT);
+
 
         //HBox submarine = new HBox();
         //submarine.setStyle("-fx-background-image: url('submarine.png');" + "-fx-background-position: center center;" );
@@ -114,8 +152,6 @@ public class HelloApplication extends Application {
         Region filler = new Region();
         filler.setPrefHeight(50);
         HBox.setHgrow(filler, Priority.ALWAYS);
-
-
 
 
         //TextArea history = new TextArea();
@@ -179,7 +215,6 @@ public class HelloApplication extends Application {
         // ********  } Tobias
 
 
-
         you.getChildren().addAll(youLabel, youBoard);
         enemy.getChildren().addAll(enemyLabel, serverBoard);
 
@@ -199,24 +234,19 @@ public class HelloApplication extends Application {
         stopButtonBox.getStyleClass().add("stopButtonBox");
 
         startButton.setAlignment(Pos.CENTER);
-        //stopButton.setAlignment(Pos.CENTER);
 
         HBox bottomBox = new HBox(40, startButtonBox);
 
 
-
         HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(title, history, filler, boards, bottomBox, submarine, cruiser);
+        root.getChildren().addAll(title, history, filler, boards, bottomBox);
+
+        StackPane stack = new StackPane(root, boatBox);
+
         history.setAlignment(Pos.BASELINE_CENTER);
-        submarine.setAlignment(Pos.TOP_RIGHT);
-
-        //submarine.setAlignment(Pos.TOP_RIGHT);
-
-
-
+        boatBox.setAlignment(Pos.BASELINE_RIGHT);
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
-
 
 
         //Vbox ships = new VBox(new Text("Boats"));
@@ -224,7 +254,7 @@ public class HelloApplication extends Application {
         //root.setRight(ships);
 
 
-        return root;
+        return stack;
         // hej
 
         // KONTROLLPANEL?

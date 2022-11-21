@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Justerad layout.">
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/resources/battleshipbackground5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/resources/BattleshipStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/BattleshipStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias/HelloApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +80,10 @@
       <workItem from="1668360656730" duration="275000" />
       <workItem from="1668413705862" duration="16782000" />
       <workItem from="1668500364974" duration="12661000" />
-      <workItem from="1668586787011" duration="3248000" />
+      <workItem from="1668586787011" duration="6154000" />
+      <workItem from="1668626740840" duration="390000" />
+      <workItem from="1668672444701" duration="12169000" />
+      <workItem from="1669020088687" duration="5943000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -119,7 +127,13 @@
       <option name="presentableId" value="LOCAL−00008" />
       <updated>1668591407285</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL−00009" summary="Justerad layout.">
+      <created>1668593643005</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1668593643005</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
