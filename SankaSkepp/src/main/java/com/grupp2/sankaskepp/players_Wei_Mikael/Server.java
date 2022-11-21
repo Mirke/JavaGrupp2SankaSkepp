@@ -49,7 +49,7 @@ public class Server implements Runnable {
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
         youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat.getBoats());
+        youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);

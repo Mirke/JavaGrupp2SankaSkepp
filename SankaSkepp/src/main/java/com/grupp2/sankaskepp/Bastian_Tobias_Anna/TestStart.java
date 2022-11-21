@@ -13,7 +13,7 @@ public class TestStart {
         boat.createBoats();
 
 
-        placeBoats.placeBoats(boat.getBoats());
+        placeBoats.placeBoats(boat);
 
 
         for(int i = 1; i < 11; i++){
