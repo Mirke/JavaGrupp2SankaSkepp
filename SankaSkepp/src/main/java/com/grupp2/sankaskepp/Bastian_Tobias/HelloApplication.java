@@ -99,20 +99,20 @@ public class HelloApplication extends Application {
         battleship.setAlignment(Pos.TOP_RIGHT);
         battleship.getChildren().add(battleshipLabel);
 
-        HBox hangarship = new HBox();
-        Text hangarshipLabel = new Text("1 hangarship");
-        hangarshipLabel.setFill(Color.web("37a8b7"));
-        hangarshipLabel.setEffect(dropShadow);
-        hangarship.setAlignment(Pos.BOTTOM_RIGHT);
-        hangarship.getChildren().add(hangarshipLabel);
+        HBox carrier = new HBox();
+        Text carrierLabel = new Text("1 carrier");
+        carrierLabel.setFill(Color.web("37a8b7"));
+        carrierLabel.setEffect(dropShadow);
+        carrier.setAlignment(Pos.BOTTOM_RIGHT);
+        carrier.getChildren().add(carrierLabel);
 
 
                 VBox boatBox = new VBox();
                 submarine.setPadding(new Insets(70,180,0,0));
                 cruiser.setPadding(new Insets(78,80,0,0));
                 battleship.setPadding(new Insets(405,80,0,0));
-                hangarship.setPadding(new Insets(90,120,0,0));
-                boatBox.getChildren().addAll(submarine, cruiser, battleship, hangarship);
+                carrier.setPadding(new Insets(90,120,0,0));
+                boatBox.getChildren().addAll(submarine, cruiser, battleship, carrier);
 
 
         HBox history = new HBox();
