@@ -79,13 +79,11 @@ public class HelloApplication extends Application {
         title.getChildren().add(titleLabel);
 
         HBox submarine = new HBox();
-        //submarine.setPadding();
         Text submarineLabel = new Text("4 submarines");
         submarineLabel.setFill(Color.web("37a8b7"));
         submarineLabel.setEffect(dropShadow);
         submarine.setAlignment(Pos.TOP_RIGHT);
         submarine.getChildren().add(submarineLabel);
-        //submarineLabel.setStyle("-fx-padding: 20,40,30,10");
 
         HBox cruiser = new HBox();
         Text cruiserLabel = new Text("3 cruisers");
@@ -93,8 +91,6 @@ public class HelloApplication extends Application {
         cruiserLabel.setEffect(dropShadow);
         cruiser.setAlignment(Pos.TOP_RIGHT);
         cruiser.getChildren().add(cruiserLabel);
-
-        //VBox subcruiser = new VBox(submarine, cruiser);
 
         HBox battleship = new HBox();
         Text battleshipLabel = new Text("2 battleships");
@@ -107,64 +103,34 @@ public class HelloApplication extends Application {
         Text hangarshipLabel = new Text("1 hangarship");
         hangarshipLabel.setFill(Color.web("37a8b7"));
         hangarshipLabel.setEffect(dropShadow);
-        hangarship.setAlignment(Pos.TOP_RIGHT);
+        hangarship.setAlignment(Pos.BOTTOM_RIGHT);
         hangarship.getChildren().add(hangarshipLabel);
 
-        /*Text battleshipText = new Text("2 battleships");
-        Label battleshipLabel = new Label("battleshipText");
-        battleshipText.setFill(Color.web("37a8b7"));
-        battleshipText.setEffect(dropShadow);
-
-          HBox battleship = new HBox(battleshipLabel);
-
-        Text hangarshipText = new Text("1 hangarship");
-        hangarshipText.setFill(Color.web("37a8b7"));
-        hangarshipText.setEffect(dropShadow);
-        Label hangarshipLabel = new Label("hangarshipText");
-
-          HBox hangarship = new HBox(hangarshipLabel);*/
-
-            //VBox battlehangar = new VBox(battleship, hangarship);
 
                 VBox boatBox = new VBox();
                 submarine.setPadding(new Insets(70,180,0,0));
                 cruiser.setPadding(new Insets(78,80,0,0));
-                battleship.setPadding(new Insets(400,80,0,0));
-                hangarship.setPadding(new Insets(420,80,0,0));
+                battleship.setPadding(new Insets(405,80,0,0));
+                hangarship.setPadding(new Insets(90,120,0,0));
                 boatBox.getChildren().addAll(submarine, cruiser, battleship, hangarship);
-
-        //subcruiser.setAlignment(Pos.TOP_RIGHT);
-        //battlehangar.setAlignment(Pos.BOTTOM_RIGHT);
-
-
-        //HBox submarine = new HBox();
-        //submarine.setStyle("-fx-background-image: url('submarine.png');" + "-fx-background-position: center center;" );
 
 
         HBox history = new HBox();
-        //history.setPadding(new Insets(0,0,40,0));
         Text historyText = new Text("Test");
         historyText.setFill(Color.web("37a8b7"));
         historyText.setEffect(dropShadow);
         history.getChildren().add(historyText);
         history.getStyleClass().add("history");
 
+
         Region filler = new Region();
         filler.setPrefHeight(50);
         HBox.setHgrow(filler, Priority.ALWAYS);
 
 
-        //TextArea history = new TextArea();
-        //history.setStyle("-fx-background-color: transparent");
-        //history.setEditable(false);
-        //history.appendText("Test");
-
         VBox you = new VBox();
         you.getStyleClass().add("enemyAndYou");
         you.setAlignment(Pos.BOTTOM_LEFT);
-
-        //Pane filler = new Pane();
-        //HBox.setHgrow(filler, Priority.ALWAYS);
 
         VBox enemy = new VBox();
         enemy.getStyleClass().add("enemyAndYou");
@@ -247,11 +213,6 @@ public class HelloApplication extends Application {
         history.setAlignment(Pos.BASELINE_CENTER);
         boatBox.setAlignment(Pos.BASELINE_RIGHT);
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
-
-
-        //Vbox ships = new VBox(new Text("Boats"));
-        //ships.setAlignment(Pos.CENTER_RIGHT);
-        //root.setRight(ships);
 
 
         return stack;
