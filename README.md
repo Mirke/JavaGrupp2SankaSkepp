@@ -13,11 +13,11 @@ Draw.io - https://app.diagrams.net/
 
 # ToDo 
 
-- [ ]  **Spelplan** 🖥️
+- [ ] **Full logik**
+- [x]  **Spelplan** 🖥️
 - [x]  **Fartyg Classer** 🚢
-- [ ]  **GUI** 🎨
-- [ ]  **Protokoll** 📜
-- [ ]  **Klient** 🦸
-- [ ]  **Server** 👾
+- [x]  **GUI** 🎨
+- [x]  **Klient** 🦸
+- [x]  **Server** 👾
 
 *Om ni vill testa att skriva i Markdown här, eller lägga till (eller ta bort) så är det fritt fram att göra det.* 😁
