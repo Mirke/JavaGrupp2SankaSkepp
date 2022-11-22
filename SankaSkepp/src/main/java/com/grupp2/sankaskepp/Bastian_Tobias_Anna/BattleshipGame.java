@@ -3,15 +3,13 @@ package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
 import com.grupp2.sankaskepp.players_Wei_Mikael.Client;
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -60,35 +58,47 @@ public class BattleshipGame extends Application {
         Text historyText = new Text("History");
         historyText.setFill(Color.web("37a8b7"));
         historyText.setEffect(dropShadow);
-
         helloController = new HelloController(historyText);
         history.getChildren().add(historyText);
         history.getStyleClass().add("history");
 
 
-        Text submarineText = new Text("4 submarines");
-        submarineText.setFill(Color.web("37a8b7"));
-        submarineText.setEffect(dropShadow);
         HBox submarine = new HBox();
+        Text submarineLabel = new Text("4 submarines");
+        submarineLabel.setFill(Color.web("37a8b7"));
+        submarineLabel.setEffect(dropShadow);
+        submarine.setAlignment(Pos.TOP_RIGHT);
+        submarine.getChildren().add(submarineLabel);
 
-        Text cruiserText = new Text("3 cruisers");
-        cruiserText.setFill(Color.web("37a8b7"));
-        cruiserText.setEffect(dropShadow);
         HBox cruiser = new HBox();
+        Text cruiserLabel = new Text("3 cruisers");
+        cruiserLabel.setFill(Color.web("37a8b7"));
+        cruiserLabel.setEffect(dropShadow);
+        cruiser.setAlignment(Pos.TOP_RIGHT);
+        cruiser.getChildren().add(cruiserLabel);
 
-        Text battleshipText = new Text("2 battleships");
-        battleshipText.setFill(Color.web("37a8b7"));
-        battleshipText.setEffect(dropShadow);
         HBox battleship = new HBox();
+        Text battleshipLabel = new Text("2 battleships");
+        battleshipLabel.setFill(Color.web("37a8b7"));
+        battleshipLabel.setEffect(dropShadow);
+        battleship.setAlignment(Pos.TOP_RIGHT);
+        battleship.getChildren().add(battleshipLabel);
 
-        Text hangarshipText = new Text("1 hangarship");
-        hangarshipText.setFill(Color.web("37a8b7"));
-        hangarshipText.setEffect(dropShadow);
-        HBox hangarship = new HBox();
+        HBox carrier = new HBox();
+        Text carrierLabel = new Text("1 carrier");
+        carrierLabel.setFill(Color.web("37a8b7"));
+        carrierLabel.setEffect(dropShadow);
+        carrier.setAlignment(Pos.BOTTOM_RIGHT);
+        carrier.getChildren().add(carrierLabel);
 
         //HBox submarine = new HBox();
         //submarine.setStyle("-fx-background-image: url('submarine.png');" + "-fx-background-position: center center;" );
-
+        VBox boatBox = new VBox();
+        submarine.setPadding(new Insets(70,180,0,0));
+        cruiser.setPadding(new Insets(78,80,0,0));
+        battleship.setPadding(new Insets(405,80,0,0));
+        carrier.setPadding(new Insets(90,120,0,0));
+        boatBox.getChildren().addAll(submarine, cruiser, battleship, carrier);
 
 
         title.getChildren().add(titleLabel);
@@ -165,10 +175,13 @@ public class BattleshipGame extends Application {
 
         HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(title, history, filler, boards, bottomBox, submarine, cruiser);
-        history.setAlignment(Pos.BASELINE_CENTER);
-
+        root.getChildren().addAll(title, history, filler, boards, bottomBox);
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
+        history.setAlignment(Pos.BASELINE_CENTER);
+        boatBox.setAlignment(Pos.BASELINE_RIGHT);
+        StackPane stack = new StackPane(boatBox, root);
+
+
 
 
         //Vbox ships = new VBox(new Text("Boats"));
@@ -176,6 +189,6 @@ public class BattleshipGame extends Application {
         //root.setRight(ships);
 
 
-        return root;
+        return stack;
     }
 }
