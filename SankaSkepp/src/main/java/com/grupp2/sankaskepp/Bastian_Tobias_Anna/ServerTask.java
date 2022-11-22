@@ -3,7 +3,8 @@ package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
+import com.grupp2.sankaskepp.Remaining.MyStringXY;
+import com.grupp2.sankaskepp.Remaining.MyStringXY;
 import com.grupp2.sankaskepp.protokoll.ProtocolSankaSkepp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
@@ -30,7 +31,7 @@ public class ServerTask extends Task<Void> {
 
     private GameBoard youBoard;
 
-    private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
+    //private MyStringXY myStringXY = new MyStringXY();
 
     private ControlOfInput serverAndEnemyControlOfInput;
     private GameBoard enemyBoard;

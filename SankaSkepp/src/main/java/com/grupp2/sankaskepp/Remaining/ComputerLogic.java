@@ -1,7 +1,6 @@
 package com.grupp2.sankaskepp.Remaining;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.MyParceValue;
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 
 import java.util.Collections;
@@ -10,14 +9,21 @@ import java.util.List;
 /*
     Karins MainRemain har flyttats hit
  */
-public class ComputerLogic {
+public class ComputerLogic extends PluralHits {
 
     // Attributes
     private String enemyShot = "";    //textsträngen från motspelaren, kommer bli indexOutOfBounds eftersom den är tom
 
-    private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
+    private MyStringXY myStringXY = new MyStringXY();
 
     private MyParceValue myParceValue = new MyParceValue();
+
+    GuardSafeSpots guardSafeSpots = new GuardSafeSpots();
+
+    Hitfirst hitfirst = new Hitfirst();
+
+    //HitHorizontal hitHorizontal = new HitHorizontal();
+
 
     int control = 0;
 
@@ -26,457 +32,295 @@ public class ComputerLogic {
 
     }
 
+    public MyStringXY getMyStringXY() {
+        return myStringXY;
+    }
+
+    public MyParceValue getMyParceValue() {
+        return myParceValue;
+    }
+
     public String ifRecievingi() {
-        Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
+        Collections.shuffle(myStringXY.getRemainingXYspots());  // return Random xyValue from remainingXYspots
 
-        int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
-        int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
-        myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-        myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
-        String text = " shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        int x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().remainingXYspots.get(0));
+        int y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().remainingXYspots.get(0));
 
-        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());  // remove xyValue from remainingXYspots
+        myStringXY.getEnemyGameBoard().hitList.add(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
+        String text = " shot ".concat(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+
+        myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());  // remove xyValue from remainingXYspots
 
         return text;
     }
 
     // Methods
     public String iForStartOfRound() {
-        Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
+        Collections.shuffle(myStringXY.getRemainingXYspots());  // return Random xyValue from remainingXYspots
 
-        int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
-        int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
+        int x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().remainingXYspots.get(0));
+        int y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().remainingXYspots.get(0));
 
-        myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-        String text = "i shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-        myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
-        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());  // remove xyValue from remainingXYspots
+
+        myStringXY.getEnemyGameBoard().hitList.add(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        String text = "i shot ".concat(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
+        myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());  // remove xyValue from remainingXYspots
 
         return text;
     }
 
     public String hForHit(ControlOfInput controlOfInput) {
         String nextXY = "";
-        //last shot was a hit -> set hasShip true
-        int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
-        int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
-        myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setHasShip(true); //Keep track on succesful hits!
+        int x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().hitList.get(myStringXY.getEnemyGameBoard().hitList.size() - 1));
+        int y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().hitList.get(myStringXY.getEnemyGameBoard().hitList.size() - 1));
+        myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setHasBoat(true); //Keep track on succesful hits!
+
+        int p = x;
+        int q = y;
 
         // Check hitList>1 guard positions around >1 hit
 
-        if (myStringCoordinates.getEnemyGameBoard().hitList.size() > 1) {
-            if (y != 0 && y != 9 && x != 0 && x != 9) {
-                if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].hasShip) {  //Guard positions above and under hits
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].setWasHit(true);
+        if (myStringXY.getEnemyGameBoard().hitList.size() > 1) {
 
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].getXyValue());
+            boolean transversal = false;
+            int x0 = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().hitList.get(0));
+            int y0 = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().hitList.get(0));
+            if (x == x0) {
+                transversal = true;
+            } //If x constant, boat is transversal
 
+            guardSafeSpots.safeSpots(x, y, transversal);
 
-                } else if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].hasShip) {  //Guard positions above and under hits
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y + 1].setWasHit(true);
-
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y - 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y + 1].getXyValue());
+            //hitHorizontal.horizontal(x, y);
 
 
-                } else if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].hasShip) {  //Guard positions to the right and to the left
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y + 1].setWasHit(true);
+            if (!transversal) {
+                //Kolla åt vilket håll föregående träff var - om åt höger, stega vänster resp om åt vänster stega höger. Hur hålla koll på
+                //ändpunkter om första träffen var i mitten - stega åt höger till kanten eller  miss = was hit, därefter stega åt vänster. Räcker det som logik?
+                if (x > x0) { //We are stepping to the right, continue until stopped
 
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y + 1].getXyValue());
-
-
-                } else if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].hasShip) {  //Guard positions to the right and to the left
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y - 1].setWasHit(true);
-
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y - 1].getXyValue());
-
+                    if (x <= 8 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
+                        x = x + 1;
+                    } else {
+                        x = x0 - 1;
+                    }
                 }
 
-            } else if (x == 0 && y == 0) {  //upper left corner
-                if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].hasShip) {  //Boat horizontal, guard positions under
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].setWasHit(true);
+                if (x0 > x) {//second hit to the left of first hit
 
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].getXyValue());
-                } else if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].hasShip) {  //Boat transversal, guard positions to the right
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].setWasHit(true);
+                    if (x != 0 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
+                        x = x - 1;
 
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].getXyValue());
+                    } else {
+                        x = x0 + 1;
+                    }
                 }
 
 
-            } else if (y == 9 && x == 0) { //lower left corner
-                if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].hasShip) {  //Boat horizontal, guard positions
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].getXyValue());
-
-                } else if (myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].hasShip) {  //Boat transversal, guard positions
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].setWasHit(true);
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].getXyValue());
-                    myStringCoordinates.getEnemyGameBoard().guardedSpots.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].getXyValue());
-
+            } else {
+                //Kolla åt vilket håll föregående träff var - om neråt, stega neråt resp om uppåt stega uppåt. Hur hålla koll på
+                //ändpunkter om första träffen var i mitten - stega uppåt till kanten eller  miss = was hit, därefter stega neråt. Räcker det som logik?
+                if (y > y0) { //We are stepping down, continue until stopped
+                    if (y != 8 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
+                        y = y + 1;
+                    } else {
+                        y = y0 - 1;
+                    }
                 }
+                if (y0 > y) {//second hit to the left of first hit
 
-            }
-
-
-            myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().guardedSpots);
-
-        }
-
-
-        // find position next to XyValue in hitList, will be  next shot
-        /*
-        String text =  " shot ".concat(myStringCoordinates.getEnemyGameBoard().remainingXYspots.get(0));
-        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(0);  // remove xyValue from remainingXYspots
-        */
-
-
-        if (y != 0 && y != 9 && x != 0 && x != 9) {
-            if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                x++;
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                x--;
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                y++;
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                y--;
+                    if (y != 0 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y - 1;
+                    } else {
+                        y = y0 + 1;
+                    }
+                }
             }
 
         } else {
-            if (x == 0 && y == 0) {
-                //Check upper left corner
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
+            System.out.println("____endast en träff_____");
+            //String pq = hitfirst.secondShot(x, y); //Skapa XYValue för nästa skott
+
+            switch (getActual()) {
+                case 'N': {  //Check upper left corner
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
+                        y = y + 1;
+                    } else x = x + 1;
+                }
+                case 'W': { // Check lower left corner
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y - 1;
+                    } else x = x + 1;
                 }
 
-            } else if (y == 9 && x == 0) { // Check lower left corner
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
+                case 'S': { //Check lower right corner
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y - 1;
+                    } else x = x - 1;
                 }
+
+                case 'E': { //Check lower left corner
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y - 1;
+                    } else x = x + 1;
+                }
+
                 //Check if border position along x = 0
-            } else if (x == 9 && y == 0) {
 
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                }
-
-            } else if (y == 9 && x == 9) { //Check lower right corner
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                }
-            } else if (y == 0) { // Check positions along y = 0
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x++][y].wasHit) {
-                    x++;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
+                case 'L': {  //Check Left column x = 0
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
+                        y = y + 1;
+                    } else if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
+                        x = x + 1;
+                    } else y = y - 1;
                 }
 
-            } else if (y == 9) { //Check border along y = 9
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
+                case 'T': { // Check Top row
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
+                        x = x + 1;
+                    } else if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
+                        y = y + 1;
+                    } else x = x - 1;
+                }
 
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
+                case 'B': { //Check Bottom row
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
+                        x = x + 1;
+                    } else if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y - 1;
+                    } else x = x - 1;
+                }
 
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
+                case 'R': { //Check Right column
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
+                        x = x - 1;
+                    } else if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y - 1;
+                    } else x = x + 1;
                 }
-            } else if (x == 0) {
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
+                case 'C': {
+                    if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
+                        x = x + 1;
+                    } else if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
+                        x = x - 1;
+                    } else if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
+                        y = y + 1;
+                    } else if (!myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y - 1;
+                    }
                 }
-            } else if (x == 9) { //Check border along y = 9
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                }
+
             }
-
         }
 
-        nextXY = " shot ".
+        if (x == p && y == q) {
+            myStringXY.getEnemyGameBoard().hitList.clear();
+            nextXY = " shot ".concat(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
 
-                concat(myStringCoordinates.getEnemyGameBoard().
+            x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
+            y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
 
-                        getRemainingEnemyPositions()[x][y].
 
-                        getXyValue());
-        myStringCoordinates.getEnemyGameBoard().
+            myStringXY.getEnemyGameBoard().hitList.add(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+            myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
+            myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        } else nextXY = " shot ".concat(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
+        myStringXY.getEnemyGameBoard().hitList.add(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue()); // add new xyValue to hitList
+        myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue()); // remove xyValue from remainingXYspots
 
-                getRemainingEnemyPositions()[x][y].
-
-                setWasHit(true);
-        myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().
-
-                getRemainingEnemyPositions()[x][y].
-
-                getXyValue());
-        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().
-
-                getRemainingEnemyPositions()[x][y].
-
-                getXyValue());
-
-        // add new xyValue to hitList
-        // remove xyValue from remainingXYspots
         return nextXY;
 
 
     }
 
+
     public String mForMiss(ControlOfInput controlOfInput) {
         System.out.println("inne i mformiss");
         String nextXY = "";
-        myStringCoordinates.getEnemyGameBoard().hitList.remove(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1);
+        myStringXY.getEnemyGameBoard().hitList.remove(myStringXY.getEnemyGameBoard().hitList.size() - 1);
         //Removes last shot (miss), check around latest hit for new possible shot.
 
         //We need logic in "hasShip" to reduce number of possibilities.
         //With two "hasShip" in a row we can avoid unnecessary shots.
 
-        boolean works = false;
-        if (myStringCoordinates.getEnemyGameBoard().hitList.size() >= 1) {
-            //Logic for only one previous hit from here, same as after first hit.
-            System.out.println("inne if");
 
-            int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
-            int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
+        if (myStringXY.getEnemyGameBoard().hitList.size() >= 1) {
+            int x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().hitList.get(myStringXY.getEnemyGameBoard().hitList.size() - 1));
+            int y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().hitList.get(myStringXY.getEnemyGameBoard().hitList.size() - 1));
 
-            if (x == 0 && y == 0) {
-                //Check upper left corner
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
-                    works = true;
-                }
-
-            } else if (y == 9 && x == 0) { // Check lower left corner
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
-                    works = true;
-                }
-                //Check if border position along x = 0
-            } else if (x == 9 && y == 0) {
-
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                    works = true;
-                }
-
-            } else if (y == 9 && x == 9) { //Check lower right corner
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                    works = true;
-                }
-            } else if (y == 0) { // Check positions along y = 0
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                    works = true;
-                }
-
-            } else if (y == 9) { //Check border along y = 9
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                    works = true;
-                }
-            } else if (x == 0) {
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
-                    works = true;
-                }
-            } else if (x == 9) { //Check border along y = 9
-                if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
-                    works = true;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                    works = true;
-                }
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                x++;
-                works = true;
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                x--;
-                works = true;
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                y++;
-                works = true;
-            } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                y--;
-                works = true;
+            boolean transversal = false;
+            int x0 = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().hitList.get(0));
+            int x1 = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().hitList.get(myStringXY.getEnemyGameBoard().hitList.size() - 2));
+            int y0 = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().hitList.get(0));
+            if (x1 == x) { //If x constant, boat is transversal
+                transversal = true;
             }
 
-            if (!works) {
-                x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().hitList.get(0));
-                y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().hitList.get(0));
+            //GuardSafeSpots.safeSpots(x, y, transversal);
 
-                if (x == 0 && y == 0) {
-                    //Check upper left corner
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                        y++;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                        x++;
+            //HitHorizontal.horizontal(x, y); - in separate method?
+            if (!transversal) {
+                //Kolla åt vilket håll föregående träff var - om åt höger, stega vänster resp om åt vänster stega höger. Hur hålla koll på
+                //ändpunkter om första träffen var i mitten - stega åt höger till kanten eller  miss = was hit, därefter stega åt vänster. Räcker det som logik?
+                if (x > x0) { //We are stepping to the right, continue until stopped
+                    if (x != 8 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
+                        x = x++;
+                    } else if (myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
+                        x = x0 - 1;
                     }
+                }
 
-                } else if (y == 9 && x == 0) { // Check lower left corner
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                        y--;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                        x++;
-                    }
-                    //Check if border position along x = 0
-                } else if (x == 9 && y == 0) {
+                if (x0 > x1) {//second hit to the left of first hit
 
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                        y++;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                        x--;
-                    }
+                    if (x != 0 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x0 - 1][y].wasHit) {
+                        x = x0 - 1;
+                    } else if (myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
+                        x = x + 1;
 
-                } else if (y == 9 && x == 9) { //Check lower right corner
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                        y--;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                        x--;
                     }
-                } else if (y == 0) { // Check positions along y = 0
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                        x++;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                        x--;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                        y++;
-                    }
-
-                } else if (y == 9) { //Check border along y = 9
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                        x++;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                        x--;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                        y--;
-                    }
-                } else if (x == 0) {
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                        y++;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                        y--;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                        x++;
-                    }
-                } else if (x == 9) { //Check border along y = 9
-                    if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                        y++;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                        y--;
-                    } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                        x--;
-                    }
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].wasHit) {
-                    x++;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].wasHit) {
-                    x--;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
-                    y++;
-                } else if (!myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
-                    y--;
                 }
             }
-            nextXY = " shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-            myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
-            myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-            myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
 
+            if (transversal) {
+                //Kolla åt vilket håll föregående träff var - om neråt, stega neråt resp om uppåt stega uppåt. Hur hålla koll på
+                //ändpunkter om första träffen var i mitten - stega uppåt till kanten eller  miss = was hit, därefter stega neråt. Räcker det som logik?
+                if (y > y0) { //We are stepping down, continue until stopped
+                    if (y != 8 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
+                        y = y + 1;
+                    } else if (myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].wasHit) {
+                        y = y0 - 1;
+                    }
+                }
+
+                if (y0 > y) {//second hit to the left of first hit
+
+                    if (y != 0 && !myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y0 - 1].wasHit) {
+                        y = y0 - 1;
+                    } else if (myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].wasHit) {
+                        y = y + 1;
+                    }
+                }
+            }
+            nextXY = " shot ".concat(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+            myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
+            myStringXY.getEnemyGameBoard().hitList.add(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue()); // add new xyValue to hitList
+            myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue()); // remove xyValue
 
         } else {
-            System.out.println("inne i else");
-            myStringCoordinates.getEnemyGameBoard().hitList.clear();
-            nextXY = " shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
+            //System.out.println("inne i else");
+            myStringXY.getEnemyGameBoard().hitList.clear();
+            nextXY = " shot ".concat(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
 
-            int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
-            int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
+            int x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
+            int y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
 
-            myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-            myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
-            myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+
+            myStringXY.getEnemyGameBoard().hitList.add(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+            myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
+            myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
         }
         System.out.println("returnerar" + nextXY);
         return nextXY;
@@ -484,33 +328,27 @@ public class ComputerLogic {
 
     public String sForSink(ControlOfInput controlOfInput) {
 
-        int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
-        int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().hitList.get(myStringCoordinates.getEnemyGameBoard().hitList.size() - 1));
+        int x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().hitList.get(myStringXY.getEnemyGameBoard().hitList.size() - 1));
+        int y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().hitList.get(myStringXY.getEnemyGameBoard().hitList.size() - 1));
 
         String nextXY = "";
-        myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setHasShip(true); //Keep track on succesful hits!
+        myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setHasBoat(true); //Keep track on succesful hits!
         //myStringCoordinates.getEnemyBoatList.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][x].getXyValue());//Addera till listEnemyBoats[]
 
 
-        // EnemyBoats.length tells which boat was sunk
-        // logic to clear safe points around boat - find spots, set wasHit, add to guardedSpots
-        // remove boat from enemyBoatList[]
-        // remove guardedSpots from remainingXYspots
-        checkNeighbour(myStringCoordinates.getEnemyGameBoard().hitList);
-
-        myStringCoordinates.getEnemyGameBoard().hitList.clear();   // clear hitList
+        myStringXY.getEnemyGameBoard().hitList.clear();   // clear hitList
         //Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
         //Unnecessary shuffle random list
 
 
         //Pick next random shot from remainingXYspots
-        x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
-        y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
-        myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-        myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
+        x = myParceValue.stringToXint(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
+        y = myParceValue.stringToYint(myStringXY.getEnemyGameBoard().getRemainingXYspots().get(0));
+        myStringXY.getEnemyGameBoard().hitList.add(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].setWasHit(true);
 
-        String text = " shot ".concat(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
-        myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());  // remove xyValue from remainingXYspots
+        String text = " shot ".concat(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
+        myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());  // remove xyValue from remainingXYspots
 
         return text;
     }
@@ -525,58 +363,58 @@ public class ComputerLogic {
             y = myParceValue.stringToYint(hitList.get(i));
 
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x-1][y].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x - 1][y].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x+1][y].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x + 1][y].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x][y-1].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x][y - 1].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x][y+1].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x][y + 1].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x+1][y-1].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x + 1][y - 1].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y - 1].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x-1][y-1].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y - 1].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x - 1][y - 1].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x+1][y+1].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x + 1][y + 1].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }
             try {
-                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y + 1].setWasHit(true);
-                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
-                        .getRemainingEnemyPositions()[x-1][y+1].getXyValue());  // remove xyValue from remainingXYspots
+                myStringXY.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y + 1].setWasHit(true);
+                myStringXY.getEnemyGameBoard().remainingXYspots.remove(myStringXY.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x - 1][y + 1].getXyValue());  // remove xyValue from remainingXYspots
 
             } catch (IndexOutOfBoundsException e) {
             }

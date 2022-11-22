@@ -1,14 +1,12 @@
 package com.grupp2.sankaskepp.Remaining;
 
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /*
     Karins kod i denna klass
  */
-public class MyStringCoordinates {
+public class MyStringXY{
 
     // Attributes
     private EnemyGameBoard enemyGameBoard = new EnemyGameBoard();
@@ -24,8 +22,7 @@ public class MyStringCoordinates {
     private List<String> remainingXYspots;
 
     // Constructors
-    public MyStringCoordinates() {
-
+    public MyStringXY() {
 
         //Make List of all positions in EnemyGameBoard - Karin
 
