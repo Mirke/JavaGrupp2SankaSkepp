@@ -404,6 +404,10 @@ public class ComputerLogic {
         myStringCoordinates.getEnemyGameBoard().hitList.clear();   // clear hitList
         Collections.shuffle(myStringCoordinates.getRemainingXYspots());  // return Random xyValue from remainingXYspots
 
+        // TOBIAS
+        checkNeighbour(myStringCoordinates.getEnemyGameBoard().hitList);
+        // TOBIAS
+
         int x = myParceValue.stringToXint(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
         int y = myParceValue.stringToYint(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots().get(0));
         myStringCoordinates.getEnemyGameBoard().hitList.add(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());
@@ -415,6 +419,7 @@ public class ComputerLogic {
         return text;
     }
 
+    // TOBIAS
     private void checkNeighbour(List<String> hitList) {
         int x = 0;
         int y = 0;
