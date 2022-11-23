@@ -45,6 +45,7 @@ public class ClientTask extends Task<Void> {
      * Constructs and initializes the ClientTask object.
      *
      * @param historyTextIn {@code Text} class that comes from front-end that will be updated.
+     * @param isDebugModeIn console text about what is happening in class
      * @author Mikael Eriksson
      * @since 1.0.0
      */
@@ -90,7 +91,8 @@ public class ClientTask extends Task<Void> {
      * @since 1.0.0
      */
     private void setupClientAndCallServer() throws IOException {
-        try (Socket clientSocket = new Socket("localhost", 1619)) {
+        try {
+            Socket clientSocket = new Socket("localhost", 1619);
             InputStream inputStream = clientSocket.getInputStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             OutputStream outputStream = clientSocket.getOutputStream();
@@ -171,8 +173,8 @@ public class ClientTask extends Task<Void> {
             t++;
         }
         if (isLimited) {
-            return t * 1000;
-        } else return 50;
+            return 50;
+        } else return t * 1000;
     }
 
     /**
@@ -187,7 +189,7 @@ public class ClientTask extends Task<Void> {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    //   Getter & Setter
+    //   Getters & Setters
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
