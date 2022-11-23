@@ -5,6 +5,7 @@ import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 
 import java.util.Collections;
+import java.util.List;
 
 /*
     Karins MainRemain har flyttats hit
@@ -412,6 +413,76 @@ public class ComputerLogic {
         myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y].getXyValue());  // remove xyValue from remainingXYspots
 
         return text;
+    }
+
+    private void checkNeighbour(List<String> hitList) {
+        int x = 0;
+        int y = 0;
+
+        for (int i = 0; i < hitList.size(); i++) {
+
+            x = myParceValue.stringToXint(hitList.get(i));
+            y = myParceValue.stringToYint(hitList.get(i));
+
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x-1][y].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x+1][y].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y - 1].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x][y-1].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x][y + 1].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x][y+1].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y - 1].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x+1][y-1].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y - 1].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x-1][y-1].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x + 1][y + 1].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x+1][y+1].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+            try {
+                myStringCoordinates.getEnemyGameBoard().getRemainingEnemyPositions()[x - 1][y + 1].setWasHit(true);
+                myStringCoordinates.getEnemyGameBoard().remainingXYspots.remove(myStringCoordinates.getEnemyGameBoard()
+                        .getRemainingEnemyPositions()[x-1][y+1].getXyValue());  // remove xyValue from remainingXYspots
+
+            } catch (IndexOutOfBoundsException e) {
+            }
+
+        }
+
     }
 
     // tobias test - hämtar från mickes protokoll
