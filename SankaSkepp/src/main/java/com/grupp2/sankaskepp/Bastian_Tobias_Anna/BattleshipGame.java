@@ -14,7 +14,6 @@ import java.io.IOException;
 
 public class BattleshipGame extends Application {
 
-    private GameBoard youBoard, enemyBoard;
     private final DropShadow dropShadow = new DropShadow();
     private HelloController helloController;
 
@@ -36,9 +35,7 @@ public class BattleshipGame extends Application {
         VBox root = new VBox();
         root.setPrefSize(1200, 760);
         root.getChildren().addAll(createTitle(), createHistory(), createFiller(), createBoard(), createBottomBox());
-        StackPane stack = new StackPane(buildBoxWithBoats(), root);
-
-        return stack;
+        return new StackPane(buildBoxWithBoats(), root);
     }
 
     public HBox createBoard(){
@@ -55,8 +52,8 @@ public class BattleshipGame extends Application {
         Text enemyLabel = new Text("Enemy");
         enemyLabel.setFill(Color.web("#b938e2"));
         enemyLabel.setEffect(dropShadow);
-        this.enemyBoard = helloController.enemyBoard;
-        this.youBoard = helloController.youBoard;
+        GameBoard enemyBoard = helloController.enemyBoard;
+        GameBoard youBoard = helloController.youBoard;
         you.getChildren().addAll(youLabel, youBoard);
         enemy.getChildren().addAll(enemyLabel, enemyBoard);
         HBox boards = new HBox(50, you, enemy);
