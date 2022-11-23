@@ -6,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.Objects;
