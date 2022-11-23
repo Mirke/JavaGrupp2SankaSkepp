@@ -1,63 +1,79 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
-
 import java.io.*;
 import java.net.Socket;
+import java.util.Objects;
 import java.util.Random;
 
+/**
+ * <code>ClientTask</code> - Used for connection to a server, also logic of Client.
+ *
+ * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
+ * @author Wei Li (wei.li@edu.edugrade.se)
+ * @author Bastian Marx Melin (bastian.marx.melin@edu.edugrade.se)
+ * @author Tobias Johansson (tobias.johansson@edu.edugrade.se)
+ * @version 1.0.0
+ */
 public class ClientTask extends Task<Void> {
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Properties
+    // -----------------------------------------------------------------------------------------------------------------
+
+    private Text textInBackup;
     private PrintWriter writer;
     private BufferedReader reader;
-    private Boolean isServerConnected = true;
-    private final Random rand = new Random();
-    private String messageFromClient = "";
+    private final GameBoard youBoard;
+    private final Boolean isDebugMode;
     private String messageFromServer = "";
+    private final Random rand = new Random();
+    private final ControlOfInput serverAndEnemyControlOfInput;
     private ObservableStringValue clientLatestMessageText = new SimpleStringProperty("History");
-    private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
-    public Text textInBackup;
 
-    private GameBoard youBoard, enemyBoard;
-    private ControlOfInput serverAndEnemyControlOfInput;
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Constructor
+    // -----------------------------------------------------------------------------------------------------------------
 
-
-    public ClientTask(Text historyTextIn) {
-        // Init - Start
+    /**
+     * Constructs and initializes the ClientTask object.
+     *
+     * @param historyTextIn {@code Text} class that comes from front-end that will be updated.
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
+    public ClientTask(Text historyTextIn, Boolean isDebugModeIn) {
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
-        //youPlaceBoats.initializeGridArray();
         youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
-        //ComputerAI youAI = new ComputerAI(youBoat);
-        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
-        // -------------------------------------------
-        // Server
         Boat serverBoat = new Boat();
-        PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
-        //serverPlaceBoats.initializeGridArray();
-        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
-        enemyBoard = new GameBoard();
-        // ComputerAI serverAI = new ComputerAI();
-
-        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
+        GameBoard enemyBoard = new GameBoard();
         serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
-        //Init - Slut
-
-
         textInBackup = historyTextIn;
         textInBackup.textProperty().bind(clientLatestMessageText);
+        this.isDebugMode = isDebugModeIn;
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Methods
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * <code>call</code> - Extended methods from superclass <code>Task</code> it will connect to server and speak with it. (Mainline)
+     *
+     * @return Null
+     * @throws IOException if no connection is made send error
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
     @Override
     protected Void call() throws IOException {
         setupClientAndCallServer();
@@ -65,136 +81,131 @@ public class ClientTask extends Task<Void> {
         return null;
     }
 
-    // Weis kod
+    /**
+     * <code>setupClientAndCallServer</code> - Setup for socket and being able to read and write through it.
+     *
+     * @throws IOException if no connection is made throw exception
+     * @author Wei Li
+     * @since 1.0.0
+     */
     private void setupClientAndCallServer() throws IOException {
-        try {
-            System.out.println("Client trying to connect to Server...");
-            Socket clientSocket = new Socket("localhost", 1619);
+        try (Socket clientSocket = new Socket("localhost", 1619)) {
             InputStream inputStream = clientSocket.getInputStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             OutputStream outputStream = clientSocket.getOutputStream();
             writer = new PrintWriter(outputStream, true);
-
-
         } catch (IOException e) {
             throw new IOException(e);
         }
     }
 
+    /**
+     * <code>clientSpeaksWithServer</code> - Server has connected now to the client, now the communication begins.
+     *
+     * @throws IOException if no connection to server is made throw exception
+     * @author Mikael Eriksson
+     * @author Wei Li
+     * @since 1.0.0
+     */
     private void clientSpeaksWithServer() throws IOException {
-        // init -Start
-        /*
-        Collections.shuffle(myStringCoordinates.getRemainingXYspots());
-        String pos = myStringCoordinates.getRemainingXYspots().get(0);
-        myStringCoordinates.getRemainingXYspots().remove(0);
-        serverAndEnemyControlOfInput.sentString("i shot ".concat(pos));
-        writer.println("i shot ".concat(pos));
-        */
         String outputText = serverAndEnemyControlOfInput.startRound();
         serverAndEnemyControlOfInput.sentString(outputText);
         writer.println(outputText);
-        // init - Stop
-
-        // writer.println(protocolSankaSkepp.beginGame(rand.nextInt(10), rand.nextInt(10)));
-        isServerConnected = true;
-
+        boolean isServerConnected = true;
         outputText = "";
         while (isServerConnected) {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
-                // init -start
-
-                String editedMessage = String.format("""
-                        Enemy: %s""", messageFromServer);
+                printMessageFromServer(isDebugMode);
+                String editedMessage = String.format("Enemy: %s", messageFromServer);
                 clientLatestMessageText = new SimpleStringProperty(editedMessage);
                 textInBackup.textProperty().bind(clientLatestMessageText);
-
-
                 if (!messageFromServer.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
-                    //serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
-                    System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
                     serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
                     break;
                 }
-
-
-
                 if (outputText.contains("game over")) {
-                    System.out.println("I lost");
-                    isServerConnected = false;
                     outputText = "game over";
-
+                    isServerConnected = false;
                 }
-                    /*
-                    Collections.shuffle(myStringCoordinates.getRemainingXYspots());
-                    pos = myStringCoordinates.getRemainingXYspots().get(0);
-                    myStringCoordinates.getRemainingXYspots().remove(0);
-
-                    outputText = text.concat(" shot ").concat(pos);
-                    serverAndEnemyControlOfInput.sentString(outputText);
-                     */
-
-                // init - end
-
-                printMessageFromServer(true);
-                //latestMessageFromServer();
-                //clientUpdateMessage();
-                printMessageOutFromClient(true, outputText);
-                //sendClientMessageToServer();
-
-                //latestMessageSentFromClient();
-
                 try {
-                    Thread.sleep(1000);
-                    editedMessage = String.format("""
-                            You: %s""", outputText);
+                    Thread.sleep(delay(isDebugMode));
+                    editedMessage = String.format("You: %s", outputText);
                     clientLatestMessageText = new SimpleStringProperty(editedMessage);
                     textInBackup.textProperty().bind(clientLatestMessageText);
-
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-
-
                 writer.println(outputText);
             }
         }
         sendGameStoppedMessage(outputText);
     }
 
-    private void printMessageOutFromClient(boolean show, String outputText) {
-        if (show) System.out.printf("Client sending: %s\n", outputText);
-    }
-
+    /**
+     * <code>printMessageFromServer</code> - prints what the client is receiving in console window, purpose is for debugging.
+     *
+     * @param show if true then debug message in console
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
     private void printMessageFromServer(boolean show) {
         if (show) System.out.printf("Client receiving: %s\n", messageFromServer);
     }
 
-    private int delay() {
-        int t = 1;
+    /**
+     * <code>delay</code> - adds delay to threads or other things.
+     * @param isLimited limits the speed to 2-5 seconds else 5 micro-seconds
+     * @return seconds to delay
+     * @author Mikael Eriksson
+     * @author Wei Li
+     * @since 1.0.0
+     */
+    private int delay(Boolean isLimited) {
+        int t = rand.nextInt(5);
         if (t == 1) {
             t++;
         }
-        return t;
+        if (isLimited) {
+            return t * 1000;
+        } else return 50;
     }
 
+    /**
+     * <code>sendGameStoppedMessage</code> - when game ends it changes output to result of battle.
+     * @param outputText string to be changed to specific message
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
     private void sendGameStoppedMessage(String outputText) {
-        if(outputText == "game over"){
-            outputText = "You: I lost!";
-        } else {
-            outputText = "You: I won!";
-        }
+        outputText = (Objects.equals(outputText, "game over")) ? "You: I lost!" : "You: I won!";
         textInBackup.textProperty().bind(new SimpleStringProperty(outputText));
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Getter & Setter
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * <code>getYouBoard</code> - gives YouBoard class.
+     * @return youBoard
+     * @since 1.0.0
+     * @author Mikael Eriksson
+     */
     public GameBoard getYouBoard() {
         return youBoard;
     }
 
-    public GameBoard getEnemyBoard() {
-        return enemyBoard;
+    /**
+     * <code>setTextInBackup</code> - getter for the Text class that gets feed in constructor.
+     * @param textInBackup Text class that should get feed into class
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
+    public void setTextInBackup(Text textInBackup) {
+        this.textInBackup = textInBackup;
     }
 }
