@@ -26,8 +26,6 @@ public class ServerTask extends Task<Void> {
     //   Properties
     // -----------------------------------------------------------------------------------------------------------------
 
-
-
     public Text textInBackup;
     private PrintWriter writer;
     private BufferedReader reader;
