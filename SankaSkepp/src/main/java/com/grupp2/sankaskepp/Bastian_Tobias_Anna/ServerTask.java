@@ -1,5 +1,4 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
@@ -7,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -15,14 +13,14 @@ import java.util.Random;
 
 public class ServerTask extends Task<Void> {
 
+    public Text textInBackup;
     private PrintWriter writer;
     private BufferedReader reader;
-    private Boolean isClientConnected;
-    private final Random rand = new Random();
-    public Text textInBackup;
     private final GameBoard youBoard;
-    private final ControlOfInput serverAndEnemyControlOfInput;
+    private Boolean isClientConnected;
     private final GameBoard enemyBoard;
+    private final Random rand = new Random();
+    private final ControlOfInput serverAndEnemyControlOfInput;
 
     public ServerTask(Text historyTextIn) {
         Boat youBoat = new Boat();
@@ -51,7 +49,6 @@ public class ServerTask extends Task<Void> {
     }
 
     private void setupServerAndListenForClient() throws IOException {
-        System.out.println("Server ON");
         ServerSocket serverSocket = new ServerSocket(1619);
         Socket clientSocket = serverSocket.accept();
         isClientConnected = true;
@@ -94,7 +91,7 @@ public class ServerTask extends Task<Void> {
         if (t == 1) {
             t++;
         }
-        return t*1000;
+        return t * 1000;
     }
 
     private void printMessageOutIntoServer(boolean show, String outputText) {

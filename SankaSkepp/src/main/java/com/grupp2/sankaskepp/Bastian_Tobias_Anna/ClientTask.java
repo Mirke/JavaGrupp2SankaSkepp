@@ -1,4 +1,5 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
+
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
@@ -14,17 +15,15 @@ import java.util.Random;
 
 public class ClientTask extends Task<Void> {
 
+    public Text textInBackup;
     private PrintWriter writer;
     private BufferedReader reader;
-    private Boolean isServerConnected = true;
-    private final Random rand = new Random();
-    private String messageFromClient = "";
+    private final GameBoard youBoard;
+    private final GameBoard enemyBoard;
     private String messageFromServer = "";
+    private final Random rand = new Random();
+    private final ControlOfInput serverAndEnemyControlOfInput;
     private ObservableStringValue clientLatestMessageText = new SimpleStringProperty("History");
-    private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
-    public Text textInBackup;
-    private GameBoard youBoard, enemyBoard;
-    private ControlOfInput serverAndEnemyControlOfInput;
 
     public ClientTask(Text historyTextIn) {
         Boat youBoat = new Boat();
@@ -66,11 +65,12 @@ public class ClientTask extends Task<Void> {
         String outputText = serverAndEnemyControlOfInput.startRound();
         serverAndEnemyControlOfInput.sentString(outputText);
         writer.println(outputText);
-        isServerConnected = true;
+        Boolean isServerConnected = true;
         outputText = "";
         while (isServerConnected) {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
+                printMessageFromServer(true);
                 String editedMessage = String.format("Enemy: %s", messageFromServer);
                 clientLatestMessageText = new SimpleStringProperty(editedMessage);
                 textInBackup.textProperty().bind(clientLatestMessageText);
@@ -85,7 +85,6 @@ public class ClientTask extends Task<Void> {
                     isServerConnected = false;
                     outputText = "game over";
                 }
-                printMessageFromServer(true);
                 try {
                     Thread.sleep(50);
                     editedMessage = String.format("You: %s", outputText);
@@ -101,8 +100,6 @@ public class ClientTask extends Task<Void> {
         sendGameStoppedMessage(outputText);
     }
 
-
-
     private void printMessageFromServer(boolean show) {
         if (show) System.out.printf("Client receiving: %s\n", messageFromServer);
     }
@@ -112,7 +109,7 @@ public class ClientTask extends Task<Void> {
         if (t == 1) {
             t++;
         }
-        return t*1000;
+        return t * 1000;
     }
 
     private void sendGameStoppedMessage(String outputText) {

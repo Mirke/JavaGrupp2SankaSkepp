@@ -1,6 +1,4 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
-
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -35,8 +33,6 @@ public class BattleshipGame extends Application {
     }
 
     private Parent createContent() throws IOException, InterruptedException {
-
-        //Anna härifrån och ner
         VBox root = new VBox();
         root.setPrefSize(1200, 760);
         root.getChildren().addAll(createTitle(), createHistory(), createFiller(), createBoard(), createBottomBox());
