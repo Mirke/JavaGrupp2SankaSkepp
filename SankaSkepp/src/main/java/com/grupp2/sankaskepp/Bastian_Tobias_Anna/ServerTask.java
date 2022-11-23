@@ -3,7 +3,6 @@ package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
@@ -20,14 +19,10 @@ public class ServerTask extends Task<Void> {
     private BufferedReader reader;
     private Boolean isClientConnected;
     private final Random rand = new Random();
-    private String messageFromClient = "";
-    private String messageFromServer = "";
-    private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
     public Text textInBackup;
-    private GameBoard youBoard;
-    private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
-    private ControlOfInput serverAndEnemyControlOfInput;
-    private GameBoard enemyBoard;
+    private final GameBoard youBoard;
+    private final ControlOfInput serverAndEnemyControlOfInput;
+    private final GameBoard enemyBoard;
 
     public ServerTask(Text historyTextIn) {
         Boat youBoat = new Boat();
@@ -36,11 +31,11 @@ public class ServerTask extends Task<Void> {
         youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
         Boat serverBoat = new Boat();
-        PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
         enemyBoard = new GameBoard();
         serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
         textInBackup = historyTextIn;
+        ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
         textInBackup.textProperty().bind(serverLatestMessageText);
     }
 
@@ -70,22 +65,21 @@ public class ServerTask extends Task<Void> {
         String outputText = "";
         while (isClientConnected) {
             if (reader.ready()) {
-                messageFromClient = reader.readLine();
+                String messageFromClient = reader.readLine();
+                printMessageOutIntoServer(true, messageFromClient);
                 if (!messageFromClient.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
                 } else {
-                    System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
                     serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
                     break;
                 }
                 if (outputText.contains("game over")) {
-                    System.out.println("I lost");
                     isClientConnected = false;
                     outputText = "game over";
                 }
                 try {
-                    Thread.sleep(delay() * 1000);
+                    Thread.sleep(50);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -96,19 +90,19 @@ public class ServerTask extends Task<Void> {
     }
 
     private int delay() {
-        int t = 1;
+        int t = rand.nextInt(5);
         if (t == 1) {
             t++;
         }
-        return t;
+        return t*1000;
+    }
+
+    private void printMessageOutIntoServer(boolean show, String outputText) {
+        if (show) System.out.printf("Server receiving: %s\n", outputText);
     }
 
     private void sendGameStoppedMessage(String outputText) {
-        if(outputText == "game over"){
-            outputText = "Enemy: I lost!";
-        } else {
-            outputText = "Enemy: I won!";
-        }
+        outputText = (outputText == "game over") ? "Enemy: I lost!" : "Enemy: I won!";
         textInBackup.textProperty().bind(new SimpleStringProperty(outputText));
     }
 

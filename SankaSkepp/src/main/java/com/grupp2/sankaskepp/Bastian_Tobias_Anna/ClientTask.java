@@ -26,9 +26,7 @@ public class ClientTask extends Task<Void> {
     private GameBoard youBoard, enemyBoard;
     private ControlOfInput serverAndEnemyControlOfInput;
 
-
     public ClientTask(Text historyTextIn) {
-
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
@@ -59,47 +57,38 @@ public class ClientTask extends Task<Void> {
             reader = new BufferedReader(new InputStreamReader(inputStream));
             OutputStream outputStream = clientSocket.getOutputStream();
             writer = new PrintWriter(outputStream, true);
-
-
         } catch (IOException e) {
             throw new IOException(e);
         }
     }
 
     private void clientSpeaksWithServer() throws IOException {
-
         String outputText = serverAndEnemyControlOfInput.startRound();
         serverAndEnemyControlOfInput.sentString(outputText);
         writer.println(outputText);
         isServerConnected = true;
-
         outputText = "";
         while (isServerConnected) {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
-                String editedMessage = String.format("""
-                        Enemy: %s""", messageFromServer);
+                String editedMessage = String.format("Enemy: %s", messageFromServer);
                 clientLatestMessageText = new SimpleStringProperty(editedMessage);
                 textInBackup.textProperty().bind(clientLatestMessageText);
                 if (!messageFromServer.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
                 } else {
-                    System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
                     serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
                     break;
                 }
                 if (outputText.contains("game over")) {
-                    System.out.println("I lost");
                     isServerConnected = false;
                     outputText = "game over";
                 }
                 printMessageFromServer(true);
-                printMessageOutFromClient(true, outputText);
                 try {
-                    Thread.sleep(1000);
-                    editedMessage = String.format("""
-                            You: %s""", outputText);
+                    Thread.sleep(50);
+                    editedMessage = String.format("You: %s", outputText);
                     clientLatestMessageText = new SimpleStringProperty(editedMessage);
                     textInBackup.textProperty().bind(clientLatestMessageText);
 
@@ -112,12 +101,18 @@ public class ClientTask extends Task<Void> {
         sendGameStoppedMessage(outputText);
     }
 
-    private void printMessageOutFromClient(boolean show, String outputText) {
-        if (show) System.out.printf("Client sending: %s\n", outputText);
-    }
+
 
     private void printMessageFromServer(boolean show) {
         if (show) System.out.printf("Client receiving: %s\n", messageFromServer);
+    }
+
+    private int delay() {
+        int t = rand.nextInt(5);
+        if (t == 1) {
+            t++;
+        }
+        return t*1000;
     }
 
     private void sendGameStoppedMessage(String outputText) {
