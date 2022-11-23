@@ -24,43 +24,22 @@ public class ServerTask extends Task<Void> {
     private String messageFromServer = "";
     private ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
     public Text textInBackup;
-
     private GameBoard youBoard;
-
     private MyStringCoordinates myStringCoordinates = new MyStringCoordinates();
-
     private ControlOfInput serverAndEnemyControlOfInput;
     private GameBoard enemyBoard;
 
     public ServerTask(Text historyTextIn) {
-
-        //Init - Start
-        // Tobias { ***********
-        // you
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
-         //youPlaceBoats.initializeGridArray();
         youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
-        //ComputerAI youAI = new ComputerAI(youBoat);
-        //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
-
-        // -------------------------------------------
-
-        // Server
         Boat serverBoat = new Boat();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
-        //serverPlaceBoats.initializeGridArray();
-        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
-        // ComputerAI serverAI = new ComputerAI();
-
-        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
         serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
-        //Init - End
-
         textInBackup = historyTextIn;
         textInBackup.textProperty().bind(serverLatestMessageText);
     }
@@ -70,14 +49,12 @@ public class ServerTask extends Task<Void> {
         try {
             setupServerAndListenForClient();
             serverSpeaksWithClient();
-
         } catch (IOException e) {
             isClientConnected = false;
         }
         return null;
     }
 
-    // Weis kod
     private void setupServerAndListenForClient() throws IOException {
         System.out.println("Server ON");
         ServerSocket serverSocket = new ServerSocket(1619);
@@ -94,53 +71,25 @@ public class ServerTask extends Task<Void> {
         while (isClientConnected) {
             if (reader.ready()) {
                 messageFromClient = reader.readLine();
-
-                String pos = "";
                 if (!messageFromClient.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
-                    //serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
                     serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
                     break;
                 }
-
-
                 if (outputText.contains("game over")) {
                     System.out.println("I lost");
                     isClientConnected = false;
                     outputText = "game over";
-
                 }
-                /*
-                    Collections.shuffle(myStringCoordinates.getRemainingXYspots());
-                    pos = myStringCoordinates.getRemainingXYspots().get(0);
-                    myStringCoordinates.getRemainingXYspots().remove(0);
-
-
-                    serverAndEnemyControlOfInput.sentString(outputText);
-               */
-
-                //printMessageFromClient(false);
-                //latestMessageFromClient();
-                //serverUpdateMessage();
-                //String editedMessage = String.format("""
-                //You: %s""", outputText);
-                //serverLatestMessageText = new SimpleStringProperty(editedMessage);
-                //textInBackup.textProperty().bind(serverLatestMessageText);
-                //printMessageOutFromServer(false);
-
                 try {
                     Thread.sleep(delay() * 1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-
-
                 writer.println(outputText);
-                //sendServerMessageToClient();
-                //latestMessageSentFromServer();
             }
         }
         sendGameStoppedMessage(outputText);
