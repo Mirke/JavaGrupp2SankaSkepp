@@ -1,5 +1,4 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
@@ -28,11 +27,11 @@ public class ClientTask extends Task<Void> {
     //   Properties
     // -----------------------------------------------------------------------------------------------------------------
 
-    public Text textInBackup;
+    private Text textInBackup;
     private PrintWriter writer;
     private BufferedReader reader;
     private final GameBoard youBoard;
-    private final GameBoard enemyBoard;
+    private final Boolean isDebugMode;
     private String messageFromServer = "";
     private final Random rand = new Random();
     private final ControlOfInput serverAndEnemyControlOfInput;
@@ -49,19 +48,19 @@ public class ClientTask extends Task<Void> {
      * @author Mikael Eriksson
      * @since 1.0.0
      */
-    public ClientTask(Text historyTextIn) {
+    public ClientTask(Text historyTextIn, Boolean isDebugModeIn) {
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
         youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
         Boat serverBoat = new Boat();
-        PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
-        enemyBoard = new GameBoard();
+        GameBoard enemyBoard = new GameBoard();
         serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
         textInBackup = historyTextIn;
         textInBackup.textProperty().bind(clientLatestMessageText);
+        this.isDebugMode = isDebugModeIn;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -72,7 +71,7 @@ public class ClientTask extends Task<Void> {
      * <code>call</code> - Extended methods from superclass <code>Task</code> it will connect to server and speak with it. (Mainline)
      *
      * @return Null
-     * @throws IOException
+     * @throws IOException if no connection is made send error
      * @author Mikael Eriksson
      * @since 1.0.0
      */
@@ -86,14 +85,12 @@ public class ClientTask extends Task<Void> {
     /**
      * <code>setupClientAndCallServer</code> - Setup for socket and being able to read and write through it.
      *
-     * @throws IOException
-     * @Author Wei Li
+     * @throws IOException if no connection is made throw exception
+     * @author Wei Li
      * @since 1.0.0
      */
     private void setupClientAndCallServer() throws IOException {
-        try {
-            System.out.println("Client trying to connect to Server...");
-            Socket clientSocket = new Socket("localhost", 1619);
+        try (Socket clientSocket = new Socket("localhost", 1619)) {
             InputStream inputStream = clientSocket.getInputStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             OutputStream outputStream = clientSocket.getOutputStream();
@@ -106,7 +103,7 @@ public class ClientTask extends Task<Void> {
     /**
      * <code>clientSpeaksWithServer</code> - Server has connected now to the client, now the communication begins.
      *
-     * @throws IOException
+     * @throws IOException if no connection to server is made throw exception
      * @author Mikael Eriksson
      * @author Wei Li
      * @since 1.0.0
@@ -115,12 +112,12 @@ public class ClientTask extends Task<Void> {
         String outputText = serverAndEnemyControlOfInput.startRound();
         serverAndEnemyControlOfInput.sentString(outputText);
         writer.println(outputText);
-        Boolean isServerConnected = true;
+        boolean isServerConnected = true;
         outputText = "";
         while (isServerConnected) {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
-                printMessageFromServer(true);
+                printMessageFromServer(isDebugMode);
                 String editedMessage = String.format("Enemy: %s", messageFromServer);
                 clientLatestMessageText = new SimpleStringProperty(editedMessage);
                 textInBackup.textProperty().bind(clientLatestMessageText);
@@ -132,11 +129,11 @@ public class ClientTask extends Task<Void> {
                     break;
                 }
                 if (outputText.contains("game over")) {
-                    isServerConnected = false;
                     outputText = "game over";
+                    isServerConnected = false;
                 }
                 try {
-                    Thread.sleep(delay(false));
+                    Thread.sleep(delay(isDebugMode));
                     editedMessage = String.format("You: %s", outputText);
                     clientLatestMessageText = new SimpleStringProperty(editedMessage);
                     textInBackup.textProperty().bind(clientLatestMessageText);
@@ -190,7 +187,7 @@ public class ClientTask extends Task<Void> {
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    //   Getters & Setters
+    //   Getter & Setter
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
@@ -201,5 +198,15 @@ public class ClientTask extends Task<Void> {
      */
     public GameBoard getYouBoard() {
         return youBoard;
+    }
+
+    /**
+     * <code>setTextInBackup</code> - getter for the Text class that gets feed in constructor.
+     * @param textInBackup Text class that should get feed into class
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
+    public void setTextInBackup(Text textInBackup) {
+        this.textInBackup = textInBackup;
     }
 }
