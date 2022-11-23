@@ -1,7 +1,4 @@
-
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.text.Text;

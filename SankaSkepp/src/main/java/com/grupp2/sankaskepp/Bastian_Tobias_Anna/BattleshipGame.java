@@ -142,7 +142,6 @@ public class BattleshipGame extends Application {
         boatBoxOut.getChildren().addAll(submarine, cruiser, battleship, carrier);
 
         return boatBoxOut;
-
     }
 
     public void defaultBoatStyle(Text text, Boolean giveShadows){

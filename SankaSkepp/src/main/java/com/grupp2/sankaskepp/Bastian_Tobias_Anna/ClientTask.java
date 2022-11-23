@@ -1,9 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
