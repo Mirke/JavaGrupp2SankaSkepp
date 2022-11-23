@@ -1,4 +1,5 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
+
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
@@ -6,12 +7,26 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Objects;
 import java.util.Random;
 
+/**
+ * <code>ClientTask</code> - Used for connection to a server, also logic of Client.
+ *
+ * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
+ * @author Wei Li (wei.li@edu.edugrade.se)
+ * @author Bastian Marx Melin (bastian.marx.melin@edu.edugrade.se)
+ * @author Tobias Johansson (tobias.johansson@edu.edugrade.se)
+ * @version 1.0.0
+ */
 public class ClientTask extends Task<Void> {
+
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Properties
+    // -----------------------------------------------------------------------------------------------------------------
 
     public Text textInBackup;
     private PrintWriter writer;
@@ -23,6 +38,17 @@ public class ClientTask extends Task<Void> {
     private final ControlOfInput serverAndEnemyControlOfInput;
     private ObservableStringValue clientLatestMessageText = new SimpleStringProperty("History");
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Constructor
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Constructs and initializes the ClientTask object.
+     *
+     * @param historyTextIn {@code Text} class that comes from front-end that will be updated.
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
     public ClientTask(Text historyTextIn) {
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
@@ -38,6 +64,18 @@ public class ClientTask extends Task<Void> {
         textInBackup.textProperty().bind(clientLatestMessageText);
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Methods
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * <code>call</code> - Extended methods from superclass <code>Task</code> it will connect to server and speak with it. (Mainline)
+     *
+     * @return Null
+     * @throws IOException
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
     @Override
     protected Void call() throws IOException {
         setupClientAndCallServer();
@@ -45,7 +83,13 @@ public class ClientTask extends Task<Void> {
         return null;
     }
 
-    // Weis kod
+    /**
+     * <code>setupClientAndCallServer</code> - Setup for socket and being able to read and write through it.
+     *
+     * @throws IOException
+     * @Author Wei Li
+     * @since 1.0.0
+     */
     private void setupClientAndCallServer() throws IOException {
         try {
             System.out.println("Client trying to connect to Server...");
@@ -59,6 +103,14 @@ public class ClientTask extends Task<Void> {
         }
     }
 
+    /**
+     * <code>clientSpeaksWithServer</code> - Server has connected now to the client, now the communication begins.
+     *
+     * @throws IOException
+     * @author Mikael Eriksson
+     * @author Wei Li
+     * @since 1.0.0
+     */
     private void clientSpeaksWithServer() throws IOException {
         String outputText = serverAndEnemyControlOfInput.startRound();
         serverAndEnemyControlOfInput.sentString(outputText);
@@ -84,11 +136,10 @@ public class ClientTask extends Task<Void> {
                     outputText = "game over";
                 }
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(delay(false));
                     editedMessage = String.format("You: %s", outputText);
                     clientLatestMessageText = new SimpleStringProperty(editedMessage);
                     textInBackup.textProperty().bind(clientLatestMessageText);
-
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -98,28 +149,57 @@ public class ClientTask extends Task<Void> {
         sendGameStoppedMessage(outputText);
     }
 
+    /**
+     * <code>printMessageFromServer</code> - prints what the client is receiving in console window, purpose is for debugging.
+     *
+     * @param show if true then debug message in console
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
     private void printMessageFromServer(boolean show) {
         if (show) System.out.printf("Client receiving: %s\n", messageFromServer);
     }
 
-    private int delay() {
+    /**
+     * <code>delay</code> - adds delay to threads or other things.
+     * @param isLimited limits the speed to 2-5 seconds else 5 micro-seconds
+     * @return seconds to delay
+     * @author Mikael Eriksson
+     * @author Wei Li
+     * @since 1.0.0
+     */
+    private int delay(Boolean isLimited) {
         int t = rand.nextInt(5);
         if (t == 1) {
             t++;
         }
-        return t * 1000;
+        if (isLimited) {
+            return t * 1000;
+        } else return 50;
     }
 
+    /**
+     * <code>sendGameStoppedMessage</code> - when game ends it changes output to result of battle.
+     * @param outputText string to be changed to specific message
+     * @author Mikael Eriksson
+     * @since 1.0.0
+     */
     private void sendGameStoppedMessage(String outputText) {
         outputText = (Objects.equals(outputText, "game over")) ? "You: I lost!" : "You: I won!";
         textInBackup.textProperty().bind(new SimpleStringProperty(outputText));
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
+    //   Getters & Setters
+    // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * <code>getYouBoard</code> - gives YouBoard class.
+     * @return youBoard
+     * @since 1.0.0
+     * @author Mikael Eriksson
+     */
     public GameBoard getYouBoard() {
         return youBoard;
-    }
-
-    public GameBoard getEnemyBoard() {
-        return enemyBoard;
     }
 }
