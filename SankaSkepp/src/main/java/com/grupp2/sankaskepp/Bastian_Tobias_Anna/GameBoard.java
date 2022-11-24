@@ -51,7 +51,6 @@ public class GameBoard extends Parent {
         }
         getChildren().add(vRow);
 
-        // sends coordinates to get parced to ints
         placeBoats();
     }
 
@@ -64,6 +63,7 @@ public class GameBoard extends Parent {
 
                 String shot = fleet.getBoats()[i].getPosition().get(j);
 
+                // parce string to int coordinates
                 int x = myParceValue.stringToXint(shot);
                 int y = myParceValue.stringToYint(shot);
 
