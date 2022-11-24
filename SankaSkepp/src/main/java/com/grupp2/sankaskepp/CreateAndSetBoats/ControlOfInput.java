@@ -51,7 +51,7 @@ public class ControlOfInput {
 
                         // Tobias { *********
                         //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
-                        youBoard.parceStringShotCoordinates(true, playerChoice);
+                        youBoard.boatIsHit(playerChoice);
                         // *********** } Tobias
 
                         myBoat.getBoats()[i].getPosition().remove(j);
@@ -72,7 +72,7 @@ public class ControlOfInput {
                         //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
                         // Tobias { *********
                         //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
-                        youBoard.parceStringShotCoordinates(true, playerChoice);
+                        youBoard.boatIsHit(playerChoice);
                         // *********** } Tobias
 
                         //för att avsluta loopen när vi redan har ett svar
@@ -87,7 +87,7 @@ public class ControlOfInput {
             //Här ska rutan bli blå på position "playerChoice" i userInterface
             // Tobias { *********
             //metodTillUserInterfaceFörOmvandlingOchÄndring(String playerChoice); Här ska rutan bli röd på position "playerChoice" i userInterface
-            youBoard.parceStringShotCoordinates(false, playerChoice);
+            youBoard.boatIsMiss(playerChoice);
             // *********** } Tobias
         }
 
@@ -131,7 +131,7 @@ public class ControlOfInput {
                 // vet inte om gameBoard här måste vara under sentArrayControl???
                 hit = hit.concat(computerLogic.sForSink(this));
 
-                enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
+                enemyBoard.boatIsHit( sentPosition.get(sentArrayControl));
                 answerArrayControl++;
                 sentArrayControl++;
             }else if (answer.get(answerArrayControl).equals("h")) {
@@ -140,7 +140,7 @@ public class ControlOfInput {
             if(!Character.toString(choice.charAt(0)).equals("i")) {
                 hit = hit.concat(computerLogic.hForHit(this));
             }
-            enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
+            enemyBoard.boatIsHit( sentPosition.get(sentArrayControl));
             answerArrayControl++;
             sentArrayControl++;
         }
@@ -149,7 +149,7 @@ public class ControlOfInput {
                 if(!Character.toString(choice.charAt(0)).equals("i")) {
                     hit = hit.concat(computerLogic.mForMiss(this));
                 }
-                enemyBoard.parceStringShotCoordinates(false, sentPosition.get(sentArrayControl));
+                enemyBoard.boatIsMiss(sentPosition.get(sentArrayControl));
                 answerArrayControl++;
                 sentArrayControl++;
             }

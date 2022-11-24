@@ -1,7 +1,6 @@
 package com.grupp2.sankaskepp.Remaining;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.MyParceValue;
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 
 import java.util.Collections;
@@ -419,7 +418,7 @@ public class ComputerLogic {
         return text;
     }
 
-    // TOBIAS
+    // TOBIAS metod
     private void checkNeighbour(List<String> hitList) {
         int x = 0;
         int y = 0;
@@ -485,23 +484,6 @@ public class ComputerLogic {
 
             } catch (IndexOutOfBoundsException e) {
             }
-
         }
-
-    }
-
-    // tobias test - hämtar från mickes protokoll
-    // sedan startar main metoden här i klassen
-    public void takeStringLetter(String letter) {
-        this.enemyShot = letter;
-    }
-    // Getters
-
-    public String getEnemyShot() {
-        return enemyShot;
-    }
-
-    public MyStringCoordinates getMyStringCoordinates() {
-        return myStringCoordinates;
     }
 }

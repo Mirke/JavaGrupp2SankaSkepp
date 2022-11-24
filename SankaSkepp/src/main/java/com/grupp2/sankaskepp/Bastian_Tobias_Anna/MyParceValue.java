@@ -1,8 +1,11 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
+import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+
 public class MyParceValue {
-
-
+    /**
+     * Author: Tobias Johansson
+     */
     public int stringToXint(String shot) {
         char xChar = shot.charAt(0);
         int x = Integer.parseInt(Character.toString(xChar));
@@ -13,7 +16,7 @@ public class MyParceValue {
 
         char yChar = shot.charAt(1);
 
-        int y = 10;
+        int y = 0;
         switch (yChar) {
 
             case 'a':
