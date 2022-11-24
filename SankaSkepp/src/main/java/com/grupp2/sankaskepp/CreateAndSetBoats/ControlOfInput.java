@@ -33,16 +33,10 @@ public class ControlOfInput {
         this.choice = choice;
         hit = "";
 
-        /*Metod för att initiera all kod ska i teorin skulle befinna sig i main. Vi kan antingen starta den koden i main
-        /* Eller så skickar vi in informationen som fås genom socket till den här metoden som i sin tur startar main
-        /* ifall att första Char är "i" likt exemplet nedan. Detta kan även lösas på andra sätt.
-         */
-
-
             //Tar ut värdena från andra spelarens textsträng och omvandlar dem till en egen textsträng som sedan kan kontrolleras
             String y = Character.toString(choice.charAt(7));
             String x = Character.toString(choice.charAt(8));
-            String playerChoice = y + x;
+            String playerChoice = y.concat(x);
 
             for (int i = 0; i < myBoat.getBoats().length; i++) {
                 for (int j = 0; j < myBoat.getBoats()[i].getPosition().size(); j++) {
@@ -91,8 +85,6 @@ public class ControlOfInput {
             // *********** } Tobias
         }
 
-
-
         for (int i = 0; i < myBoat.getBoats().length; i++) {
                 if (myBoat.getBoats()[i].getPosition().size() == 0 && !skipCheck.contains(i)) {
                     boats -= 1;
@@ -108,10 +100,11 @@ public class ControlOfInput {
                 }
             }
 
-        answer.add(Character.toString(choice.charAt(0)));
-        checkAnswerFromOtherPlayer();
+            answer.add(Character.toString(choice.charAt(0)));
+            checkAnswerFromOtherPlayer();
 
-        System.out.println("returnerar från controlOfinput " + hit);
+            sentString(hit);
+
         return hit;
     }
 
@@ -125,11 +118,11 @@ public class ControlOfInput {
     int sentArrayControl = 0;
     int answerArrayControl = 0;
 
-    public String checkAnswerFromOtherPlayer() {
+    public void checkAnswerFromOtherPlayer() {
             if (answer.get(answerArrayControl).equals("s")) {
                 //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 // vet inte om gameBoard här måste vara under sentArrayControl???
-                hit = hit.concat(computerLogic.sForSink(this));
+                hit = hit.concat(computerLogic.sForSink());
 
                 enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
                 answerArrayControl++;
@@ -138,7 +131,7 @@ public class ControlOfInput {
             //metod till tobias kod, färg blir röd för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
             // vet inte om gameBoard här måste vara under sentArrayControl???
             if(!Character.toString(choice.charAt(0)).equals("i")) {
-                hit = hit.concat(computerLogic.hForHit(this));
+                hit = hit.concat(computerLogic.hForHit());
             }
             enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
             answerArrayControl++;
@@ -147,7 +140,7 @@ public class ControlOfInput {
         else if (answer.get(answerArrayControl).equals("m")) {
                 //metod till tobias kod, färg blir blå för den andra spelarens plan genom metod(sentPosition.get(sentArrayControl)
                 if(!Character.toString(choice.charAt(0)).equals("i")) {
-                    hit = hit.concat(computerLogic.mForMiss(this));
+                    hit = hit.concat(computerLogic.mForMiss());
                 }
                 enemyBoard.parceStringShotCoordinates(false, sentPosition.get(sentArrayControl));
                 answerArrayControl++;
@@ -161,7 +154,6 @@ public class ControlOfInput {
                 }
                 answerArrayControl++;
             }
-            return hit;
     }
 
     public String startRound(){

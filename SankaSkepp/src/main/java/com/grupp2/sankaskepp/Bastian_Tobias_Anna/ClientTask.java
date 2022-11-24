@@ -37,8 +37,8 @@ public class ClientTask extends Task<Void> {
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
-        youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat.getBoats());
+        //youPlaceBoats.initializeGridArray();
+        youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
@@ -49,7 +49,7 @@ public class ClientTask extends Task<Void> {
         Boat serverBoat = new Boat();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
-        serverPlaceBoats.initializeGridArray();
+        //serverPlaceBoats.initializeGridArray();
         //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();
@@ -95,6 +95,7 @@ public class ClientTask extends Task<Void> {
         serverAndEnemyControlOfInput.sentString("i shot ".concat(pos));
         writer.println("i shot ".concat(pos));
         */
+        Collections.shuffle(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots());
         String outputText = serverAndEnemyControlOfInput.startRound();
         serverAndEnemyControlOfInput.sentString(outputText);
         writer.println(outputText);
@@ -108,6 +109,7 @@ public class ClientTask extends Task<Void> {
             if (reader.ready()) {
                 messageFromServer = reader.readLine();
                 // init -start
+                Collections.shuffle(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots());
 
                 String editedMessage = String.format("""
                         Enemy: %s""", messageFromServer);
@@ -117,7 +119,7 @@ public class ClientTask extends Task<Void> {
 
                 if (!messageFromServer.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromServer);
-                    serverAndEnemyControlOfInput.sentString(outputText);
+                    //serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
@@ -153,7 +155,7 @@ public class ClientTask extends Task<Void> {
                 //latestMessageSentFromClient();
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(300);
                     editedMessage = String.format("""
                             You: %s""", outputText);
                     clientLatestMessageText = new SimpleStringProperty(editedMessage);
@@ -202,7 +204,7 @@ public class ClientTask extends Task<Void> {
 
     private void sendClientMessageToServer() {
         try {
-            Thread.sleep(delay() * 1000);
+            Thread.sleep(delay() * 300);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

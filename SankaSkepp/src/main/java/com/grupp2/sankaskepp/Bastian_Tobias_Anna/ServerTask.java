@@ -43,8 +43,8 @@ public class ServerTask extends Task<Void> {
         Boat youBoat = new Boat();
         PlaceBoats youPlaceBoats = new PlaceBoats();
         youBoat.createBoats();
-        youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat.getBoats());
+        //youPlaceBoats.initializeGridArray();
+        youPlaceBoats.placeBoats(youBoat);
         youBoard = new GameBoard(youBoat);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
@@ -55,7 +55,7 @@ public class ServerTask extends Task<Void> {
         Boat serverBoat = new Boat();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
         serverBoat.createBoats();
-        serverPlaceBoats.initializeGridArray();
+        //serverPlaceBoats.initializeGridArray();
         //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();
@@ -98,10 +98,11 @@ public class ServerTask extends Task<Void> {
             if (reader.ready()) {
                 messageFromClient = reader.readLine();
 
+                Collections.shuffle(myStringCoordinates.getEnemyGameBoard().getRemainingXYspots());
                 String pos = "";
                 if (!messageFromClient.contains("game over")) {
                     outputText = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
-                    serverAndEnemyControlOfInput.sentString(outputText);
+                    //serverAndEnemyControlOfInput.sentString(outputText);
                 } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
@@ -135,7 +136,7 @@ public class ServerTask extends Task<Void> {
                 //printMessageOutFromServer(false);
 
                 try {
-                    Thread.sleep(delay() * 1000);
+                    Thread.sleep(delay() * 300);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -178,7 +179,7 @@ public class ServerTask extends Task<Void> {
 
     private void sendServerMessageToClient() {
         try {
-            Thread.sleep(100);
+            Thread.sleep(300);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
