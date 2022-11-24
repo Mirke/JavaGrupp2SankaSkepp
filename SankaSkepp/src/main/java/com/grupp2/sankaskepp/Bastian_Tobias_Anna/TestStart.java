@@ -1,6 +1,5 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-
 import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
