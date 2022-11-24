@@ -10,15 +10,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameBoard extends Parent {
+
+    /**
+     * Author: Tobias Johansson
+     */
     private VBox vRow = new VBox();
     private TheCell cell;
     private Boat boat;
-
     private MyParceValue myParceValue = new MyParceValue();
-    // lista som håller skeppen koordinater som string
-    List<String> allShipCoordinates = new ArrayList<>();
+    private final int[] ALLBOATS = {5, 4, 4, 3, 3, 3, 2, 2, 2, 2};
 
     // Constructor
+    // Creates a empty board for enemy
     public GameBoard() {
         // create board
         for (int y = 0; y < 10; y++) {
@@ -33,6 +36,7 @@ public class GameBoard extends Parent {
 
     }
 
+    // creates a board for you with boats on
     public GameBoard(Boat boat) {
 
         this.boat = boat;
@@ -47,104 +51,42 @@ public class GameBoard extends Parent {
         }
         getChildren().add(vRow);
 
-        parceStringCoordinates(boat);
+        // sends coordinates to get parced to ints
+       // parceStringCoordinates(boat);
+        placeBoats();
     }
 
     // Methods
-    public void parceStringShotCoordinates(boolean hit, String shot) {
-        int x = myParceValue.stringToXint(shot);
-        int y = myParceValue.stringToYint(shot);
-        // skicka vidare bool och koordinater för att målas upp på brädet.
-        if (hit) {
-            boatIsHit(x, y);
-        } else {
-            boatIsMiss(x, y);
-        }
-    }
 
-    private void parceStringCoordinates(Boat boat) {
+    // when a boat is placed its colored lightgray
+    private void placeBoats() {
+        for (int i = 0; i < 10; i++) {
+            for(int j = 0; j < ALLBOATS[i]; j++) {
 
-        int[] allBoats = {5, 4, 4, 3, 3, 3, 2, 2, 2, 2};
+                String shot = boat.getBoats()[i].getPosition().get(j);
 
-        {
-            for (int i = 0; i < 10; i++) {
+                int x = myParceValue.stringToXint(shot);
+                int y = myParceValue.stringToYint(shot);
 
-                for (int j = 0; j < allBoats[i]; j++) {
-
-                    String str = boat.getBoats()[i].getPosition().get(j);
-
-                    // add all String coordinates to list
-                    allShipCoordinates.add(boat.getBoats()[i].getPosition().get(j));
-
-                    char xChar = str.charAt(0);
-                    char yChar = str.charAt(1);
-
-                    int x = Integer.parseInt(Character.toString(xChar));
-
-                    int y = 0;
-                    switch (yChar) {
-
-                        case 'a':
-                            y = 0;
-                            break;
-                        case 'b':
-                            y = 1;
-                            break;
-                        case 'c':
-                            y = 2;
-                            break;
-                        case 'd':
-                            y = 3;
-                            break;
-                        case 'e':
-                            y = 4;
-                            break;
-                        case 'f':
-                            y = 5;
-                            break;
-                        case 'g':
-                            y = 6;
-                            break;
-                        case 'h':
-                            y = 7;
-                            break;
-                        case 'i':
-                            y = 8;
-                            break;
-                        case 'j':
-                            y = 9;
-                            break;
-
-                    }
-                    placeBoats(x, y);
-                }
+                this.cell = getTheCell(x, y);
+                cell.setFill(Color.LIGHTGRAY);
+                cell.setStroke(Color.BLACK);
             }
         }
-
-        // iteratorForCoordinates(allShipCoordinates);
     }
 
-    public void placeBoats(int x, int y) {
-
+    public void boatIsHit(String shot) {
+        int x = myParceValue.stringToXint(shot);
+        int y = myParceValue.stringToYint(shot);
         this.cell = getTheCell(x, y);
-        cell.aBoat = true;
-        cell.setFill(Color.LIGHTGRAY);
-        cell.setStroke(Color.BLACK);
-    }
-
-    // om cell är träffad blir den målad röd, annars mörkblå.
-    private void boatIsHit(int x, int y) {
-        // hit
-        this.cell = getTheCell(x, y);
-        cell.aBoat = true;
         cell.setFill(Color.PURPLE);
         cell.setStroke(Color.BLACK);
     }
 
-    private void boatIsMiss(int x, int y) {
-        // miss
+    public void boatIsMiss(String shot) {
+        int x = myParceValue.stringToXint(shot);
+        int y = myParceValue.stringToYint(shot);
         this.cell = getTheCell(x, y);
-        cell.aBoat = true;
         cell.setFill(Color.DARKBLUE);
         cell.setStroke(Color.BLACK);
     }
