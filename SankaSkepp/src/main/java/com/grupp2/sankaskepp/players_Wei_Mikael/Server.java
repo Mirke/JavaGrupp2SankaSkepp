@@ -4,6 +4,7 @@ import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import java.io.*;
 import java.net.ServerSocket;
@@ -45,28 +46,23 @@ public class Server implements Runnable {
         // Tobias { ***********
 
         // you
-        Boat youBoat = new Boat();
+        Fleet youFleet = new Fleet();
         PlaceBoats youPlaceBoats = new PlaceBoats();
-        youBoat.createBoats();
-        youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat);
-        youBoard = new GameBoard(youBoat);
+        youPlaceBoats.placeBoats(youFleet);
+        youBoard = new GameBoard(youFleet);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
 
         // -------------------------------------------
 
         // Server
-        Boat serverBoat = new Boat();
+        Fleet serverFleet = new Fleet();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
-        serverBoat.createBoats();
-        serverPlaceBoats.initializeGridArray();
-        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youFleet, serverFleet);
 
 
     }

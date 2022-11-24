@@ -2,6 +2,7 @@ package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import com.grupp2.sankaskepp.Remaining.MyStringCoordinates;
 import javafx.beans.property.SimpleStringProperty;
@@ -31,26 +32,20 @@ public class ClientTask extends Task<Void> {
 
     public ClientTask(Text historyTextIn) {
         // Init - Start
-        Boat youBoat = new Boat();
+        Fleet youFleet = new Fleet();
         PlaceBoats youPlaceBoats = new PlaceBoats();
-        youBoat.createBoats();
-        //youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat);
-        youBoard = new GameBoard(youBoat);
+        youPlaceBoats.placeBoats(youFleet);
+        youBoard = new GameBoard(youFleet);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
         // -------------------------------------------
         // Server
-        Boat serverBoat = new Boat();
-        PlaceBoats serverPlaceBoats = new PlaceBoats();
-        serverBoat.createBoats();
-        //serverPlaceBoats.initializeGridArray();
-        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
+        Fleet serverFleet = new Fleet();
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youFleet, serverFleet);
         //Init - Slut
 
 
@@ -148,7 +143,7 @@ public class ClientTask extends Task<Void> {
                 //latestMessageSentFromClient();
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(300);
                     editedMessage = String.format("""
                             You: %s""", outputText);
                     clientLatestMessageText = new SimpleStringProperty(editedMessage);

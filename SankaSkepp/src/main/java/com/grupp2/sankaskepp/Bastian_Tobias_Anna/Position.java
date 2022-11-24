@@ -1,6 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +13,7 @@ public class Position {
     private String[][] string2DArray;
     private List<String> allCoordinates = new ArrayList<>(0);
     private List<String> allShipCoordinates;
-    private Boat boat;
+    private Fleet fleet;
     private final int X_HORISONTAL = 10;
     private final int Y_VERTICAL = 10;
     private final int[] ALLBOATS = {5, 4, 4, 3, 3, 3, 2, 2, 2, 2};
@@ -32,8 +33,8 @@ public class Position {
             }
         }
     }
-    public Position(Boat boat) {
-        this.boat = boat;
+    public Position(Fleet fleet) {
+        this.fleet = fleet;
 
         string2DArray = new String[X_HORISONTAL][Y_VERTICAL];
         allCoordinates = new ArrayList<>();
@@ -97,7 +98,7 @@ public class Position {
         allShipCoordinates = new ArrayList<>();
         for (int i = 0; i < ALLBOATS.length; i++) {
             for (int j = 0; j < ALLBOATS[i]; j++) {
-                allShipCoordinates.add(this.boat.getBoats()[i].getPosition().get(j));
+                allShipCoordinates.add(this.fleet.getBoats()[i].getPosition().get(j));
             }
         }
     }

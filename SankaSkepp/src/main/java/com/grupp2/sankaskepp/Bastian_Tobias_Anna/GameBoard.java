@@ -1,6 +1,6 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,7 +12,7 @@ import java.util.List;
 public class GameBoard extends Parent {
     private VBox vRow = new VBox();
     private TheCell cell;
-    private Boat boat;
+    private Fleet fleet;
 
     private MyParceValue myParceValue = new MyParceValue();
     // lista som håller skeppen koordinater som string
@@ -33,9 +33,9 @@ public class GameBoard extends Parent {
 
     }
 
-    public GameBoard(Boat boat) {
+    public GameBoard(Fleet fleet) {
 
-        this.boat = boat;
+        this.fleet = fleet;
         // create board
         for (int y = 0; y < 10; y++) {
             HBox hRow = new HBox();
@@ -47,7 +47,7 @@ public class GameBoard extends Parent {
         }
         getChildren().add(vRow);
 
-        parceStringCoordinates(boat);
+        parceStringCoordinates(fleet);
     }
 
     // Methods
@@ -62,7 +62,7 @@ public class GameBoard extends Parent {
         }
     }
 
-    private void parceStringCoordinates(Boat boat) {
+    private void parceStringCoordinates(Fleet fleet) {
 
         int[] allBoats = {5, 4, 4, 3, 3, 3, 2, 2, 2, 2};
 
@@ -71,10 +71,10 @@ public class GameBoard extends Parent {
 
                 for (int j = 0; j < allBoats[i]; j++) {
 
-                    String str = boat.getBoats()[i].getPosition().get(j);
+                    String str = fleet.getBoats()[i].getPosition().get(j);
 
                     // add all String coordinates to list
-                    allShipCoordinates.add(boat.getBoats()[i].getPosition().get(j));
+                    allShipCoordinates.add(fleet.getBoats()[i].getPosition().get(j));
 
                     char xChar = str.charAt(0);
                     char yChar = str.charAt(1);
