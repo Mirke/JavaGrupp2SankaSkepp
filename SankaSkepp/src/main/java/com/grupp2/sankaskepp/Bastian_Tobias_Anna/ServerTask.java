@@ -1,5 +1,4 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
@@ -33,7 +32,6 @@ public class ServerTask extends Task<Void> {
     private final GameBoard youBoard;
     private Boolean isClientConnected;
     private final Boolean isDebugMode;
-    private final GameBoard enemyBoard;
     private final Random rand = new Random();
     private final ControlOfInput serverAndEnemyControlOfInput;
 
@@ -45,7 +43,7 @@ public class ServerTask extends Task<Void> {
      * Constructs and initializes the ClientTask object.
      *
      * @param historyTextIn {@code Text} class that comes from front-end that will be updated.
-     * @param isDebugModeIn console text about what is happening in class
+     * @param isDebugModeIn console text about what is happening in class and speeds up game
      * @author Mikael Eriksson
      * @since 1.0.0
      */
@@ -55,13 +53,8 @@ public class ServerTask extends Task<Void> {
         youPlaceBoats.placeBoats(youFleet);
         youBoard = new GameBoard(youFleet);
         Fleet serverFleet = new Fleet();
-        enemyBoard = new GameBoard();
-        // ComputerAI serverAI = new ComputerAI();
-
-        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
+        GameBoard enemyBoard = new GameBoard();
         serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youFleet, serverFleet);
-        //Init - End
-
         textInBackup = historyTextIn;
         ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
         textInBackup.textProperty().bind(serverLatestMessageText);
@@ -153,12 +146,9 @@ public class ServerTask extends Task<Void> {
      * @since 1.0.0
      */
     private int delay(Boolean isLimited) {
-        int t = rand.nextInt(5);
-        if (t == 1) {
-            t++;
-        }
+        int t = rand.nextInt(6);
         if (isLimited) {
-            return 50;
+            return t * 50;
         } else return t * 1000;
     }
 
@@ -198,9 +188,6 @@ public class ServerTask extends Task<Void> {
         return youBoard;
     }
 
-    public GameBoard getEnemyBoard() {
-        return enemyBoard;
-    }
     /**
      * <code>setTextInBackup</code> - getter for the Text class that gets feed in constructor.
      * @param textInBackup Text class that should get feed into class
@@ -210,6 +197,5 @@ public class ServerTask extends Task<Void> {
     public void setTextInBackup(Text textInBackup) {
         this.textInBackup = textInBackup;
     }
-
 }
 

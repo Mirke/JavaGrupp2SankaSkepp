@@ -1,5 +1,4 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
@@ -7,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
 import javafx.concurrent.Task;
 import javafx.scene.text.Text;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.Objects;
@@ -15,7 +13,6 @@ import java.util.Random;
 
 /**
  * <code>ClientTask</code> - Used for connection to a server, also logic of Client.
- *
  * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
  * @author Wei Li (wei.li@edu.edugrade.se)
  * @author Bastian Marx Melin (bastian.marx.melin@edu.edugrade.se)
@@ -46,7 +43,7 @@ public class ClientTask extends Task<Void> {
      * Constructs and initializes the ClientTask object.
      *
      * @param historyTextIn {@code Text} class that comes from front-end that will be updated.
-     * @param isDebugModeIn console text about what is happening in class
+     * @param isDebugModeIn console text about what is happening in class and speeds up game
      * @author Mikael Eriksson
      * @since 1.0.0
      */
@@ -167,12 +164,9 @@ public class ClientTask extends Task<Void> {
      * @since 1.0.0
      */
     private int delay(Boolean isLimited) {
-        int t = rand.nextInt(5);
-        if (t == 1) {
-            t++;
-        }
+        int t = rand.nextInt(6) ;
         if (isLimited) {
-            return 50;
+            return t * 50;
         } else return t * 1000;
     }
 
