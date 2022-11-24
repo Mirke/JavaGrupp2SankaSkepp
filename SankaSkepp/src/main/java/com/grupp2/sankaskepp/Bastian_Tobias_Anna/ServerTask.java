@@ -12,7 +12,7 @@ import java.net.Socket;
 import java.util.Random;
 
 /**
- * <code>ServerTask</code> - Used for hosting and letting clients connect, also logic of Server.
+ * <code>ServerTask</code> - Used for hosting and letting clients connect, also logic of the Server.
  *
  * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
  * @author Wei Li (wei.li@edu.edugrade.se)
@@ -45,6 +45,8 @@ public class ServerTask extends Task<Void> {
      * @param historyTextIn {@code Text} class that comes from front-end that will be updated.
      * @param isDebugModeIn console text about what is happening in class and speeds up game
      * @author Mikael Eriksson
+     * @author Bastian Marx Melin
+     * @author Tobias Johansson
      * @since 1.0.0
      */
     public ServerTask(Text historyTextIn, Boolean isDebugModeIn) {

@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
- * <code>ClientTask</code> - Used for connection to a server, also logic of Client.
+ * <code>ClientTask</code> - Used for connection to a server, also logic of the Client.
  * @author Mikael Eriksson (mikael.eriksson@edu.edugrade.se)
  * @author Wei Li (wei.li@edu.edugrade.se)
  * @author Bastian Marx Melin (bastian.marx.melin@edu.edugrade.se)
@@ -45,6 +45,8 @@ public class ClientTask extends Task<Void> {
      * @param historyTextIn {@code Text} class that comes from front-end that will be updated.
      * @param isDebugModeIn console text about what is happening in class and speeds up game
      * @author Mikael Eriksson
+     * @author Bastian Marx Melin
+     * @author Tobias Johansson
      * @since 1.0.0
      */
     public ClientTask(Text historyTextIn, Boolean isDebugModeIn) {
@@ -104,6 +106,7 @@ public class ClientTask extends Task<Void> {
      * @throws IOException if no connection to server is made throw exception
      * @author Mikael Eriksson
      * @author Wei Li
+     * @author Bastian Marx Melin
      * @since 1.0.0
      */
     private void clientSpeaksWithServer() throws IOException {
