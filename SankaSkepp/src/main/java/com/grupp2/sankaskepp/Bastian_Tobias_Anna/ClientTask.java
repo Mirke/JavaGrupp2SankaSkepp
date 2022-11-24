@@ -1,6 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
@@ -50,15 +51,13 @@ public class ClientTask extends Task<Void> {
      * @since 1.0.0
      */
     public ClientTask(Text historyTextIn, Boolean isDebugModeIn) {
-        Boat youBoat = new Boat();
+        Fleet youFleet = new Fleet();
         PlaceBoats youPlaceBoats = new PlaceBoats();
-        youBoat.createBoats();
-        youPlaceBoats.placeBoats(youBoat);
-        youBoard = new GameBoard(youBoat);
-        Boat serverBoat = new Boat();
-        serverBoat.createBoats();
+        youPlaceBoats.placeBoats(youFleet);
+        youBoard = new GameBoard(youFleet);
+        Fleet serverFleet = new Fleet();
         GameBoard enemyBoard = new GameBoard();
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youFleet, serverFleet);
         textInBackup = historyTextIn;
         textInBackup.textProperty().bind(clientLatestMessageText);
         this.isDebugMode = isDebugModeIn;

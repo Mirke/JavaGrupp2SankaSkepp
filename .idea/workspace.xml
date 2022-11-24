@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Nu fungerar det med de senaste uppdateringarna.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ComputerAI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/MyParceValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/MyParceValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/Position.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/TheBattle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/TheCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/TheCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/players_Wei_Mikael/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ComputerAI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias_Anna/Position.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Bastian_Tobias_Anna/TheBattle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/CreateAndSetBoats/ControlOfInput.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Remaining/ComputerLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/Remaining/ComputerLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players_Wei_Mikael/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players_Wei_Mikael/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players_Wei_Mikael/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/target/classes/com/grupp2/sankaskepp/players_Wei_Mikael/Server.class" afterDir="false" />
-    </list>
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Nu fungerar det med de senaste uppdateringarna." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +36,9 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2GzmtbyAlEH6VaXDPNw7lk1rhK4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

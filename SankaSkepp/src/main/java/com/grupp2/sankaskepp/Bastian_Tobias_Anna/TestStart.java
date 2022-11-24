@@ -1,19 +1,18 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 
-
-import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 
 public class TestStart {
     public static void main(String[] args) {
         String hej = "h shot 6c";
 
-        Boat boat = new Boat();
+        Fleet fleet = new Fleet();
         PlaceBoats placeBoats = new PlaceBoats();
-        boat.createBoats();
 
 
-        placeBoats.placeBoats(boat);
+
+        placeBoats.placeBoats(fleet);
 
 
         for(int i = 1; i < 11; i++){
@@ -25,8 +24,8 @@ public class TestStart {
         }
 
 
-        for(int i = 0; i < boat.getBoats().length; i ++){
-            System.out.println(boat.getBoats()[i].getPosition());
+        for(int i = 0; i < fleet.getBoats().length; i ++){
+            System.out.println(fleet.getBoats()[i].getPosition());
 
         }
 
@@ -39,9 +38,9 @@ public class TestStart {
             System.out.println();
             for (int j = 1; j < 11; j++){
                 boolean test = true;
-                for(int a = 0; a < boat.getBoats().length; a++){
-                    for( int b = 0; b < boat.getBoats()[a].getSize(); b++ ){
-                        if(placeBoats.getField()[i][j].equals(boat.getBoats()[a].getPosition().get(b))){
+                for(int a = 0; a < fleet.getBoats().length; a++){
+                    for( int b = 0; b < fleet.getBoats()[a].getSize(); b++ ){
+                        if(placeBoats.getField()[i][j].equals(fleet.getBoats()[a].getPosition().get(b))){
                             System.out.print("\t!!");
                             test = false;
 

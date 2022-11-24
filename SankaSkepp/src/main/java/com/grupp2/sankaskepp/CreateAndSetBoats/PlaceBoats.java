@@ -1,28 +1,35 @@
 package com.grupp2.sankaskepp.CreateAndSetBoats;
 import java.util.Random;
 
-
+/**
+ * Author: Bastian
+ */
 public class PlaceBoats {
+    /*-----------------------------------------------------------------------------------------------------------------
+     * Konstruktorer
+     ------------------------------------------------------------------------------------------------------------------*/
     private String[][] field = new String[12][12];
     String temporaryControl = "";
-
     Random random = new Random();
-
     int y;
     int x;
     boolean horisontal;
     boolean works = false;
-
     int controlLoop = 0;
 
-    public void placeBoats(Boat boat){
+    /*-----------------------------------------------------------------------------------------------------------------
+     * Metoder
+     ------------------------------------------------------------------------------------------------------------------*/
+
+    public void placeBoats(Fleet fleet){
+        //Kontrollerar om det fungerar, om inte så börjar den om
         boolean works2 = false;
         while(!works2) {
-            works2 = setTheBoats(boat.getBoats());
+            works2 = setTheBoats(fleet.getBoats());
 
             if(!works2) {
-                for (int i = 0; i < boat.getBoats().length - 1; i++) {
-                    boat.getBoats()[i].getPosition().clear();
+                for (int i = 0; i < fleet.getBoats().length - 1; i++) {
+                    fleet.getBoats()[i].getPosition().clear();
                     controlLoop = 0;
                 }
             }
@@ -30,10 +37,11 @@ public class PlaceBoats {
     }
 
     public boolean setTheBoats(Boat []boats) {
-
+        //Skapar spelplan
         initializeGridArray();
         for (int a = 0; a < boats.length;) {
 
+            //Tar slumpmässiga värden för x,y och horisontellt/vertikalt led
             y = random.nextInt(10) + 1;
             x = random.nextInt(10) + 1;
             horisontal = random.nextBoolean();
@@ -42,9 +50,11 @@ public class PlaceBoats {
             try {
                 for (int i = 0; i < boats[a].getSize();) {
 
+                    //Försöker lägga ut båten i horisontellt led så längre den inte stöter på två utropstecken
                     if(horisontal){
                         if (!field[y][x + i].equals("!!") && (x + i) < 11) {
 
+                            //För att kolla att det inte blir en evighetsloop
                             controlLoop++;
                             if(controlLoop == 300){
                                 a = 10;
@@ -84,6 +94,7 @@ public class PlaceBoats {
                             i++;
 
                         } else {
+                            //Fungerar det inte så tar den nya värden utan att öka variabeln a och ställer om i till 0
                             y = random.nextInt(10) + 1;
                             x = random.nextInt(10) + 1;
                             horisontal = random.nextBoolean();
@@ -92,9 +103,11 @@ public class PlaceBoats {
 
 
                     }
+                    //Försöker lägga ut båten i vertikalt led så längre den inte stöter på två utropstecken
                     if (!horisontal) {
                         if (!field[y + i][x].equals("!!") && (y + i) < 11) {
 
+                            //För att kolla att det inte blir en evighetsloop
                             controlLoop++;
                             if(controlLoop == 300){
                                 a = 10;
@@ -135,6 +148,7 @@ public class PlaceBoats {
                             i++;
 
                         } else {
+                            //Fungerar det inte så tar den nya värden utan att öka variabeln a och ställer om i till 0
                             y = random.nextInt(10) + 1;
                             x = random.nextInt(10) + 1;
                             horisontal = random.nextBoolean();
@@ -154,6 +168,8 @@ public class PlaceBoats {
         }
         return works;
     }
+
+    //Skapar en spelplan med en ruta för mycket i varje led. Rutorna utanför spelplanen markeras med två utropstecken
     public void initializeGridArray(){
         for(int i = 0; i < 12; i++){
             for(int j = 0; j < 12; j++){
@@ -161,6 +177,7 @@ public class PlaceBoats {
                 if(i == 0 || i == 11 || j == 0 || j == 11){
                     field[j][i] = "!!";
                 }else {
+                    //Omvandlar integern till en textsträng och lägger ihop den med rätt bokstav från getYField
                     field[j][i] = Integer.toString(i - 1).concat(getYField(j));
                 }
 
@@ -168,7 +185,7 @@ public class PlaceBoats {
         }
     }
 
-
+    //Tar en integer och omvandlar den till motsvarande bokstav och returnerar den
     public String getYField(int j){
         String letter = "";
         switch(j){
@@ -206,6 +223,11 @@ public class PlaceBoats {
         }
         return letter;
     }
+
+
+    /*-----------------------------------------------------------------------------------------------------------------
+     * Getters och setters
+     ------------------------------------------------------------------------------------------------------------------*/
 
     public String[][] getField() {
         return field;

@@ -1,6 +1,7 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableStringValue;
@@ -49,15 +50,18 @@ public class ServerTask extends Task<Void> {
      * @since 1.0.0
      */
     public ServerTask(Text historyTextIn, Boolean isDebugModeIn) {
-        Boat youBoat = new Boat();
+        Fleet youFleet = new Fleet();
         PlaceBoats youPlaceBoats = new PlaceBoats();
-        youBoat.createBoats();
-        youPlaceBoats.placeBoats(youBoat);
-        youBoard = new GameBoard(youBoat);
-        Boat serverBoat = new Boat();
-        serverBoat.createBoats();
+        youPlaceBoats.placeBoats(youFleet);
+        youBoard = new GameBoard(youFleet);
+        Fleet serverFleet = new Fleet();
         enemyBoard = new GameBoard();
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat, serverBoat);
+        // ComputerAI serverAI = new ComputerAI();
+
+        // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youFleet, serverFleet);
+        //Init - End
+
         textInBackup = historyTextIn;
         ObservableStringValue serverLatestMessageText = new SimpleStringProperty("History");
         textInBackup.textProperty().bind(serverLatestMessageText);
@@ -194,6 +198,9 @@ public class ServerTask extends Task<Void> {
         return youBoard;
     }
 
+    public GameBoard getEnemyBoard() {
+        return enemyBoard;
+    }
     /**
      * <code>setTextInBackup</code> - getter for the Text class that gets feed in constructor.
      * @param textInBackup Text class that should get feed into class
@@ -203,5 +210,6 @@ public class ServerTask extends Task<Void> {
     public void setTextInBackup(Text textInBackup) {
         this.textInBackup = textInBackup;
     }
+
 }
 
