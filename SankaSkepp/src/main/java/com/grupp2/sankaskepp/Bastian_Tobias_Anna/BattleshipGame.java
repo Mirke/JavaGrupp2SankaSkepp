@@ -45,7 +45,6 @@ public class BattleshipGame extends Application {
 
         DropShadow dropShadow = new DropShadow();
 
-
         HBox title = new HBox();
         Text titleLabel = new Text("Battleship");
         titleLabel.setFill(Color.web("#b2dee4"));
@@ -94,12 +93,11 @@ public class BattleshipGame extends Application {
         //HBox submarine = new HBox();
         //submarine.setStyle("-fx-background-image: url('submarine.png');" + "-fx-background-position: center center;" );
         VBox boatBox = new VBox();
-        submarine.setPadding(new Insets(70,180,0,0));
-        cruiser.setPadding(new Insets(78,80,0,0));
-        battleship.setPadding(new Insets(405,80,0,0));
-        carrier.setPadding(new Insets(90,120,0,0));
+        submarine.setPadding(new Insets(70, 180, 0, 0));
+        cruiser.setPadding(new Insets(78, 80, 0, 0));
+        battleship.setPadding(new Insets(405, 80, 0, 0));
+        carrier.setPadding(new Insets(90, 120, 0, 0));
         boatBox.getChildren().addAll(submarine, cruiser, battleship, carrier);
-
 
         title.getChildren().add(titleLabel);
 
@@ -123,7 +121,6 @@ public class BattleshipGame extends Application {
         enemy.getStyleClass().add("enemyAndYou");
         enemy.setAlignment(Pos.BOTTOM_RIGHT);
 
-
         Text youLabel = new Text("You");
         youLabel.setFill(Color.web("#b938e2"));
         youLabel.setEffect(dropShadow);
@@ -131,23 +128,10 @@ public class BattleshipGame extends Application {
         enemyLabel.setFill(Color.web("#b938e2"));
         enemyLabel.setEffect(dropShadow);
 
-        /************************************************************************
-         * TODO: svar från motståndaren: har vi träffat eller missat?
-         * den informationen ska målas upp på motståndarens bräde (server)
-         * behöver veta var den inforamtionen kommer ifrån
-         * BYT NAMN: server ska bli enemy.
-         **********************************************************************/
         // Tobias { ***********
-
-        //this.enemyBoard = server.getEnemyBoard();
-        //this.youBoard = server.getYouBoard();
         this.enemyBoard = helloController.enemyBoard;
         this.youBoard = helloController.youBoard;
-        // klass där AI spelar mot varann
-        // TheBattle theBattle = new TheBattle(enemyBoard,serverBoard,enemyAI,serverAI);
-
         // ********  } Tobias
-
 
         you.getChildren().addAll(youLabel, youBoard);
         enemy.getChildren().addAll(enemyLabel, enemyBoard);
@@ -172,7 +156,6 @@ public class BattleshipGame extends Application {
 
         HBox bottomBox = new HBox(40, startButtonBox);
 
-
         HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
         root.getChildren().addAll(title, history, filler, boards, bottomBox);
@@ -181,13 +164,9 @@ public class BattleshipGame extends Application {
         boatBox.setAlignment(Pos.BASELINE_RIGHT);
         StackPane stack = new StackPane(boatBox, root);
 
-
-
-
         //Vbox ships = new VBox(new Text("Boats"));
         //ships.setAlignment(Pos.CENTER_RIGHT);
         //root.setRight(ships);
-
 
         return stack;
     }

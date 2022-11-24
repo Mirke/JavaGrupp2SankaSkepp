@@ -60,7 +60,7 @@ public class ControlOfInput {
 
                     // Tobias { *********
                     //Färgar rutan på egen spelplan
-                    youBoard.parceStringShotCoordinates(true, playerChoice);
+                    youBoard.boatIsHit(playerChoice);
                     // *********** } Tobias
 
                     //Tar bort värdet ur båtens arraylista och tilldelar returnerande textsträng ett värde
@@ -75,7 +75,7 @@ public class ControlOfInput {
 
                     // Tobias { *********
                     //Färgar rutan på egen spelplan
-                    youBoard.parceStringShotCoordinates(true, playerChoice);
+                    youBoard.boatIsHit(playerChoice);
                     // *********** } Tobias
 
 
@@ -94,7 +94,7 @@ public class ControlOfInput {
         if (hit.equals("")) {
             // Tobias { *********
             //Färgar rutan på egen spelplan
-            youBoard.parceStringShotCoordinates(false, playerChoice);
+            youBoard.boatIsMiss(playerChoice);
             // *********** } Tobias
 
             //Returnerande textsträng tilldelas ett värde
@@ -137,7 +137,7 @@ public class ControlOfInput {
     public String checkAnswerFromOtherPlayer() {
         if (answer.get(answerArrayControl).equals("s")) {
             //Färgar rutan på den andra spelplanen med den senast skickade textsträngen
-            enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
+            enemyBoard.boatIsHit( sentPosition.get(sentArrayControl));
 
             //Kallar på metod för att veta vad man ska svara med
             hit = hit.concat(computerLogic.sForSink(this));
@@ -151,7 +151,7 @@ public class ControlOfInput {
                 hit = hit.concat(computerLogic.hForHit(this));
             }
             //Färgar rutan på den andra spelplanen med den senast skickade textsträngen
-            enemyBoard.parceStringShotCoordinates(true, sentPosition.get(sentArrayControl));
+            enemyBoard.boatIsHit( sentPosition.get(sentArrayControl));
 
             //Kontrollvariablerna räknas upp
             answerArrayControl++;
@@ -163,7 +163,7 @@ public class ControlOfInput {
                 hit = hit.concat(computerLogic.mForMiss(this));
             }
             //Färgar rutan på den andra spelplanen med den senast skickade textsträngen
-            enemyBoard.parceStringShotCoordinates(false, sentPosition.get(sentArrayControl));
+            enemyBoard.boatIsMiss(sentPosition.get(sentArrayControl));
 
             //Kontrollvariablerna räknas upp
             answerArrayControl++;

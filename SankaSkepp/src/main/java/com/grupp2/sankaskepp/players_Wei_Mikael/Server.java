@@ -1,7 +1,6 @@
 package com.grupp2.sankaskepp.players_Wei_Mikael;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
-import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
@@ -18,9 +17,6 @@ public class Server implements Runnable {
     //properties
     private GameBoard youBoard;
 
-
-    private Position position = new Position();
-    private Position position2 = new Position();
 
     public GameBoard getYouBoard() {
         return youBoard;

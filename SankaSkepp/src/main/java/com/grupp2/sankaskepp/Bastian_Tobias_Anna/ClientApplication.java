@@ -92,17 +92,9 @@ public class ClientApplication extends Application {
         enemyLabel.setFill(Color.web("#b938e2"));
         enemyLabel.setEffect(dropShadow);
 
-        /************************************************************************
-         * TODO: svar från motståndaren: har vi träffat eller missat?
-         * den informationen ska målas upp på motståndarens bräde (server)
-         * behöver veta var den inforamtionen kommer ifrån
-         * BYT NAMN: server ska bli enemy.
-         **********************************************************************/
         // Tobias { ***********
-
         this.enemyBoard = client.getEnemyBoard();
         this.youBoard = client.getYouBoard();
-
         // ********  } Tobias
 
 
