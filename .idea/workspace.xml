@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Nu fungerar det med de senaste uppdateringarna.">
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/GameBoard.java" afterDir="false" />
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Till Anna">
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/TryingAdapter/Adapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/TryingAdapter/BattleshipAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/TryingAdapter/IP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/TryingAdapter/MessageFromClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/TryingAdapter/Port.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
