@@ -1,7 +1,4 @@
 package com.grupp2.sankaskepp.Bastian_Tobias_Anna;
-
-
-import com.grupp2.sankaskepp.players_Wei_Mikael.Client;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,14 +10,13 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class BattleshipGame extends Application {
 
     private GameBoard youBoard, enemyBoard;
-
-    HelloController helloController;
+    private HelloController helloController;
+    private DropShadow dropShadow = new DropShadow();
 
     @Override
     public void start(Stage primaryStage) throws IOException, InterruptedException {
@@ -39,19 +35,8 @@ public class BattleshipGame extends Application {
     private Parent createContent() throws IOException, InterruptedException {
 
         //Anna härifrån och ner
-
         VBox root = new VBox();
         root.setPrefSize(1200, 760);
-
-        DropShadow dropShadow = new DropShadow();
-
-        HBox title = new HBox();
-        Text titleLabel = new Text("Battleship");
-        titleLabel.setFill(Color.web("#b2dee4"));
-        titleLabel.setEffect(dropShadow);
-        title.getStyleClass().add("title");
-        title.setPrefHeight(70);
-        title.setAlignment(Pos.TOP_CENTER);
 
         HBox history = new HBox();
         Text historyText = new Text("History");
@@ -60,7 +45,6 @@ public class BattleshipGame extends Application {
         helloController = new HelloController(historyText);
         history.getChildren().add(historyText);
         history.getStyleClass().add("history");
-
 
         HBox submarine = new HBox();
         Text submarineLabel = new Text("4 submarines");
@@ -90,8 +74,6 @@ public class BattleshipGame extends Application {
         carrier.setAlignment(Pos.BOTTOM_RIGHT);
         carrier.getChildren().add(carrierLabel);
 
-        //HBox submarine = new HBox();
-        //submarine.setStyle("-fx-background-image: url('submarine.png');" + "-fx-background-position: center center;" );
         VBox boatBox = new VBox();
         submarine.setPadding(new Insets(70, 180, 0, 0));
         cruiser.setPadding(new Insets(78, 80, 0, 0));
@@ -99,12 +81,7 @@ public class BattleshipGame extends Application {
         carrier.setPadding(new Insets(90, 120, 0, 0));
         boatBox.getChildren().addAll(submarine, cruiser, battleship, carrier);
 
-        title.getChildren().add(titleLabel);
 
-        //TextArea history = new TextArea();
-        //history.setStyle("-fx-background-color: transparent");
-        //history.setEditable(false);
-        //history.appendText("Test");
 
         Region filler = new Region();
         filler.setPrefHeight(50);
@@ -113,9 +90,6 @@ public class BattleshipGame extends Application {
         VBox you = new VBox();
         you.getStyleClass().add("enemyAndYou");
         you.setAlignment(Pos.BOTTOM_LEFT);
-
-        //Pane filler = new Pane();
-        //HBox.setHgrow(filler, Priority.ALWAYS);
 
         VBox enemy = new VBox();
         enemy.getStyleClass().add("enemyAndYou");
@@ -144,7 +118,6 @@ public class BattleshipGame extends Application {
 
         startButton.setOnAction(helloController.startButtonHandler());
 
-        //stopButton.setOnAction(e ->);
 
         VBox startButtonBox = new VBox(startButton);
         startButtonBox.getStyleClass().add("startButtonBox");
@@ -152,22 +125,30 @@ public class BattleshipGame extends Application {
         stopButtonBox.getStyleClass().add("stopButtonBox");
 
         startButton.setAlignment(Pos.CENTER);
-        //stopButton.setAlignment(Pos.CENTER);
+
 
         HBox bottomBox = new HBox(40, startButtonBox);
 
         HBox boards = new HBox(50, you, enemy);
         boards.setAlignment(Pos.CENTER);
-        root.getChildren().addAll(title, history, filler, boards, bottomBox);
+        root.getChildren().addAll(createTitle(), history, filler, boards, bottomBox);
         bottomBox.setAlignment(Pos.BOTTOM_CENTER);
         history.setAlignment(Pos.BASELINE_CENTER);
         boatBox.setAlignment(Pos.BASELINE_RIGHT);
         StackPane stack = new StackPane(boatBox, root);
 
-        //Vbox ships = new VBox(new Text("Boats"));
-        //ships.setAlignment(Pos.CENTER_RIGHT);
-        //root.setRight(ships);
-
         return stack;
+    }
+
+    private HBox createTitle() {
+        HBox title = new HBox();
+        Text titleLabel = new Text("Battleship");
+        titleLabel.setFill(Color.web("#b2dee4"));
+        titleLabel.setEffect(dropShadow);
+        title.getStyleClass().add("title");
+        title.setPrefHeight(70);
+        title.setAlignment(Pos.TOP_CENTER);
+        title.getChildren().add(titleLabel);
+        return title;
     }
 }
