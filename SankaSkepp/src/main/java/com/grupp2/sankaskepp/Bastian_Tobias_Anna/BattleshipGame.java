@@ -17,10 +17,8 @@ public class BattleshipGame extends Application {
     private GameBoard youBoard, enemyBoard;
 
     Text historyText = new Text("History");
-    private HelloController helloController = new HelloController(historyText);
-    private DropShadow dropShadow = new DropShadow();
-
-    private Button startButton = new Button("Start");
+    private HelloController helloController;
+    private final DropShadow dropShadow = new DropShadow();
 
     @Override
     public void start(Stage primaryStage) throws IOException, InterruptedException {
@@ -42,19 +40,14 @@ public class BattleshipGame extends Application {
         VBox root = new VBox();
         root.setPrefSize(1200, 760);
 
+        /* Mikael - START */
+        helloController = new HelloController(historyText);
+        /* Mikael - SLUT */
 
         // Tobias { ***********
         this.enemyBoard = helloController.enemyBoard;
         this.youBoard = helloController.youBoard;
         // ********  } Tobias
-
-
-        Button startButton = new Button("Start");
-        startButton.setEffect(dropShadow);
-        startButton.setOnAction(helloController.startButtonHandler());
-        startButton.setAlignment(Pos.CENTER);
-
-
 
         root.getChildren().addAll(createTitle(), createHistory(), createFiller(), createBoards(),createBottomBox());
         StackPane stack = new StackPane(createBoatBox(), root);
@@ -78,7 +71,6 @@ public class BattleshipGame extends Application {
         HBox history = new HBox();
         historyText.setFill(Color.web("37a8b7"));
         historyText.setEffect(dropShadow);
-        helloController = new HelloController(historyText);
         history.getChildren().add(historyText);
         history.getStyleClass().add("history");
         history.setAlignment(Pos.BASELINE_CENTER);
@@ -130,6 +122,7 @@ public class BattleshipGame extends Application {
 
         private VBox createBoatBox() {
         VBox boatBox = new VBox();
+
         boatBox.getChildren().addAll(createSubmarine(), createCruiser(), createBattleship(), createCarrier());
         boatBox.setAlignment(Pos.BASELINE_RIGHT);
         return boatBox;
@@ -165,10 +158,7 @@ public class BattleshipGame extends Application {
         }
 
         private VBox createStartButtonBox() {
-        startButton.setEffect(dropShadow);
-        startButton.setOnAction(helloController.startButtonHandler());
-        startButton.setAlignment(Pos.CENTER);
-        VBox startButtonBox = new VBox(startButton);
+        VBox startButtonBox = new VBox(createStartButton());
         startButtonBox.getStyleClass().add("startButtonBox");
         return startButtonBox;
         }
@@ -192,21 +182,4 @@ public class BattleshipGame extends Application {
         startButton.setAlignment(Pos.CENTER);
         return startButton;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
