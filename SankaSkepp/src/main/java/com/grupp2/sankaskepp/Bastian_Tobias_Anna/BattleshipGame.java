@@ -36,7 +36,7 @@ public class BattleshipGame extends Application {
 
     private Parent createContent() throws IOException, InterruptedException {
 
-        //Anna härifrån och ner
+        //Anna härifrån och ner (ändring 25/11: lade in det mesta i metoder).
         VBox root = new VBox();
         root.setPrefSize(1200, 760);
 
