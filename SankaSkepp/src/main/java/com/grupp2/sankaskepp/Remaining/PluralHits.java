@@ -1,7 +1,7 @@
 package com.grupp2.sankaskepp.Remaining;
 
 public class PluralHits { //Karin all external XY conditions for logic
-
+    //Inlagt i ComputerLogic för att få spelet att fungera, denna klass används ej
     char actual;
 
     public PluralHits() {

@@ -6,12 +6,12 @@ import java.util.List;
 /*
     Karins kod i denna klass
  */
-public class MyStringXY{
+public class MyStringXY {
 
     // Attributes
     private EnemyGameBoard enemyGameBoard = new EnemyGameBoard();
 
-   // private YourGameBoard yourGameBoard = new YourGameBoard();
+    // private YourGameBoard yourGameBoard = new YourGameBoard();
 
     private XYposition xyPosition = new XYposition();
 
@@ -20,6 +20,8 @@ public class MyStringXY{
     private List<String> remainingEnemyPositions2 = new ArrayList<>();
 
     private List<String> remainingXYspots;
+
+    private List<String> guardedSpots = new ArrayList<>();
 
     // Constructors
     public MyStringXY() {
@@ -37,7 +39,6 @@ public class MyStringXY{
                 remainingEnemyPositions[i][j] = new XYposition
                         (enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j], false, false);
 
-                //yourGameBoard.setYourPositions(remainingEnemyPositions);
 
                 //Förändrat
                 remainingEnemyPositions2.add(remainingEnemyPositions[i][j].getXyValue());
@@ -56,10 +57,6 @@ public class MyStringXY{
         return enemyGameBoard;
     }
 
-    /*public YourGameBoard getYourGameBoard() {
-        return yourGameBoard;
-    }*/
-
     public XYposition getXyPosition() {
         return xyPosition;
     }
@@ -75,4 +72,5 @@ public class MyStringXY{
     public List<String> getRemainingEnemyPositions2() {
         return remainingEnemyPositions2;
     }
+
 }
