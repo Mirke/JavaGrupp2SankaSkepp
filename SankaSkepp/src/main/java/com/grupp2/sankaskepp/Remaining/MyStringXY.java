@@ -11,7 +11,7 @@ public class MyStringXY{
     // Attributes
     private EnemyGameBoard enemyGameBoard = new EnemyGameBoard();
 
-    private YourGameBoard yourGameBoard = new YourGameBoard();
+   // private YourGameBoard yourGameBoard = new YourGameBoard();
 
     private XYposition xyPosition = new XYposition();
 
@@ -37,7 +37,7 @@ public class MyStringXY{
                 remainingEnemyPositions[i][j] = new XYposition
                         (enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j], false, false);
 
-                yourGameBoard.setYourPositions(remainingEnemyPositions);
+                //yourGameBoard.setYourPositions(remainingEnemyPositions);
 
                 //Förändrat
                 remainingEnemyPositions2.add(remainingEnemyPositions[i][j].getXyValue());
@@ -56,9 +56,9 @@ public class MyStringXY{
         return enemyGameBoard;
     }
 
-    public YourGameBoard getYourGameBoard() {
+    /*public YourGameBoard getYourGameBoard() {
         return yourGameBoard;
-    }
+    }*/
 
     public XYposition getXyPosition() {
         return xyPosition;

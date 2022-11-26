@@ -28,18 +28,20 @@ public class PluralHits { //Karin all external XY conditions for logic
             actual = 'E';
         } else if (p == 9 && q == 9) {
             actual = 'S';
-        } else if (p == 0 && q >= 1 && q <= 8) {
+        } else if (p == 0) {
             actual = 'L';
-        } else if (p == 9 && q >= 1 && q <= 8) {
+        } else if (p == 9) {
             actual = 'R';
-        } else if (q == 0 && p >= 1 && p <= 8) {
+        } else if (q == 0) {
             actual = 'T';
-        } else if (q == 9 && p >= 1 && p <= 8) {
+        } else if (q == 9) {
             actual = 'B';
         } else if (p >= 1 && p <= 8 && q <= 8 && q >= 1) {
             actual = 'C';
         }
     }
 }
+
+
 
 

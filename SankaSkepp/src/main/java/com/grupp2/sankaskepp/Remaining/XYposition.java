@@ -3,7 +3,7 @@ package com.grupp2.sankaskepp.Remaining;
 public class XYposition {
 
     //Properties
-    public String xValue;
+    public String xValue ;
 
     public String yValue;
 
@@ -26,6 +26,11 @@ public class XYposition {
         this.xyValue  = xValue.concat(yValue);
     }
 
+    public XYposition(String xValue, String yValue, boolean wasHit) {
+        this.xValue = xValue;
+        this.yValue = yValue;
+        this.wasHit = wasHit;
+    }
 
     //Getters & Setters
     public XYposition(String xyValue) {
