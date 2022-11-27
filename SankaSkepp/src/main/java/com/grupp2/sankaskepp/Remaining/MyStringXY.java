@@ -6,23 +6,25 @@ import java.util.List;
 /*
     Karins kod i denna klass
  */
-public class MyStringCoordinates {
+public class MyStringXY {
 
     // Attributes
     private EnemyGameBoard enemyGameBoard = new EnemyGameBoard();
 
-    private YourGameBoard yourGameBoard = new YourGameBoard();
+    // private YourGameBoard yourGameBoard = new YourGameBoard();
 
     private XYposition xyPosition = new XYposition();
+
 
     private XYposition[][] remainingEnemyPositions = new XYposition[10][10];
     private List<String> remainingEnemyPositions2 = new ArrayList<>();
 
     private List<String> remainingXYspots;
 
-    // Constructors
-    public MyStringCoordinates() {
+    private List<String> guardedSpots = new ArrayList<>();
 
+    // Constructors
+    public MyStringXY() {
 
         //Make List of all positions in EnemyGameBoard - Karin
 
@@ -37,7 +39,6 @@ public class MyStringCoordinates {
                 remainingEnemyPositions[i][j] = new XYposition
                         (enemyGameBoard.getxValue()[i], enemyGameBoard.getyValue()[j], false, false);
 
-                yourGameBoard.setYourPositions(remainingEnemyPositions);
 
                 //Förändrat
                 remainingEnemyPositions2.add(remainingEnemyPositions[i][j].getXyValue());
@@ -56,10 +57,6 @@ public class MyStringCoordinates {
         return enemyGameBoard;
     }
 
-    public YourGameBoard getYourGameBoard() {
-        return yourGameBoard;
-    }
-
     public XYposition getXyPosition() {
         return xyPosition;
     }
@@ -75,4 +72,5 @@ public class MyStringCoordinates {
     public List<String> getRemainingEnemyPositions2() {
         return remainingEnemyPositions2;
     }
+
 }

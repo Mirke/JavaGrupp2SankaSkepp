@@ -167,10 +167,10 @@ public class ClientTask extends Task<Void> {
      * @since 1.0.0
      */
     private int delay(Boolean isLimited) {
-        int t = rand.nextInt(6) ;
+        int t = rand.nextInt(5)+1 ;
         if (isLimited) {
             return t * 50;
-        } else return t * 1000;
+        } else return (t == 1) ? ((t + 1) * 1000) : t * 1000;
     }
 
     /**

@@ -3,7 +3,7 @@ package com.grupp2.sankaskepp.Remaining;
 public class XYposition {
 
     //Properties
-    public String xValue;
+    public String xValue ;
 
     public String yValue;
 
@@ -11,21 +11,26 @@ public class XYposition {
 
     public boolean wasHit;
 
-    public boolean hasShip;
+    public boolean hasBoat;
 
     //Constructor
 
     public XYposition() {
     }
 
-    public XYposition(String xValue, String yValue, boolean wasHit, boolean hasShip) {
+    public XYposition(String xValue, String yValue, boolean wasHit, boolean hasBoat) {
         this.xValue = xValue;
         this.yValue = yValue;
         this.wasHit = wasHit;
-        this.hasShip = hasShip;
+        this.hasBoat = hasBoat;
         this.xyValue  = xValue.concat(yValue);
     }
 
+    public XYposition(String xValue, String yValue, boolean wasHit) {
+        this.xValue = xValue;
+        this.yValue = yValue;
+        this.wasHit = wasHit;
+    }
 
     //Getters & Setters
     public XYposition(String xyValue) {
@@ -56,12 +61,12 @@ public class XYposition {
         this.wasHit = wasHit;
     }
 
-    public boolean isHasShip() {
-        return hasShip;
+    public boolean isHasBoat() {
+        return hasBoat;
     }
 
-    public void setHasShip(boolean hasShip) {
-        this.hasShip = hasShip;
+    public void setHasBoat(boolean hasBoat) {
+        this.hasBoat = hasBoat;
     }
 
     public String getXyValue() {

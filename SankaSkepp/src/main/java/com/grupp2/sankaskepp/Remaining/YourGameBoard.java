@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class YourGameBoard extends NewGameBoard{
+/*public class YourGameBoard extends NewGameBoard{
 
     //2D-array för koordinaterna
 
@@ -21,4 +21,4 @@ public class YourGameBoard extends NewGameBoard{
         this.yourPositions = yourPositions;
     }
 
-}
+}*/
