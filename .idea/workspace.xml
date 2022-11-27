@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Knapp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/EnemyGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/EnemyGameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/GuardSafeSpots.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/GuardSafeSpots.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MyStringXY.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MyStringXY.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/PluralHits.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/PluralHits.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ClientTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/ServerTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/TestStart.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,30 +54,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "C:/Users/karin/IdeaProjects/DemoOOP",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.completion"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/karin/IdeaProjects/DemoOOP&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.grupp2.sankaskepp.Bastian_Tobias_Anna" />
       <recent name="com.grupp2.sankaskepp.Bastian_Tobias" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.BattleshipGame">
     <configuration name="BattleshipGame" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -340,19 +339,6 @@
       <option name="presentableId" value="LOCAL−00020" />
       <updated>1668611012181</updated>
     </task>
-    <task id="LOCAL−00021" summary="Mer försök till logik, men det hänger sig, ofta i mForMiss eller att nästa skott inte lägger sig bredvid föregående.">
-      <created>1669132445516</created>
-      <option name="number" value="LOCAL−00021" />
-      <option name="presentableId" value="LOCAL−00021" />
-      <updated>1669132445516</updated>
-    </task>
-    <task id="LOCAL−00022" summary="Logiken för att fortsätta skjuta tills båten sänkts fungerar, men inte garderingen. Spelplanen loopas om när garderingen ska anropas. Textsnuttar vid köring underlättar felsökningen. Anropet uppenbarligen fel, rad 96 i ComputerLogic. Kommentera bort den raden så funkar resten, men det blir väldigt långsamt tråkigt spel.">
-      <created>1669455427257</created>
-      <option name="number" value="LOCAL−00022" />
-      <option name="presentableId" value="LOCAL−00022" />
-      <updated>1669455427257</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
     <task id="LOCAL−00021" summary="Småfix">
       <created>1669028565603</created>
       <option name="number" value="LOCAL−00021" />
@@ -457,7 +443,6 @@
     <MESSAGE value="Nu fungerar det med de senaste uppdateringarna." />
     <MESSAGE value="Mer försök till logik, men det hänger sig, ofta i mForMiss eller att nästa skott inte lägger sig bredvid föregående." />
     <MESSAGE value="Logiken för att fortsätta skjuta tills båten sänkts fungerar, men inte garderingen. Spelplanen loopas om när garderingen ska anropas. Textsnuttar vid köring underlättar felsökningen. Anropet uppenbarligen fel, rad 96 i ComputerLogic. Kommentera bort den raden så funkar resten, men det blir väldigt långsamt tråkigt spel." />
-    <option name="LAST_COMMIT_MESSAGE" value="Logiken för att fortsätta skjuta tills båten sänkts fungerar, men inte garderingen. Spelplanen loopas om när garderingen ska anropas. Textsnuttar vid köring underlättar felsökningen. Anropet uppenbarligen fel, rad 96 i ComputerLogic. Kommentera bort den raden så funkar resten, men det blir väldigt långsamt tråkigt spel." />
     <MESSAGE value="Småfix" />
     <MESSAGE value="Refactoriserar i koden." />
     <MESSAGE value="ClientTask är nu kommenterad." />
