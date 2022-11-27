@@ -1,12 +1,16 @@
 # Sänka Skepp 🚢🚀 - Java Grupp 2
 
-Ska skapa ett sänka skepp spel där klient och server ska spela emot varandra.
+Sänka skepp spel där klient och server spelar emot varandra.
 
-## Tools som vi använder.
+## Verktyg som vi har använt.
 
 Jira - https://mikaelmirke.atlassian.net/jira/software/projects/JG2SS/boards/1/roadmap
 
 Draw.io - https://app.diagrams.net/
+
+IntelliJ - https://www.jetbrains.com/idea/
+
+Gimp - https://www.gimp.org/
 
 # ToDo 
 
@@ -17,3 +21,11 @@ Draw.io - https://app.diagrams.net/
 - [x]  **Klient** 🦸
 - [x]  **Server** 👾
 
+# Made by
+
+* [ASahrlingHamm](https://github.com/ASahrlingHamm)
+* [Bastianmm](https://github.com/Bastianmm)
+* [KarinLamell](https://github.com/KarinLamell)
+* [Mirke](https://github.com/Mirke)
+* [ToJohansson](https://github.com/ToJohansson)
+* [Weiweiatsweden](https://github.com/Weiweiatsweden)
