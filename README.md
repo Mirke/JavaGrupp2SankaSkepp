@@ -10,7 +10,7 @@ Draw.io - https://app.diagrams.net/
 
 # ToDo 
 
-- [ ] **Full logik** 🧠
+- [x] **AI** 🧠
 - [x]  **Spelplan** 🖥️
 - [x]  **Fartyg Classer** 🚢
 - [x]  **GUI** 🎨
