@@ -1,27 +1,22 @@
 package com.grupp2.sankaskepp.players_Wei_Mikael;
 
 import com.grupp2.sankaskepp.Bastian_Tobias_Anna.GameBoard;
-import com.grupp2.sankaskepp.Bastian_Tobias_Anna.Position;
 import com.grupp2.sankaskepp.CreateAndSetBoats.Boat;
 import com.grupp2.sankaskepp.CreateAndSetBoats.ControlOfInput;
+import com.grupp2.sankaskepp.CreateAndSetBoats.Fleet;
 import com.grupp2.sankaskepp.CreateAndSetBoats.PlaceBoats;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Collections;
 import java.util.Random;
 
 /**
  * Author: Wei
  */
-public class Server implements Runnable{
+public class Server implements Runnable {
     //properties
     private GameBoard youBoard;
 
-
-    private Position position = new Position();
-    private Position position2 = new Position();
 
     public GameBoard getYouBoard() {
         return youBoard;
@@ -47,28 +42,23 @@ public class Server implements Runnable{
         // Tobias { ***********
 
         // you
-        Boat youBoat = new Boat();
+        Fleet youFleet = new Fleet();
         PlaceBoats youPlaceBoats = new PlaceBoats();
-        youBoat.createBoats();
-        youPlaceBoats.initializeGridArray();
-        youPlaceBoats.placeBoats(youBoat.getBoats());
-        youBoard = new GameBoard(youBoat);
+        youPlaceBoats.placeBoats(youFleet);
+        youBoard = new GameBoard(youFleet);
         //ComputerAI youAI = new ComputerAI(youBoat);
         //ControlOfInput youControlOfInput = new ControlOfInput(youBoard);
 
         // -------------------------------------------
 
         // Server
-        Boat serverBoat = new Boat();
+        Fleet serverFleet = new Fleet();
         PlaceBoats serverPlaceBoats = new PlaceBoats();
-        serverBoat.createBoats();
-        serverPlaceBoats.initializeGridArray();
-        //serverPlaceBoats.placeBoats(serverBoat.getBoats());
         enemyBoard = new GameBoard();
         // ComputerAI serverAI = new ComputerAI();
 
         // skickar in spelplanerna för att kunna få färg på cellerna när de blir beskjutna
-        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youBoat,serverBoat);
+        serverAndEnemyControlOfInput = new ControlOfInput(youBoard, enemyBoard, youFleet, serverFleet);
 
 
     }
@@ -108,25 +98,15 @@ public class Server implements Runnable{
         while (sendMessage) {
             if (reader.ready()) {
                 String messageFromClient = reader.readLine();
-
-                //System.out.println("Player 2 says " + messageFromClient);
                 System.out.println("Server receiving: " + messageFromClient);
 
                 this.rightNow = messageFromClient;
 
-
-                //TODO: hit or miss depending on shot from client, need method to check result
-
-                //position.shuffleList(position.getAllCoordinates());
-
-
-
                 String pos = "";
                 String text = "";
-                if(!messageFromClient.contains("game over")) {
+                if (!messageFromClient.contains("game over")) {
                     text = serverAndEnemyControlOfInput.controlOtherPlayerString(messageFromClient);
-                }
-                else{
+                } else {
                     System.out.println("I won");
                     serverAndEnemyControlOfInput.getAnswer().add("s");
                     serverAndEnemyControlOfInput.checkAnswerFromOtherPlayer();
@@ -134,55 +114,28 @@ public class Server implements Runnable{
                 }
 
                 String outputText = "";
-                if(text.contains("game over")){
+                if (text.contains("game over")) {
                     System.out.println("I lost");
                     sendMessage = false;
                     outputText = "game over";
 
-                }else{
+                } else {
                     serverAndEnemyControlOfInput.sentString(text);
                 }
 
-
-                //  ProtocolSankaSkepp protocolSankaSkepp = new ProtocolSankaSkepp();
-                //position.remove(position.getAllCoordinates());
-
-
-
-                String coordinate = String.valueOf(rand.nextInt(10) + "." + rand.nextInt(10));
-                //String outputText = "m shot " + coordinate; //commenting out to merge code Mikael
-                //String outputText = protocolSankaSkepp.sendRandomProtocolMethod(rand.nextInt(10), rand.nextInt(10)); //Mikaels kod
                 System.out.println("Server sending: " + outputText);
                 System.out.println();
-                /*try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    System.out.println("Error trying to pause for two seconds with message " + e);
-                }*/
-
-                //delay function
-
-                //System.out.print("Server sending: ");
-
                 //KL random time delay 2-5 s, don't forget "throws InterruptedException" see above
-
                 int t = (int) (Math.random() * 5 + 1);
                 if (t == 1) {
                     t++;
                 }
-                 //Thread.sleep(t * 1000);
-
+                //Thread.sleep(t * 1000);
                 writer.println(outputText);
-
-
                 //sendMessage = false;
-
-
             }
         }
-
     }
-
 
     @Override
     public void run() {

@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Logiken för att fortsätta skjuta tills båten sänkts fungerar, men inte garderingen. Spelplanen loopas om när garderingen ska anropas. Textsnuttar vid köring underlättar felsökningen. Anropet uppenbarligen fel, rad 96 i ComputerLogic. Kommentera bort den raden så funkar resten, men det blir väldigt långsamt tråkigt spel.">
+    <list default="true" id="a9bb9f99-9836-427c-808a-8f422b4ed9aa" name="Changes" comment="Knapp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/ComputerLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/EnemyGameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/EnemyGameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/GuardSafeSpots.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/GuardSafeSpots.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MyStringXY.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/MyStringXY.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/PluralHits.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Remaining/PluralHits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/SankaSkepp/src/main/java/com/grupp2/sankaskepp/Bastian_Tobias_Anna/BattleshipGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +33,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -43,6 +45,9 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2GzmtbyAlEH6VaXDPNw7lk1rhK4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -73,7 +78,7 @@
       <recent name="com.grupp2.sankaskepp.Bastian_Tobias" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BattleshipGame">
+  <component name="RunManager">
     <configuration name="BattleshipGame" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -158,11 +163,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ClientApplication" />
-        <item itemvalue="Application.ServerApplication" />
-        <item itemvalue="Application.ClientStart" />
         <item itemvalue="Application.ServerStart" />
+        <item itemvalue="Application.ServerApplication" />
         <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.ClientStart" />
+        <item itemvalue="Application.ClientApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -208,6 +213,12 @@
       <workItem from="1669442784630" duration="11174000" />
       <workItem from="1669455259135" duration="194000" />
       <workItem from="1669483068148" duration="8147000" />
+      <workItem from="1668595333352" duration="1080000" />
+      <workItem from="1668688914536" duration="1939000" />
+      <workItem from="1669187194847" duration="4211000" />
+      <workItem from="1669283811328" duration="2803000" />
+      <workItem from="1669302861670" duration="471000" />
+      <workItem from="1669368069674" duration="7049000" />
     </task>
     <task id="LOCAL−00002" summary="Gjorde layout/design.">
       <created>1667400078145</created>
@@ -342,6 +353,73 @@
       <updated>1669455427257</updated>
     </task>
     <option name="localTasksCounter" value="23" />
+    <task id="LOCAL−00021" summary="Småfix">
+      <created>1669028565603</created>
+      <option name="number" value="LOCAL−00021" />
+      <option name="presentableId" value="LOCAL−00021" />
+      <updated>1669028565603</updated>
+    </task>
+    <task id="LOCAL−00022" summary="Refactoriserar i koden.">
+      <created>1669195656452</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1669195656452</updated>
+    </task>
+    <task id="LOCAL−00023" summary="Refactoriserar i koden.">
+      <created>1669197212616</created>
+      <option name="number" value="LOCAL−00023" />
+      <option name="presentableId" value="LOCAL−00023" />
+      <updated>1669197212616</updated>
+    </task>
+    <task id="LOCAL−00024" summary="Refactoriserar i koden.">
+      <created>1669197544439</created>
+      <option name="number" value="LOCAL−00024" />
+      <option name="presentableId" value="LOCAL−00024" />
+      <updated>1669197544439</updated>
+    </task>
+    <task id="LOCAL−00025" summary="Refactoriserar i koden.">
+      <created>1669197672814</created>
+      <option name="number" value="LOCAL−00025" />
+      <option name="presentableId" value="LOCAL−00025" />
+      <updated>1669197672814</updated>
+    </task>
+    <task id="LOCAL−00026" summary="ClientTask är nu kommenterad.">
+      <created>1669206070983</created>
+      <option name="number" value="LOCAL−00026" />
+      <option name="presentableId" value="LOCAL−00026" />
+      <updated>1669206070983</updated>
+    </task>
+    <task id="LOCAL−00027" summary="ClientTask är nu kommenterad och den del refactoriserad.">
+      <created>1669207514306</created>
+      <option name="number" value="LOCAL−00027" />
+      <option name="presentableId" value="LOCAL−00027" />
+      <updated>1669207514306</updated>
+    </task>
+    <task id="LOCAL−00028" summary="ClientTask är nu kommenterad och den del refactoriserad.">
+      <created>1669207628954</created>
+      <option name="number" value="LOCAL−00028" />
+      <option name="presentableId" value="LOCAL−00028" />
+      <updated>1669207628954</updated>
+    </task>
+    <task id="LOCAL−00029" summary="Refactoriserat, tasks och battleshipgame">
+      <created>1669212273910</created>
+      <option name="number" value="LOCAL−00029" />
+      <option name="presentableId" value="LOCAL−00029" />
+      <updated>1669212273910</updated>
+    </task>
+    <task id="LOCAL−00030" summary="Refactoriserat, tasks och battleshipgame">
+      <created>1669212463181</created>
+      <option name="number" value="LOCAL−00030" />
+      <option name="presentableId" value="LOCAL−00030" />
+      <updated>1669212463181</updated>
+    </task>
+    <task id="LOCAL−00031" summary="Knapp">
+      <created>1669374255068</created>
+      <option name="number" value="LOCAL−00031" />
+      <option name="presentableId" value="LOCAL−00031" />
+      <updated>1669374255068</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,5 +458,12 @@
     <MESSAGE value="Mer försök till logik, men det hänger sig, ofta i mForMiss eller att nästa skott inte lägger sig bredvid föregående." />
     <MESSAGE value="Logiken för att fortsätta skjuta tills båten sänkts fungerar, men inte garderingen. Spelplanen loopas om när garderingen ska anropas. Textsnuttar vid köring underlättar felsökningen. Anropet uppenbarligen fel, rad 96 i ComputerLogic. Kommentera bort den raden så funkar resten, men det blir väldigt långsamt tråkigt spel." />
     <option name="LAST_COMMIT_MESSAGE" value="Logiken för att fortsätta skjuta tills båten sänkts fungerar, men inte garderingen. Spelplanen loopas om när garderingen ska anropas. Textsnuttar vid köring underlättar felsökningen. Anropet uppenbarligen fel, rad 96 i ComputerLogic. Kommentera bort den raden så funkar resten, men det blir väldigt långsamt tråkigt spel." />
+    <MESSAGE value="Småfix" />
+    <MESSAGE value="Refactoriserar i koden." />
+    <MESSAGE value="ClientTask är nu kommenterad." />
+    <MESSAGE value="ClientTask är nu kommenterad och den del refactoriserad." />
+    <MESSAGE value="Refactoriserat, tasks och battleshipgame" />
+    <MESSAGE value="Knapp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Knapp" />
   </component>
 </project>
